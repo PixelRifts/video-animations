@@ -1,0 +1,26 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_examples",
+      "targetTime": 4.727496401787744
+    },
+    {
+      "name": "spiral_modifiers",
+      "targetTime": 17.314436353201724
+    },
+    {
+      "name": "clearAll",
+      "targetTime": 47.83079420026582
+    },
+    {
+      "name": "typechecking",
+      "targetTime": 60.3109168575924
+    },
+    {
+      "name": "end",
+      "targetTime": 71.84053861716211
+    }
+  ],
+  "seed": 4118633689
+}

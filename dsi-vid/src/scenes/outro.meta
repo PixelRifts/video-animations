@@ -1,0 +1,34 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "hai",
+      "targetTime": 25.786564614634997
+    },
+    {
+      "name": "boxes",
+      "targetTime": 37.03009059820281
+    },
+    {
+      "name": "fillscreen",
+      "targetTime": 45.70555953042612
+    },
+    {
+      "name": "switch1",
+      "targetTime": 69.24699472159895
+    },
+    {
+      "name": "easeofusefont",
+      "targetTime": 79.80686162931799
+    },
+    {
+      "name": "zoomin",
+      "targetTime": 100.65908278373959
+    },
+    {
+      "name": "end",
+      "targetTime": 115.27053526752178
+    }
+  ],
+  "seed": 1929326375
+}

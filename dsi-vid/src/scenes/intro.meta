@@ -1,0 +1,62 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "other_guys",
+      "targetTime": 21.799022152041648
+    },
+    {
+      "name": "what_are_those",
+      "targetTime": 29.12387473513176
+    },
+    {
+      "name": "devkitarm_highlight",
+      "targetTime": 32.47774201190278
+    },
+    {
+      "name": "show__toolchainmistake",
+      "targetTime": 34.43143588934259
+    },
+    {
+      "name": "unshow__toolchainmistake",
+      "targetTime": 37.25764147080773
+    },
+    {
+      "name": "libnds_highlight",
+      "targetTime": 38.25764147080773
+    },
+    {
+      "name": "show__libnds_ex",
+      "targetTime": 40.8518597495976
+    },
+    {
+      "name": "compiler_frontend_time",
+      "targetTime": 65.19299506578855
+    },
+    {
+      "name": "show_frontend_pipeline",
+      "targetTime": 72.16695137037898
+    },
+    {
+      "name": "frontend_breakdown",
+      "targetTime": 75.99621020783889
+    },
+    {
+      "name": "all_out",
+      "targetTime": 96.1250654664459
+    },
+    {
+      "name": "the_silly_things",
+      "targetTime": 111.05213406698502
+    },
+    {
+      "name": "consistency",
+      "targetTime": 141.24390292400517
+    },
+    {
+      "name": "end",
+      "targetTime": 184.37785340585108
+    }
+  ],
+  "seed": 1272065346
+}

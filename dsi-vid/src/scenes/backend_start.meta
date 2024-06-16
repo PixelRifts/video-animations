@@ -1,0 +1,34 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "dotndsformat",
+      "targetTime": 16.62820306006917
+    },
+    {
+      "name": "nds_emu_icons",
+      "targetTime": 40.18159309712992
+    },
+    {
+      "name": "takingalook",
+      "targetTime": 42.23840987569218
+    },
+    {
+      "name": "finishedlooking",
+      "targetTime": 77.83656051242032
+    },
+    {
+      "name": "twochips",
+      "targetTime": 108.1031723932118
+    },
+    {
+      "name": "unshow_pipeline",
+      "targetTime": 130.34499427063193
+    },
+    {
+      "name": "end",
+      "targetTime": 140.65728251175628
+    }
+  ],
+  "seed": 4132583435
+}

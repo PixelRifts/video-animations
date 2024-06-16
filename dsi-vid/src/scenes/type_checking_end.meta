@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show__checking_algorithm",
+      "targetTime": 1.7690242321709637
+    },
+    {
+      "name": "is_ready_xplain",
+      "targetTime": 14.083541782658191
+    },
+    {
+      "name": "transfer_xplain",
+      "targetTime": 23.721053250644623
+    },
+    {
+      "name": "unshow_fns",
+      "targetTime": 34.65682798151517
+    },
+    {
+      "name": "worklisttime",
+      "targetTime": 42.98903899096296
+    },
+    {
+      "name": "work_one_node",
+      "targetTime": 50.61856048265816
+    },
+    {
+      "name": "show__b1notrdy",
+      "targetTime": 61.17978373044049
+    },
+    {
+      "name": "unshow__b1notrdy",
+      "targetTime": 64.03616010248882
+    },
+    {
+      "name": "end",
+      "targetTime": 103.79055500912827
+    }
+  ],
+  "seed": 1861153543
+}

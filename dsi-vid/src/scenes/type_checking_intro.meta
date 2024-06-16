@@ -1,0 +1,90 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "substitute_numbers",
+      "targetTime": 11.39473749329348
+    },
+    {
+      "name": "substitute_lv1",
+      "targetTime": 23.908655929920247
+    },
+    {
+      "name": "substitute_lv2",
+      "targetTime": 26.693004736579663
+    },
+    {
+      "name": "well_not_really",
+      "targetTime": 47.92177319341461
+    },
+    {
+      "name": "solution_1",
+      "targetTime": 57.40153433790787
+    },
+    {
+      "name": "globals_jumpscare",
+      "targetTime": 79.33154575596417
+    },
+    {
+      "name": "fix_globals_title",
+      "targetTime": 99.39820168907606
+    },
+    {
+      "name": "cuikgamer",
+      "targetTime": 122.5889635441512
+    },
+    {
+      "name": "show__link_in_desc",
+      "targetTime": 131.3572092903195
+    },
+    {
+      "name": "unshow__link_in_desc",
+      "targetTime": 132.52526486400453
+    },
+    {
+      "name": "DECLGRAPHME",
+      "targetTime": 137.85527518621117
+    },
+    {
+      "name": "nodes_are_decls",
+      "targetTime": 143.7172178644547
+    },
+    {
+      "name": "split_funcs",
+      "targetTime": 173.73281960970638
+    },
+    {
+      "name": "edit_struct",
+      "targetTime": 198.58973769865503
+    },
+    {
+      "name": "show__dependency_meaning",
+      "targetTime": 222.5439199984819
+    },
+    {
+      "name": "unshow__dependency_meaning",
+      "targetTime": 239.2420770391689
+    },
+    {
+      "name": "show__sizes",
+      "targetTime": 262.43438113859304
+    },
+    {
+      "name": "animate_cycles_bad",
+      "targetTime": 273.63659258053855
+    },
+    {
+      "name": "show__no_more_pain",
+      "targetTime": 293.2876767451014
+    },
+    {
+      "name": "unshow__no_more_pain",
+      "targetTime": 296.2700711982523
+    },
+    {
+      "name": "end",
+      "targetTime": 303.6766367312239
+    }
+  ],
+  "seed": 3512125442
+}

@@ -1,0 +1,78 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "real_compilers",
+      "targetTime": 11.07516416025115
+    },
+    {
+      "name": "getmetherealready",
+      "targetTime": 30.161528774422187
+    },
+    {
+      "name": "howdoidothat",
+      "targetTime": 40.01508615226606
+    },
+    {
+      "name": "how2lower",
+      "targetTime": 57.68870580920071
+    },
+    {
+      "name": "show_cpu_regs",
+      "targetTime": 63.71166453226398
+    },
+    {
+      "name": "expand_to_regs",
+      "targetTime": 67.9482167089084
+    },
+    {
+      "name": "regs_anim",
+      "targetTime": 76.49602566523986
+    },
+    {
+      "name": "exampletime",
+      "targetTime": 88.43558699404618
+    },
+    {
+      "name": "show__allocstrat",
+      "targetTime": 117.53233619456732
+    },
+    {
+      "name": "unshow__allocstrat",
+      "targetTime": 127.8445282275742
+    },
+    {
+      "name": "showstack",
+      "targetTime": 137.41055464244604
+    },
+    {
+      "name": "sp_explain",
+      "targetTime": 159.97802803657964
+    },
+    {
+      "name": "pushpop",
+      "targetTime": 185.39225008995888
+    },
+    {
+      "name": "timetolower",
+      "targetTime": 221.11720738841237
+    },
+    {
+      "name": "ifstmttime",
+      "targetTime": 255.98492859073792
+    },
+    {
+      "name": "whileloops",
+      "targetTime": 272.63902503341865
+    },
+    {
+      "name": "unshowme",
+      "targetTime": 281.3783625827921
+    },
+    {
+      "name": "end",
+      "targetTime": 295.93777393258705
+    }
+  ],
+  "seed": 657259781
+}

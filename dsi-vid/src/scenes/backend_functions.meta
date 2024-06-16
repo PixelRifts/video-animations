@@ -1,0 +1,98 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "jump_to_and_back",
+      "targetTime": 7.426472137281801
+    },
+    {
+      "name": "lowered_call_code",
+      "targetTime": 12.436546821582729
+    },
+    {
+      "name": "reserve_reg",
+      "targetTime": 26.438307681444304
+    },
+    {
+      "name": "jump_cut",
+      "targetTime": 45.93661121428516
+    },
+    {
+      "name": "show__r15ispc",
+      "targetTime": 47.736611214285155
+    },
+    {
+      "name": "unshow__r15ispc",
+      "targetTime": 50.11997473591727
+    },
+    {
+      "name": "chained_call",
+      "targetTime": 54.9148727343654
+    },
+    {
+      "name": "show_chain_call_arrows",
+      "targetTime": 59.206650657865374
+    },
+    {
+      "name": "counteract",
+      "targetTime": 73.11041885355
+    },
+    {
+      "name": "fun_args",
+      "targetTime": 100.37666149905405
+    },
+    {
+      "name": "args_time",
+      "targetTime": 112.34450251388988
+    },
+    {
+      "name": "locals_on_stack",
+      "targetTime": 124.77164737648457
+    },
+    {
+      "name": "not_comptime",
+      "targetTime": 150.31651108713015
+    },
+    {
+      "name": "show_symmetry",
+      "targetTime": 165.38771726534998
+    },
+    {
+      "name": "for_example",
+      "targetTime": 180.56983827999096
+    },
+    {
+      "name": "markme",
+      "targetTime": 186.03810473455505
+    },
+    {
+      "name": "push_bp",
+      "targetTime": 200.87921014706833
+    },
+    {
+      "name": "functions_done",
+      "targetTime": 210.34005213802956
+    },
+    {
+      "name": "division_reveal",
+      "targetTime": 217.2135997427614
+    },
+    {
+      "name": "go_to_hit",
+      "targetTime": 273.4440120608977
+    },
+    {
+      "name": "using_this_shit",
+      "targetTime": 292.9582266273643
+    },
+    {
+      "name": "instructions",
+      "targetTime": 303.3098146225532
+    },
+    {
+      "name": "end",
+      "targetTime": 316.9727649989747
+    }
+  ],
+  "seed": 4293211270
+}
