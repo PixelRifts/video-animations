@@ -1,0 +1,70 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "drawbacks",
+      "targetTime": 38.09953952164405
+    },
+    {
+      "name": "dep1",
+      "targetTime": 39.87482175636046
+    },
+    {
+      "name": "dep2",
+      "targetTime": 42.94745231144952
+    },
+    {
+      "name": "dep3",
+      "targetTime": 44.964432572245535
+    },
+    {
+      "name": "nichecases",
+      "targetTime": 50.66660842492855
+    },
+    {
+      "name": "regularcompilers",
+      "targetTime": 58.46449972707238
+    },
+    {
+      "name": "place_compiler",
+      "targetTime": 66.96470259705178
+    },
+    {
+      "name": "place_interp",
+      "targetTime": 76.30353379923869
+    },
+    {
+      "name": "place_JIT",
+      "targetTime": 90.21103565286528
+    },
+    {
+      "name": "hideeverything",
+      "targetTime": 94.61040285546417
+    },
+    {
+      "name": "js_mentioned",
+      "targetTime": 103.98558795649654
+    },
+    {
+      "name": "v8_metioned",
+      "targetTime": 108.70080328771917
+    },
+    {
+      "name": "unshow_jit_examp",
+      "targetTime": 113.72565405559625
+    },
+    {
+      "name": "finishedstack",
+      "targetTime": 116.8053153351009
+    },
+    {
+      "name": "PSA",
+      "targetTime": 125.47355580891845
+    },
+    {
+      "name": "end",
+      "targetTime": 161.59046373698285
+    }
+  ],
+  "seed": 144756978
+}

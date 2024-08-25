@@ -1,0 +1,58 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "codedatadiff",
+      "targetTime": 3.5632725973561983
+    },
+    {
+      "name": "fade_all",
+      "targetTime": 12.50889603429796
+    },
+    {
+      "name": "onlybinary",
+      "targetTime": 25.271462522860947
+    },
+    {
+      "name": "highlightboth",
+      "targetTime": 37.55853328719515
+    },
+    {
+      "name": "absolutely",
+      "targetTime": 56.75426113339568
+    },
+    {
+      "name": "outyes",
+      "targetTime": 63.2856491612363
+    },
+    {
+      "name": "examplecode_start",
+      "targetTime": 69.45155274227486
+    },
+    {
+      "name": "step0",
+      "targetTime": 71.79474355012641
+    },
+    {
+      "name": "step1",
+      "targetTime": 74.25373692182204
+    },
+    {
+      "name": "step2",
+      "targetTime": 76.93468520755215
+    },
+    {
+      "name": "step3",
+      "targetTime": 80.01701089821097
+    },
+    {
+      "name": "stepdone",
+      "targetTime": 83.03865143381049
+    },
+    {
+      "name": "end",
+      "targetTime": 88.17813329973576
+    }
+  ],
+  "seed": 2143144930
+}

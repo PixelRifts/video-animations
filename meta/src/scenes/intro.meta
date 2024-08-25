@@ -1,0 +1,62 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "paradigms",
+      "targetTime": 8.193074225252738
+    },
+    {
+      "name": "procedural_exp",
+      "targetTime": 17.377106348350008
+    },
+    {
+      "name": "oop",
+      "targetTime": 29.872025660244596
+    },
+    {
+      "name": "comparison",
+      "targetTime": 38.04736829942093
+    },
+    {
+      "name": "both_highlight",
+      "targetTime": 46.973416484066846
+    },
+    {
+      "name": "code_data_separation",
+      "targetTime": 49.208194686867515
+    },
+    {
+      "name": "data_callout",
+      "targetTime": 58.36782032152141
+    },
+    {
+      "name": "code_callout",
+      "targetTime": 61.46285018127709
+    },
+    {
+      "name": "mergedees",
+      "targetTime": 67.0150206055645
+    },
+    {
+      "name": "fade_all",
+      "targetTime": 74.71836026382212
+    },
+    {
+      "name": "code_rep_stack",
+      "targetTime": 78.66483058962685
+    },
+    {
+      "name": "focus_on_strings",
+      "targetTime": 90.03177511883506
+    },
+    {
+      "name": "end",
+      "targetTime": 94.41736433831404
+    },
+    {
+      "name": "final",
+      "targetTime": 96.14665542737887
+    }
+  ],
+  "seed": 4272664622
+}

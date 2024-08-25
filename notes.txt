@@ -1,0 +1,7 @@
+# Metaprogramming / JITs
+
+Thanks to @Mr4thProgramming for proofreading the script
+
+# DSI Language
+
+[i] 1:36:00    - Add Link to calculator video.

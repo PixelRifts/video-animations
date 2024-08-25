@@ -1,0 +1,110 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "prog_generating_progs",
+      "targetTime": 6.355977403107019
+    },
+    {
+      "name": "hello_world_gen",
+      "targetTime": 10.883917860707978
+    },
+    {
+      "name": "is_even_program",
+      "targetTime": 20.023620148712777
+    },
+    {
+      "name": "highlight_loop",
+      "targetTime": 23.893442499178352
+    },
+    {
+      "name": "show_output_is_even",
+      "targetTime": 26.74232390321162
+    },
+    {
+      "name": "unshow_bad_fn",
+      "targetTime": 35.3685721378478
+    },
+    {
+      "name": "datastructures",
+      "targetTime": 39.215925385126205
+    },
+    {
+      "name": "show_hash_table_gen",
+      "targetTime": 52.578144166178205
+    },
+    {
+      "name": "parameterized_metaprogram",
+      "targetTime": 67.12534151386099
+    },
+    {
+      "name": "templates_mentioned",
+      "targetTime": 82.91277523844431
+    },
+    {
+      "name": "opengl_func_loading",
+      "targetTime": 97.20583423861069
+    },
+    {
+      "name": "ogllogo",
+      "targetTime": 101.67051875169734
+    },
+    {
+      "name": "dll_file",
+      "targetTime": 110.51695087525331
+    },
+    {
+      "name": "unshow_garbage",
+      "targetTime": 134.3987041876475
+    },
+    {
+      "name": "show_steps_fn_loading",
+      "targetTime": 145.86055000374273
+    },
+    {
+      "name": "step2",
+      "targetTime": 152.65814929919452
+    },
+    {
+      "name": "step3",
+      "targetTime": 157.2428372725897
+    },
+    {
+      "name": "step4",
+      "targetTime": 162.08438102443787
+    },
+    {
+      "name": "show_glad_pre",
+      "targetTime": 170.01698116870838
+    },
+    {
+      "name": "show_glad",
+      "targetTime": 175.98640578510904
+    },
+    {
+      "name": "glad_end",
+      "targetTime": 188.72561293338438
+    },
+    {
+      "name": "generative",
+      "targetTime": 192.83154325141555
+    },
+    {
+      "name": "inspection",
+      "targetTime": 201.90902236600365
+    },
+    {
+      "name": "wipe_away",
+      "targetTime": 213.03678374198086
+    },
+    {
+      "name": "end",
+      "targetTime": 213.80955493915133
+    },
+    {
+      "name": "final",
+      "targetTime": 223.30955493915127
+    }
+  ],
+  "seed": 2079277780
+}
