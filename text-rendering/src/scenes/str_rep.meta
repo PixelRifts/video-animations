@@ -1,0 +1,118 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "full_strings",
+      "targetTime": 13.458305315475222
+    },
+    {
+      "name": "ascii_drop",
+      "targetTime": 20.531670834190678
+    },
+    {
+      "name": "ascii_standard",
+      "targetTime": 31.40841061558288
+    },
+    {
+      "name": "show_chars",
+      "targetTime": 33.51465466131891
+    },
+    {
+      "name": "show_mapped_nums",
+      "targetTime": 39.31103860205862
+    },
+    {
+      "name": "seven_bits",
+      "targetTime": 40.542695150928
+    },
+    {
+      "name": "eight_bits",
+      "targetTime": 47.00140823496862
+    },
+    {
+      "name": "ascii_strings",
+      "targetTime": 53.87650970355933
+    },
+    {
+      "name": "the_problem",
+      "targetTime": 68.42141692182874
+    },
+    {
+      "name": "other_languages",
+      "targetTime": 73.7716249964169
+    },
+    {
+      "name": "segue_to_unicode",
+      "targetTime": 84.75100510734302
+    },
+    {
+      "name": "unicode_title_drop",
+      "targetTime": 89.96406293442132
+    },
+    {
+      "name": "unicode_standard",
+      "targetTime": 92.50791561232218
+    },
+    {
+      "name": "codepoint_drop",
+      "targetTime": 98.45671766600545
+    },
+    {
+      "name": "other_codepoints",
+      "targetTime": 102.93785796401068
+    },
+    {
+      "name": "unicode_range",
+      "targetTime": 114.9834922749653
+    },
+    {
+      "name": "follow_ascii_logic",
+      "targetTime": 128.3311887524598
+    },
+    {
+      "name": "but_hello_world",
+      "targetTime": 144.75335945356355
+    },
+    {
+      "name": "wasted_space",
+      "targetTime": 151.14726688009563
+    },
+    {
+      "name": "single_byte",
+      "targetTime": 158.87000529884818
+    },
+    {
+      "name": "utf32_drop",
+      "targetTime": 165.35541309627348
+    },
+    {
+      "name": "utf8_drop",
+      "targetTime": 173.5558563745474
+    },
+    {
+      "name": "sequence",
+      "targetTime": 178.42166235765967
+    },
+    {
+      "name": "leading_ones",
+      "targetTime": 185.62523722066607
+    },
+    {
+      "name": "old_hello_world",
+      "targetTime": 198.75444581692219
+    },
+    {
+      "name": "utf16_drop",
+      "targetTime": 208.42087925957546
+    },
+    {
+      "name": "segue_to_main",
+      "targetTime": 219.0153084186642
+    },
+    {
+      "name": "end",
+      "targetTime": 221.19982347349665
+    }
+  ],
+  "seed": 1500528531
+}

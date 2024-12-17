@@ -1,0 +1,24 @@
+{
+  "name": "text-rendering",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "serve": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@lezer/cpp": "^1.1.2",
+    "@motion-canvas/2d": "^3.17.1",
+    "@motion-canvas/core": "^3.17.0",
+    "@motion-canvas/ffmpeg": "^1.1.0",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "@motion-canvas/ui": "^3.17.0",
+    "@motion-canvas/vite-plugin": "^3.17.0",
+    "@types/three": "^0.170.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.0.0"
+  }
+}

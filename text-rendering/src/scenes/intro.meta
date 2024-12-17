@@ -1,0 +1,46 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "title_hit",
+      "targetTime": 0.5316184351554122
+    },
+    {
+      "name": "title_split",
+      "targetTime": 3.5033118971061095
+    },
+    {
+      "name": "showcases",
+      "targetTime": 4.51713898840656
+    },
+    {
+      "name": "placingchars_onscreen",
+      "targetTime": 18.362804887360248
+    },
+    {
+      "name": "simplest_method",
+      "targetTime": 24.396898005446978
+    },
+    {
+      "name": "letsgo",
+      "targetTime": 29.596321643115143
+    },
+    {
+      "name": "before_text",
+      "targetTime": 43.906956587210885
+    },
+    {
+      "name": "isolate",
+      "targetTime": 47.161956587212025
+    },
+    {
+      "name": "4ways",
+      "targetTime": 48.86195658721203
+    },
+    {
+      "name": "end",
+      "targetTime": 54.29470779858235
+    }
+  ],
+  "seed": 2918928459
+}

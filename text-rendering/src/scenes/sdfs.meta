@@ -1,0 +1,82 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "proportional",
+      "targetTime": 11.864160626089578
+    },
+    {
+      "name": "glyph_edge",
+      "targetTime": 22.031227595836437
+    },
+    {
+      "name": "glyph_inside",
+      "targetTime": 24.723736257361814
+    },
+    {
+      "name": "glyph_outside",
+      "targetTime": 28.655323830254147
+    },
+    {
+      "name": "draw_on_that_thing",
+      "targetTime": 33.29021887120282
+    },
+    {
+      "name": "smoothstep_it",
+      "targetTime": 66.65251672501452
+    },
+    {
+      "name": "big_advantage",
+      "targetTime": 79.04727605872475
+    },
+    {
+      "name": "remove_fbos",
+      "targetTime": 96.37101575866625
+    },
+    {
+      "name": "quality_loss",
+      "targetTime": 109.22516727802281
+    },
+    {
+      "name": "why_does_this_happen",
+      "targetTime": 128.50930275148383
+    },
+    {
+      "name": "char_a",
+      "targetTime": 135.984628310632
+    },
+    {
+      "name": "show_samples",
+      "targetTime": 139.80544934378082
+    },
+    {
+      "name": "how2fix",
+      "targetTime": 167.94048638446378
+    },
+    {
+      "name": "specifics",
+      "targetTime": 168.7404863844638
+    },
+    {
+      "name": "flash_left",
+      "targetTime": 180.06905391912792
+    },
+    {
+      "name": "flash_right",
+      "targetTime": 188.7290533829177
+    },
+    {
+      "name": "driving_idea",
+      "targetTime": 192.68025644481287
+    },
+    {
+      "name": "msdf_title_drop",
+      "targetTime": 196.18025644481287
+    },
+    {
+      "name": "end",
+      "targetTime": 200.47995926402942
+    }
+  ],
+  "seed": 1851923394
+}
