@@ -7,7 +7,7 @@ import part1 from './extern/TR - Intro.mp4';
 import part2 from './extern/TR - Bitmap Fonts.mp4';
 import part3 from './extern/TR - Drawing Curves.mp4';
 import part4 from './extern/TR - SDF.mp4';
-import part5 from './extern/TR - MSDF.mp4';
+import part5 from './extern/TR - MSDF Mk2.mp4';
 import part6 from './extern/TR - Representation.mp4';
 import part7 from './extern/TR - Shaping Intro.mp4';
 import part8 from './extern/TR - Shaping Operations.mp4';
@@ -19,11 +19,13 @@ import scene3 from './scenes/curves?scene';
 import scene4 from './scenes/sdfs?scene';
 import scene5 from './scenes/msdfs?scene';
 import scene6 from './scenes/str_rep?scene';
+import scene7 from './scenes/shaping_intro?scene';
+import scene8 from './scenes/shaping_ops?scene';
 
 import "./style.css"
 
 export default makeProject({
-  scenes: [scene6],
-  audio: part6,
+  scenes: [scene8],
+  audio: part8,
   experimentalFeatures: true,
 });

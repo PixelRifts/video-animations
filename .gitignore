@@ -130,5 +130,4 @@ dist
 .pnp.*
 
 # video misc
-*.mp4
 */output/

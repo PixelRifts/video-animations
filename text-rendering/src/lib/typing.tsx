@@ -38,15 +38,17 @@ export class TypedText extends Layout {
 
         this.add(<>
             <Txt
+                
                 ref={this.text}
                 clip
-                // fontFamily={"Jetbrains Mono"}
+                fontFamily={props.fontFamily}
                 text={this.initial_text()}
                 fill={palette.text}
+                textDirection={props.textDirection}
             />
         </>);
 
-        if (!this.hidden) this.add(
+        if (!this.hidden()) this.add(
             <Layout
                 width={() => this.fontSize() * this.cursor_scale()}
                 direction={"column"}

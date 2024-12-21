@@ -2,8 +2,52 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "drop_subtitle",
+      "targetTime": 2.4366561059786047
+    },
+    {
+      "name": "idea_behind_msdfs",
+      "targetTime": 7.4461814642127395
+    },
+    {
+      "name": "take_e",
+      "targetTime": 10.092988912047762
+    },
+    {
+      "name": "color_components",
+      "targetTime": 24.064087078068113
+    },
+    {
+      "name": "decomp",
+      "targetTime": 31.852839962278182
+    },
+    {
+      "name": "show_component_sdfs",
+      "targetTime": 36.677440949855146
+    },
+    {
+      "name": "inside_outside",
+      "targetTime": 44.916792704696746
+    },
+    {
+      "name": "drawing_a_glyph",
+      "targetTime": 53.24364108028132
+    },
+    {
+      "name": "median_op",
+      "targetTime": 76.99771877732987
+    },
+    {
+      "name": "original",
+      "targetTime": 92.88770768753781
+    },
+    {
+      "name": "segue_to_main_scene",
+      "targetTime": 104.47803784588518
+    },
+    {
       "name": "end",
-      "targetTime": 94.0372990353697
+      "targetTime": 109.16993869654434
     }
   ],
   "seed": 185768505

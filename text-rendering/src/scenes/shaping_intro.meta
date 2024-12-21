@@ -1,0 +1,54 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "codepoint_list",
+      "targetTime": 6.136993122505289
+    },
+    {
+      "name": "simple_procedure",
+      "targetTime": 11.3240746590093
+    },
+    {
+      "name": "map_cdpt_to_glyph",
+      "targetTime": 16.07196465704834
+    },
+    {
+      "name": "draw_text_routine",
+      "targetTime": 21.620188099207798
+    },
+    {
+      "name": "start_typing",
+      "targetTime": 25.25648541193009
+    },
+    {
+      "name": "the_issue",
+      "targetTime": 39.299761139028114
+    },
+    {
+      "name": "do_type",
+      "targetTime": 43.46433395457098
+    },
+    {
+      "name": "omori_unlocked_overcome",
+      "targetTime": 59.74337480406802
+    },
+    {
+      "name": "show_passes",
+      "targetTime": 68.85337480406803
+    },
+    {
+      "name": "devanagari_shaping_model",
+      "targetTime": 83.03515178259667
+    },
+    {
+      "name": "three_major_parts",
+      "targetTime": 89.23900390064513
+    },
+    {
+      "name": "end",
+      "targetTime": 99.2086687251799
+    }
+  ],
+  "seed": 3722828695
+}

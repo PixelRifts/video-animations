@@ -15,6 +15,12 @@ export let palette = {
 
     primary_shadow: new Color("#72a8f4").darken(3),
     secondary_shadow: new Color("#9171F2").darken(3),
+
+    pastel_red:    "#ED806F",
+    pastel_green:  "#97ED6F",
+    pastel_blue:   "#72A8F4",
+    pastel_purple: "#9171F2",
+    pastel_pink:   "#E970EF",
 };
 
 export let primary_glow_props = {

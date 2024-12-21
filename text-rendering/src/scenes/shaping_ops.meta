@@ -1,0 +1,98 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "00_substitution",
+      "targetTime": 0.8096829249201517
+    },
+    {
+      "name": "normalisation",
+      "targetTime": 6.199119719704021
+    },
+    {
+      "name": "highlight_ee",
+      "targetTime": 15.042818581391296
+    },
+    {
+      "name": "acute_inf",
+      "targetTime": 23.448087561993624
+    },
+    {
+      "name": "decomp_form",
+      "targetTime": 29.619157742104154
+    },
+    {
+      "name": "grapheme_highlight",
+      "targetTime": 40.553457800038075
+    },
+    {
+      "name": "graphemes_v_codepoints",
+      "targetTime": 48.90602902940559
+    },
+    {
+      "name": "ligatures",
+      "targetTime": 77.20166112724417
+    },
+    {
+      "name": "combine",
+      "targetTime": 82.42871714341119
+    },
+    {
+      "name": "other_lang_ligatures",
+      "targetTime": 89.3039767924305
+    },
+    {
+      "name": "contextual_subs",
+      "targetTime": 96.38630511315858
+    },
+    {
+      "name": "lowercase_sigma",
+      "targetTime": 107.49760333526858
+    },
+    {
+      "name": "aesthetic_single_glyph",
+      "targetTime": 113.759198867285
+    },
+    {
+      "name": "reordering",
+      "targetTime": 131.26375810383433
+    },
+    {
+      "name": "dev_example",
+      "targetTime": 142.4120329888338
+    },
+    {
+      "name": "positioning",
+      "targetTime": 164.2101424691429
+    },
+    {
+      "name": "kerning",
+      "targetTime": 175.5666957149134
+    },
+    {
+      "name": "cursive_fonts",
+      "targetTime": 186.52242625033824
+    },
+    {
+      "name": "directionality",
+      "targetTime": 199.13914023544874
+    },
+    {
+      "name": "endofshapingops",
+      "targetTime": 219.63789207538306
+    },
+    {
+      "name": "libraries",
+      "targetTime": 230.12297641599568
+    },
+    {
+      "name": "out",
+      "targetTime": 238.057586519841
+    },
+    {
+      "name": "end",
+      "targetTime": 243.02397633475036
+    }
+  ],
+  "seed": 1260858775
+}
