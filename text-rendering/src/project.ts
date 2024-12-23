@@ -21,11 +21,12 @@ import scene5 from './scenes/msdfs?scene';
 import scene6 from './scenes/str_rep?scene';
 import scene7 from './scenes/shaping_intro?scene';
 import scene8 from './scenes/shaping_ops?scene';
+import scene9 from './scenes/outro_sub?scene';
 
 import "./style.css"
 
 export default makeProject({
-  scenes: [scene8],
-  audio: part8,
+  scenes: [scene9],
+  audio: part9,
   experimentalFeatures: true,
 });
