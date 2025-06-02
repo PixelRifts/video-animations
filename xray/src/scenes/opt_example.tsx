@@ -2,6 +2,7 @@ import {Icon, Layout, Line, makeScene2D, Rect, Txt} from '@motion-canvas/2d';
 import {Computed, createComputed, createRef, createRefArray, createSignal, debug, easeInOutCirc, loop, range, SimpleSignal, useRandom, Vector2, waitFor} from '@motion-canvas/core';
 
 import values from "./audio_spectrum.json";
+import { BinPanel } from './bin_panel';
 
 export default makeScene2D(function* (view) {
   const random = useRandom(20);
@@ -32,23 +33,12 @@ export default makeScene2D(function* (view) {
   const bin_cover = createRef<Line>();
   const bin_window = createRef<Rect>();
   const bin_header = createRef<Rect>();
-  const bin_wave = createRef<Layout>();
+  const bin_panel = createRef<BinPanel>();
   const bin_divider = createRef<Line>();
-  const bin_wave_lines = createRefArray<Text>();
-  const bin_wave_computeds: [ Computed<string>, Computed<string> ][] = [];
   const bin_cover_progress = createSignal(0);
   const bin_cover_offset = createSignal(() => -(((bin_cover_progress()*2.0)-1.0) * 600));
-  const bin_per_line = 11;
   const bin_cover_oblique = 400;
 
-  for (let i = 0; i < sound_wave_count; i++) {
-    for (let k = 0; k < bin_per_line; k++) {
-      bin_wave_computeds[i * bin_per_line + k] = []
-      bin_wave_computeds[i * bin_per_line + k][0] = createComputed(() => (Math.abs(k-5) * 43 > sound_wave_height_sigs[i]()) ? "0"       : "1");
-      bin_wave_computeds[i * bin_per_line + k][1] = createComputed(() => (Math.abs(k-5) * 43 > sound_wave_height_sigs[i]()) ? "#94D9FF" : "white");
-    }
-  }
-  
 
   view.add(<>
     <Rect
@@ -112,34 +102,25 @@ export default makeScene2D(function* (view) {
       closed
       clip
     >
-      <Rect
-        ref={bin_window}
-        size={[575*scale, 333*scale]}
-        radius={10}
-        fill={'#2E84BE'}
-      >
         <Rect
-          ref={bin_header}
-          y={(-333*scale + 333*scale*header_pct)*0.5}
-          size={[575*scale, 333*scale*header_pct]}
-          radius={5}
-          fill={"92D7FF"}
-        />
-        <Layout ref={bin_wave} y={sound_wave_off}>
-          {...range(sound_wave_count).map(i => {
-            return <Layout layout
-              x={sound_wave_start + i*(sound_wave_gap+sound_wave_line_width)}
-              direction={"column"}
-            >
-              {...range(bin_per_line).map(t => <Txt
-                ref={bin_wave_lines}
-                fontFamily={"WDXL Lubrifont TC"}
-                text={bin_wave_computeds[i*bin_per_line+t][0]} fontSize={38}
-                fill={bin_wave_computeds[i*bin_per_line+t][1]}
-              />)}
-            </Layout>
-          })}
-        </Layout>
+            ref={bin_window}
+            size={[575*scale, 333*scale]}
+            radius={10}
+            fill={'#2E84BE'}
+        >
+            <Rect
+                ref={bin_header}
+                y={(-333*scale + 333*scale*header_pct)*0.5}
+                size={[575*scale, 333*scale*header_pct]}
+                radius={5}
+                fill={"92D7FF"}
+            />
+            <BinPanel
+                ref={bin_panel}
+                init_heights={values[10]}
+                wave_scale={scale}
+                sound_wave_scale={sound_wave_scale}
+            />
       </Rect>
     </Line>
   </>);
@@ -152,6 +133,7 @@ export default makeScene2D(function* (view) {
     for (let i = 0; i < sound_wave_count; i++) {
       sound_wave_heights[i] = values[t][i] * 14 * scale * sound_wave_scale;
       sound_wave_height_sigs[i](sound_wave_heights[i]);
+      bin_panel().heights = values[t];
     }
     yield* waitFor(1 / 60);
   }

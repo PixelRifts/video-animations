@@ -6,5 +6,5 @@ import simple_cpu from './scenes/simple_cpu?scene';
 import "./style.css"
 
 export default makeProject({
-  scenes: [simple_cpu],
+  scenes: [example],
 });
