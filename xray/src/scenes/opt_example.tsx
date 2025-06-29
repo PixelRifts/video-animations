@@ -1,11 +1,10 @@
-import {Icon, Layout, Line, makeScene2D, Rect, Txt} from '@motion-canvas/2d';
+import {Gradient, Icon, Layout, Line, makeScene2D, Rect, Txt} from '@motion-canvas/2d';
 import {Computed, createComputed, createRef, createRefArray, createSignal, debug, easeInOutCirc, loop, range, SimpleSignal, useRandom, Vector2, waitFor} from '@motion-canvas/core';
 
-import values from "./audio_spectrum.json";
+import values from "./audio_spectrum_old.json";
 import { BinPanel } from './bin_panel';
 
 export default makeScene2D(function* (view) {
-  const random = useRandom(20);
   const window = createRef<Rect>();
   const header = createRef<Rect>();
   const header_cross = createRef<Icon>();
@@ -29,18 +28,30 @@ export default makeScene2D(function* (view) {
     sound_wave_height_sigs[i] = createSignal(sound_wave_heights[i]);
   }
   
-
   const bin_cover = createRef<Line>();
   const bin_window = createRef<Rect>();
   const bin_header = createRef<Rect>();
   const bin_panel = createRef<BinPanel>();
   const bin_divider = createRef<Line>();
-  const bin_cover_progress = createSignal(0);
+  const bin_cover_progress = createSignal(0.5);
   const bin_cover_offset = createSignal(() => -(((bin_cover_progress()*2.0)-1.0) * 600));
   const bin_cover_oblique = 400;
-
+  const background = createRef<Rect>();
 
   view.add(<>
+    <Rect
+      ref={background}
+      size={[965*2, 545*2]}
+      fill={new Gradient({
+        type: "radial",
+        fromRadius: 0,
+        toRadius: Math.sqrt((960)**2 + (540)**2),
+        stops: [
+          { offset: 0, color: "#0F5D8F" },
+          { offset: 1, color: "#05121D" }
+        ]
+      })}
+    />
     <Rect
       ref={window}
       size={[575*scale-10, 333*scale-10]}
@@ -127,16 +138,17 @@ export default makeScene2D(function* (view) {
 
   
   const wiper = yield loop(Infinity, function* (i) {
-    yield* bin_cover_progress(1, 2).to(0, 2).to(0.5, 1)
+    yield* bin_cover_progress(0.5, 4).wait(6)
+      .to(0, 4)
+      .to(1, 8);
   });
-  for (let t = 1; t < 800; t++) {
+  for (let t = 1; t < values.length; t++) {
     for (let i = 0; i < sound_wave_count; i++) {
       sound_wave_heights[i] = values[t][i] * 14 * scale * sound_wave_scale;
       sound_wave_height_sigs[i](sound_wave_heights[i]);
       bin_panel().heights = values[t];
     }
-    yield* waitFor(1 / 60);
+    yield;
   }
-  
-  yield* waitFor(50);
+
 });

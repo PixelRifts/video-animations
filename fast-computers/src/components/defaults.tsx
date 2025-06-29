@@ -36,3 +36,11 @@ export const star_coords: PossibleVector2[] = [
 export const seagreen_light  = "#57ff8377";
 export const seagreen        = "#57ff83";
 export const seagreen_shaded = "#57ff83AA";
+
+
+
+export const RoboticText = withDefaults(Txt, {
+    fontFamily: "Teko",
+    fontWeight: 700,
+    fontStyle: "italic"
+});

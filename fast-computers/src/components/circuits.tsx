@@ -32,7 +32,7 @@ export class CircuitBlock extends Rect {
             radius: 5,
             textWrap: true,
 
-            shadowOffsetY: 5,
+            shadowOffsetY: 10,
             shadowColor: seagreen_shaded,
             smoothCorners: true,
             ...props
@@ -53,7 +53,7 @@ export class CircuitBlock extends Rect {
         this.rand = useRandom();
     }
 
-    public* bounce_reveal(view: View2D, size: [number, number], shift = 20, time = 0.5, particles = 10) {
+    public* bounce_reveal(par: Node, size: [number, number], shift = 20, time = 0.5, particles = 10) {
         const randoms: [Vector2, Vector2][] = [];
         const rand_params: [number, number, number, number][] = [];
         range(particles).map(i => {
@@ -62,7 +62,7 @@ export class CircuitBlock extends Rect {
                 this.rand.nextFloat(-360, 360), // rotation
                 this.rand.nextFloat(20, 100),   // offset
                 this.rand.nextFloat(0.4, 0.9),  // opacity
-                this.rand.nextFloat(1, 5),  // scale
+                this.rand.nextFloat(1, 5),      // scale
             ];
         });
         yield* all(
@@ -73,7 +73,7 @@ export class CircuitBlock extends Rect {
         );
 
         const star_refs = createRefArray<Line>();
-        view.add(<>
+        par.add(<>
             {...randoms.map((r, i) =>
                 <Line
                     ref={star_refs}
@@ -82,7 +82,7 @@ export class CircuitBlock extends Rect {
                     scale={rand_params[i][3]} zIndex={-1}
                     points={star_coords}
                     position={() => this.position().add(r[0])}
-                    opacity={0} 
+                    opacity={0}
                 />
             )}
         </>);

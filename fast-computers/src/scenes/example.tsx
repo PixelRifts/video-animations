@@ -1,4 +1,4 @@
-import { makeScene2D } from '@motion-canvas/2d';
+import { Camera, makeScene2D } from '@motion-canvas/2d';
 import { createRef, sequence, waitFor, waitUntil } from '@motion-canvas/core';
 import { CircuitBlock } from '../components/circuits';
 

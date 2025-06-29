@@ -1,8 +1,8 @@
 import {makeProject} from '@motion-canvas/core';
 
-import example from './scenes/opt_example?scene';
+import example from './scenes/jam_res?scene';
 
-import audio from './test.mp3';
+import audio from './WHEEL.mp3';
 
 import "./style.css"
 

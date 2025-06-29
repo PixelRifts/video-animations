@@ -1,4 +1,10 @@
 {
   "extends": "@motion-canvas/2d/tsconfig.project.json",
-  "include": ["src"]
+  "include": ["src"],
+  "compilerOptions": {
+		"target": "esnext",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
+	}
 }
