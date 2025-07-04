@@ -44,3 +44,9 @@ export const RoboticText = withDefaults(Txt, {
     fontWeight: 700,
     fontStyle: "italic"
 });
+
+export const ThinRoboticText = withDefaults(Txt, {
+    fontFamily: "Teko",
+    fontWeight: 400,
+    fontStyle: "italic"
+});

@@ -281,7 +281,7 @@ export default makeScene2D(function* (view) {
     const part1_label = createRef<Txt>();
 
     const stage_posns: [number,number][] = [ [-700, 200], [-300, -300], [300, -300], [700, 200] ];
-    const stage_lbl_strs: string[] = [ "I", "S", "P", "O" ]
+    const stage_lbl_strs: string[] = [ "1", "2", "3", "4" ]
     const stage_back_colors = [ "#231833ff", "#1d1a36ff", "#101b37ff", "#101c34ff" ]
     view.add(<>
         {range(4).map(i => <>

@@ -1,0 +1,114 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "startwiththis",
+      "targetTime": 1.9460624056408193
+    },
+    {
+      "name": "twobuses",
+      "targetTime": 3.746062405640819
+    },
+    {
+      "name": "clock",
+      "targetTime": 6.159601167233582
+    },
+    {
+      "name": "pc",
+      "targetTime": 10.620201908007555
+    },
+    {
+      "name": "ir",
+      "targetTime": 16.34420595243684
+    },
+    {
+      "name": "control_unit",
+      "targetTime": 20.471718816643964
+    },
+    {
+      "name": "cancel_clock_0",
+      "targetTime": 34.93881897096923
+    },
+    {
+      "name": "pc_in",
+      "targetTime": 35.89418115355279
+    },
+    {
+      "name": "resume_clock_0",
+      "targetTime": 41.89368459355279
+    },
+    {
+      "name": "memory_bufs",
+      "targetTime": 44.6517121150936
+    },
+    {
+      "name": "ram",
+      "targetTime": 51.462696027480156
+    },
+    {
+      "name": "alu",
+      "targetTime": 57.00651526473897
+    },
+    {
+      "name": "regfile",
+      "targetTime": 60.61050796696937
+    },
+    {
+      "name": "start_example_exec",
+      "targetTime": 65.89429751278239
+    },
+    {
+      "name": "prep_exec",
+      "targetTime": 68.32490326116348
+    },
+    {
+      "name": "high_pc_mar",
+      "targetTime": 76.15891926919082
+    },
+    {
+      "name": "tick_0",
+      "targetTime": 80.79190663874944
+    },
+    {
+      "name": "incr_pc",
+      "targetTime": 91.48910111005718
+    },
+    {
+      "name": "got_instruction",
+      "targetTime": 96.10501673733012
+    },
+    {
+      "name": "tick_1",
+      "targetTime": 99.2697325021858
+    },
+    {
+      "name": "control_block",
+      "targetTime": 110.85337178599873
+    },
+    {
+      "name": "tick_2",
+      "targetTime": 113.85856878297983
+    },
+    {
+      "name": "tick_3",
+      "targetTime": 116.85832050297984
+    },
+    {
+      "name": "tick_4",
+      "targetTime": 119.85807222297984
+    },
+    {
+      "name": "note",
+      "targetTime": 130.23513203560816
+    },
+    {
+      "name": "transition_out",
+      "targetTime": 141.38002531122635
+    },
+    {
+      "name": "end",
+      "targetTime": 148.78387131716832
+    }
+  ],
+  "seed": 930989341
+}

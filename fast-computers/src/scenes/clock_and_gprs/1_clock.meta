@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "bringitback",
+      "targetTime": 1.437438217551552
+    },
+    {
+      "name": "speedup",
+      "targetTime": 7.088513860412203
+    },
+    {
+      "name": "first_barrier",
+      "targetTime": 17.77668688749677
+    },
+    {
+      "name": "power_draw",
+      "targetTime": 20.322426411715565
+    },
+    {
+      "name": "FIRE",
+      "targetTime": 22.122426411715566
+    },
+    {
+      "name": "second_barrier",
+      "targetTime": 32.189471454631715
+    },
+    {
+      "name": "logic_yk",
+      "targetTime": 37.38947145463173
+    },
+    {
+      "name": "show_delay",
+      "targetTime": 39.589471454631685
+    },
+    {
+      "name": "end",
+      "targetTime": 52.86926242099567
+    }
+  ],
+  "seed": 2120695304
+}

@@ -16,3 +16,8 @@ export let cosmic_grad_ramps = [
     ["#ffc75f", "#c3bb4e", "#88ac4b", "#4c9a52", "#00855b", "#006f61"],
     ["#f9f871", "#b8e067", "#78c664", "#2fab63", "#008e63", "#007160"],
 ]
+
+export let cosmic_analogues = [
+    ["#000000", "#FFFFFF"],
+    ["#BF5DD6", "#D65D74"],
+]
