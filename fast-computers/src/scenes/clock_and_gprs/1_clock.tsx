@@ -98,15 +98,15 @@ export default makeScene2D(function* (view) {
         <Rect
             ref={computer_panel_highlight_in}
             lineWidth={3}
+            size={{"x":1728-20,"y":972-20}}
             stroke={cosmic_grad_ramps[1][0] + "44"}
-            rotation={90}
             x={-2000}
         />
         <Rect
             ref={computer_panel_highlight_out}
             lineWidth={3}
+            size={{"x":1728+20,"y":972+20}}
             stroke={cosmic_grad_ramps[1][0] + "44"}
-            rotation={90}
             x={-2000}
         />
     </>);
@@ -131,7 +131,7 @@ export default makeScene2D(function* (view) {
             position={[0, 50]}
             size={[1400, 65]}
             lineWidth={4}
-            stroke={"#c2566e"}
+            stroke={() => Color.lerp("#c2566e", "#ffffff", clock_sig())}
         >
             <RoboticText
                 ref={control_bus_label} y={7}
@@ -194,7 +194,7 @@ export default makeScene2D(function* (view) {
             position={[-150, -281]}
             size={[330, 165]}
             lineWidth={4}
-            stroke={"#c2566e"}
+            stroke={() => Color.lerp("#c2566e", "#ffffff", clock_sig())}
         >
             <RoboticText
                 ref={control_unit_label} y={4}
