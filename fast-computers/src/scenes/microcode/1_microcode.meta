@@ -2,8 +2,124 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "thebeginning",
+      "targetTime": 2.25520605941415
+    },
+    {
+      "name": "popcntexamp",
+      "targetTime": 2.726379000714972
+    },
+    {
+      "name": "turingcompletealgo",
+      "targetTime": 9.041256449901699
+    },
+    {
+      "name": "iterate_exec",
+      "targetTime": 16.25748896734475
+    },
+    {
+      "name": "use_intrinsic",
+      "targetTime": 22.600934206989077
+    },
+    {
+      "name": "oldermultdiv",
+      "targetTime": 29.319645186328767
+    },
+    {
+      "name": "clearforuops",
+      "targetTime": 37.4132702929165
+    },
+    {
+      "name": "recreate_computer",
+      "targetTime": 38.31327029291649
+    },
+    {
+      "name": "microops",
+      "targetTime": 42.80290563452709
+    },
+    {
+      "name": "bringitback",
+      "targetTime": 48.13382582328992
+    },
+    {
+      "name": "expand_control",
+      "targetTime": 51.21884256596445
+    },
+    {
+      "name": "hardwired_reveal",
+      "targetTime": 59.326543604401365
+    },
+    {
+      "name": "combinatorial_logic",
+      "targetTime": 64.47272049698013
+    },
+    {
+      "name": "first_exec",
+      "targetTime": 69.035608762385
+    },
+    {
+      "name": "r1outenable",
+      "targetTime": 72.39711643655038
+    },
+    {
+      "name": "possibleopcodes",
+      "targetTime": 74.79711643655037
+    },
+    {
+      "name": "checksrc01",
+      "targetTime": 78.51543235438054
+    },
+    {
+      "name": "withmicroops",
+      "targetTime": 100.76373033638153
+    },
+    {
+      "name": "break_into_uops",
+      "targetTime": 105.19680797341367
+    },
+    {
+      "name": "muop_example",
+      "targetTime": 111.23349629672201
+    },
+    {
+      "name": "mulexamp",
+      "targetTime": 116.1222552949102
+    },
+    {
+      "name": "microprogram",
+      "targetTime": 121.74363051902964
+    },
+    {
+      "name": "uoprom",
+      "targetTime": 126.16685669253489
+    },
+    {
+      "name": "backtocircuit",
+      "targetTime": 129.52777973476628
+    },
+    {
+      "name": "highlight_startaddrgen",
+      "targetTime": 146.90804673032
+    },
+    {
+      "name": "highlight_uoprom",
+      "targetTime": 151.8242786566955
+    },
+    {
+      "name": "goaway",
+      "targetTime": 156.0966090116693
+    },
+    {
+      "name": "pclmulqdq",
+      "targetTime": 157.2966090116693
+    },
+    {
+      "name": "hwdform",
+      "targetTime": 165.7966090116693
+    },
+    {
       "name": "end",
-      "targetTime": 171.92717637251383
+      "targetTime": 172.2966090116693
     }
   ],
   "seed": 376634888

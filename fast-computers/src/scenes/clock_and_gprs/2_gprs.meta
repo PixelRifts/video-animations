@@ -43,7 +43,7 @@
     },
     {
       "name": "x86example",
-      "targetTime": 64.3312198042015
+      "targetTime": 65.22154066958294
     },
     {
       "name": "x868gprs",
@@ -71,11 +71,11 @@
     },
     {
       "name": "finalnogo",
-      "targetTime": 103.69699558292741
+      "targetTime": 102.66704246198007
     },
     {
       "name": "end",
-      "targetTime": 106.56791049712943
+      "targetTime": 103.86704246198003
     }
   ],
   "seed": 4014300205

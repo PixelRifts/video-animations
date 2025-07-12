@@ -1,4 +1,4 @@
-import { Curve, Gradient, Layout, Line, makeScene2D, Node, QuadBezier, Rect, Txt } from "@motion-canvas/2d";
+import { Circle, Curve, Gradient, Layout, Line, makeScene2D, Node, QuadBezier, Rect, Txt } from "@motion-canvas/2d";
 import { all, cancel, chain, Color, createEaseOutBack, createRef, createRefArray, createSignal, Direction, easeInOutQuint, easeOutBack, linear, loopFor, PossibleVector2, range, sequence, SignalValue, SimpleSignal, slideTransition, Vector2, waitFor, waitUntil } from "@motion-canvas/core";
 import { RoboticText, ThinRoboticText } from "../../components/defaults";
 import { cosmic_grad_ramps, cosmic_analogues } from "../../components/palette";
@@ -524,7 +524,6 @@ export default makeScene2D(function* (view) {
     }
     let clock_loop = yield loopFor(Infinity, function* () { yield* clock_cycle(1); });
     
-
     yield* waitUntil("bringitback");
     yield* all(
         computer().x(0, 1.2),
@@ -556,7 +555,25 @@ export default makeScene2D(function* (view) {
     const clock_clone_2 = createRef<Rect>(); const clock_txt_clone_2 = createRef<Txt>();
     const clock_pulse_clone_2 = createRef<Rect>();
     const wipe_rect = createRef<Rect>();
+    const circle_mask = createRef<Circle>();
+    const topic_name = createRef<Txt>();
+    const circle_cover = createRef<Circle>();
     view.add(<>
+        <Circle ref={circle_mask}
+            position={[-900, 454]}
+            clip// size={300}
+        >
+            <RoboticText ref={topic_name}
+                fill={"#ff90b6"}
+                fontSize={120} fontStyle={""}
+                text={"#1 CLOCK SPEED"}
+                x={300}
+            />
+        </Circle>
+        <Circle ref={circle_cover}
+            position={[-900, 454]}
+            fill={"#1d1a36"} //size={300}
+        />
         <Node ref={clock_parent_1}
             position={[-472, -331-35]}
         >
@@ -619,6 +636,9 @@ export default makeScene2D(function* (view) {
         computer_panel_highlight_in().x(-2000, 1.2),
         computer_panel_highlight_out().x(-2000, 1.2),
     );
+    yield* circle_mask().size(1800, 0.8);
+    yield* circle_cover().size(1800, 0.8);
+    yield* all(circle_mask().size(0, 0), circle_cover().size(0, 0));
 
     yield* waitUntil("speedup");
     yield* clock_speed(0.9, 0.8);

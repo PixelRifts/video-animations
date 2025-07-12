@@ -1,4 +1,4 @@
-import { Gradient, Layout, Line, makeScene2D, Node, PossibleCanvasStyle, Rect, Txt } from "@motion-canvas/2d";
+import { Circle, Gradient, Layout, Line, makeScene2D, Node, PossibleCanvasStyle, Rect, Txt } from "@motion-canvas/2d";
 import { all, chain, Color, createEaseOutBack, createRef, createRefArray, createSignal, Direction, easeInBack, easeInOutBack, easeInSine, easeOutBack, easeOutSine, linear, loopFor, PossibleVector2, range, Reference, ReferenceArray, sequence, slideTransition, waitFor, waitUntil } from "@motion-canvas/core";
 import { RoboticText, ThinRoboticText } from "../../components/defaults";
 import { cosmic_grad_ramps, cosmic_analogues } from "../../components/palette";
@@ -543,6 +543,27 @@ export default makeScene2D(function* (view) {
 
     const ram_clone = createRef<Rect>();          const ram_label_clone = createRef<Txt>();
 
+    const circle_mask = createRef<Circle>();
+    const topic_name = createRef<Txt>();
+    const circle_cover = createRef<Circle>();
+    view.add(<>
+        <Circle ref={circle_mask}
+            position={[-900, 454]}
+            clip// size={300}
+        >
+            <RoboticText ref={topic_name}
+                fill={"#ff90b6"}
+                fontSize={120} fontStyle={""}
+                text={"#2 MORE GPRs"}
+                x={300}
+            />
+        </Circle>
+        <Circle ref={circle_cover}
+            position={[-900, 454]}
+            fill={"#1d1a36"} //size={300}
+        />
+    </>)
+
     view.add(<>
         <Rect ref={register_file_clone}
             fill={"#492b61"}
@@ -603,6 +624,11 @@ export default makeScene2D(function* (view) {
     );
 
     yield* waitUntil("expand_regs");
+    yield chain(
+        circle_mask().size(1800, 0.8),
+        circle_cover().size(1800, 0.8),
+        all(circle_mask().size(0, 0), circle_cover().size(0, 0))
+    );
     yield* sequence(0.8,
         all(
             register_file_clone().size([380, 300], 0.8),
