@@ -2,8 +2,148 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "transition_section3",
+      "targetTime": 0.5039289564286348
+    },
+    {
+      "name": "transition_section3_shoot",
+      "targetTime": 7.995040678505606
+    },
+    {
+      "name": "background",
+      "targetTime": 16.830638308290055
+    },
+    {
+      "name": "highlightparts",
+      "targetTime": 21.899394346647327
+    },
+    {
+      "name": "part1",
+      "targetTime": 26.339752151876585
+    },
+    {
+      "name": "part2",
+      "targetTime": 31.13942111187658
+    },
+    {
+      "name": "clearsplit",
+      "targetTime": 34.93917283187657
+    },
+    {
+      "name": "wellobviously",
+      "targetTime": 44.72673487313873
+    },
+    {
+      "name": "backtoviz",
+      "targetTime": 61.00265012428069
+    },
+    {
+      "name": "rearranging",
+      "targetTime": 68.4726501242807
+    },
+    {
+      "name": "prefetchreveal",
+      "targetTime": 80.32201449971315
+    },
+    {
+      "name": "pipelining_examp",
+      "targetTime": 90.00189069136565
+    },
+    {
+      "name": "withreveal",
+      "targetTime": 92.60189069136565
+    },
+    {
+      "name": "withoutreveal",
+      "targetTime": 95.82000571954121
+    },
+    {
+      "name": "throughputup",
+      "targetTime": 99.74129845711998
+    },
+    {
+      "name": "wipefordiagram",
+      "targetTime": 104.6954893797003
+    },
+    {
+      "name": "pipelinediagtime",
+      "targetTime": 108.56448325982095
+    },
+    {
+      "name": "codeinplace",
+      "targetTime": 113.11528107772938
+    },
+    {
+      "name": "central_highlight",
+      "targetTime": 122.42292667726261
+    },
+    {
+      "name": "time_calc",
+      "targetTime": 141.34527308472178
+    },
+    {
+      "name": "combinetimes",
+      "targetTime": 150.35861517139844
+    },
+    {
+      "name": "finalcount_wopipelining",
+      "targetTime": 155.27375581544322
+    },
+    {
+      "name": "pipelinetime2",
+      "targetTime": 161.04751564152926
+    },
+    {
+      "name": "p2syncedexec",
+      "targetTime": 171.33986971261962
+    },
+    {
+      "name": "pick5",
+      "targetTime": 179.885527584917
+    },
+    {
+      "name": "thefirst",
+      "targetTime": 191.56144155331197
+    },
+    {
+      "name": "therest",
+      "targetTime": 201.02218794920898
+    },
+    {
+      "name": "finaltime",
+      "targetTime": 216.64879770855674
+    },
+    {
+      "name": "showcomparison",
+      "targetTime": 222.06355959249498
+    },
+    {
+      "name": "backtodiag",
+      "targetTime": 237.038535821201
+    },
+    {
+      "name": "highlight_decode",
+      "targetTime": 244.5108253964785
+    },
+    {
+      "name": "thecontrolbuffer",
+      "targetTime": 253.95959046062154
+    },
+    {
+      "name": "topipelinediagagain",
+      "targetTime": 261.62441514251304
+    },
+    {
+      "name": "themaxclocks",
+      "targetTime": 275.4485100711715
+    },
+    {
+      "name": "total",
+      "targetTime": 283.0980449789336
+    },
+    {
       "name": "end",
-      "targetTime": 2
+      "targetTime": 288.2006078276478
     }
   ],
   "seed": 3982832650
