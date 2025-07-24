@@ -2277,6 +2277,11 @@ export default makeScene2D(function* (view) {
     );
 
 
+    yield* chain(
+        stage2_presenter().x(-700, 0.5),
+        all(comp_title().text("Stage 3", 0.2), comp_title().left(comp_title().left(), 0.2)),
+        stage2_presenter().x(-1200, 0.5),
+    );
     // temp_z_data_wire
     // alu_temp_z_data_wire
     // alu_flags_data_wire

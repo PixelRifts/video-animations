@@ -2,8 +2,24 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "splitonce",
+      "targetTime": 1.6
+    },
+    {
+      "name": "splittwice",
+      "targetTime": 3.2
+    },
+    {
+      "name": "hyperpipeline",
+      "targetTime": 7.754303020111918
+    },
+    {
+      "name": "fivemajorstages",
+      "targetTime": 13.504303020111928
+    },
+    {
       "name": "end",
-      "targetTime": 35.36455445005071
+      "targetTime": 36.45119464135624
     }
   ],
   "seed": 2491237553
