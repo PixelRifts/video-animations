@@ -2,9 +2,9 @@ import {makeProject} from '@motion-canvas/core';
 
 import "./style.css"
 
-import pipeline_data_hazard_audio from "../audio/CM1 - 06 - Pipeline Data Hazard.mp4";
+import forwarding_and_branch_prediction_audio from "../audio/CM1 - 07 - Forwarding and Branch Prediction.mp4";
 
-import data_hazards_3 from "../scenes/pipelining/3_data_hazards.tsx?scene";
+import forwarding_and_bp_4 from "../scenes/pipelining/4_forwarding_and_bp.tsx?scene";
 
 import { Code, LezerHighlighter } from '@motion-canvas/2d';
 import { parser } from '@lezer/cpp';
@@ -14,6 +14,6 @@ Code.defaultHighlighter = new LezerHighlighter(
 );
 
 export default makeProject({
-  scenes: [data_hazards_3],
-  audio: pipeline_data_hazard_audio,
+  scenes: [forwarding_and_bp_4],
+  audio: forwarding_and_branch_prediction_audio,
 });

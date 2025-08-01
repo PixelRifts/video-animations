@@ -2,8 +2,92 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "showpipelineagain",
+      "targetTime": 11.377023748431409
+    },
+    {
+      "name": "highlightr3",
+      "targetTime": 18.714507583571287
+    },
+    {
+      "name": "highlightr1r2",
+      "targetTime": 21.070204394774173
+    },
+    {
+      "name": "rewritecode",
+      "targetTime": 23.423547517605655
+    },
+    {
+      "name": "backtofulldiag",
+      "targetTime": 30.63434280871241
+    },
+    {
+      "name": "flash_decodes",
+      "targetTime": 38.62510227022887
+    },
+    {
+      "name": "flash_writebacks",
+      "targetTime": 42.06497216277261
+    },
+    {
+      "name": "focusi2i3",
+      "targetTime": 45.44413576966165
+    },
+    {
+      "name": "I2T3",
+      "targetTime": 50.939568238427185
+    },
+    {
+      "name": "I2T4",
+      "targetTime": 55.44641617085624
+    },
+    {
+      "name": "I2T6",
+      "targetTime": 64.46559038165758
+    },
+    {
+      "name": "I3decode",
+      "targetTime": 70.4208393417123
+    },
+    {
+      "name": "I3T4",
+      "targetTime": 78.25974680398521
+    },
+    {
+      "name": "oldvalue",
+      "targetTime": 85.06070251599354
+    },
+    {
+      "name": "csterms",
+      "targetTime": 90.62985382833438
+    },
+    {
+      "name": "raw_dep",
+      "targetTime": 97.6894602693782
+    },
+    {
+      "name": "other_deps",
+      "targetTime": 112.15963708845699
+    },
+    {
+      "name": "notactuallyhazardous",
+      "targetTime": 122.85963708845698
+    },
+    {
+      "name": "doneforeshadowing",
+      "targetTime": 128.06848339398627
+    },
+    {
+      "name": "I4T5",
+      "targetTime": 136.66001261535214
+    },
+    {
+      "name": "I5T6",
+      "targetTime": 143.06665119554003
+    },
+    {
       "name": "end",
-      "targetTime": 149.9050632808973
+      "targetTime": 150.42603978402943
     }
   ],
   "seed": 513218991

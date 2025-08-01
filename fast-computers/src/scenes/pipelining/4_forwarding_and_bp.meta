@@ -1,0 +1,150 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "option1_wait",
+      "targetTime": 8.109992903412378
+    },
+    {
+      "name": "ineedthisactually",
+      "targetTime": 19.29090045019103
+    },
+    {
+      "name": "stalltitle",
+      "targetTime": 23.399466942736048
+    },
+    {
+      "name": "scaleswithstages",
+      "targetTime": 29.08333713363855
+    },
+    {
+      "name": "backtogoodpipe",
+      "targetTime": 37.22493090180197
+    },
+    {
+      "name": "coreproblem",
+      "targetTime": 53.922783717364894
+    },
+    {
+      "name": "computerisback",
+      "targetTime": 70.7778664647788
+    },
+    {
+      "name": "selectone",
+      "targetTime": 78.12362227984804
+    },
+    {
+      "name": "thislogic",
+      "targetTime": 83.3609691537707
+    },
+    {
+      "name": "unthislogic",
+      "targetTime": 88.7844049744362
+    },
+    {
+      "name": "i4work",
+      "targetTime": 93.79197234993211
+    },
+    {
+      "name": "operand_forwarding",
+      "targetTime": 97.2570991081032
+    },
+    {
+      "name": "un_operand_forwarding",
+      "targetTime": 105.12408929176445
+    },
+    {
+      "name": "problem1gone",
+      "targetTime": 108.96655613100184
+    },
+    {
+      "name": "rewritecode",
+      "targetTime": 112.36655613100184
+    },
+    {
+      "name": "i2r3r1flash",
+      "targetTime": 118.11112120548765
+    },
+    {
+      "name": "theproblemisclear",
+      "targetTime": 124.61144673607942
+    },
+    {
+      "name": "justthenextinstr",
+      "targetTime": 134.50776805271062
+    },
+    {
+      "name": "withcondjumps",
+      "targetTime": 140.81325392162032
+    },
+    {
+      "name": "fetchcorrectlyAFTER",
+      "targetTime": 151.58614379939266
+    },
+    {
+      "name": "flushtime",
+      "targetTime": 157.3157920199805
+    },
+    {
+      "name": "additionalwork",
+      "targetTime": 175.2038683170743
+    },
+    {
+      "name": "controlhazard",
+      "targetTime": 182.04805112982453
+    },
+    {
+      "name": "un_controlhazard",
+      "targetTime": 189.9578366471563
+    },
+    {
+      "name": "fetchanddecodedonothing",
+      "targetTime": 200.66843096182268
+    },
+    {
+      "name": "branch_pred_drop",
+      "targetTime": 207.03415651392186
+    },
+    {
+      "name": "imperfectisfine",
+      "targetTime": 212.13415651392185
+    },
+    {
+      "name": "add_branchpredblock",
+      "targetTime": 226.42554827918403
+    },
+    {
+      "name": "justguesstime",
+      "targetTime": 229.0270365018314
+    },
+    {
+      "name": "backtonormal",
+      "targetTime": 235.32691110588385
+    },
+    {
+      "name": "branchpredsideeye",
+      "targetTime": 239.0543476640472
+    },
+    {
+      "name": "ridiculouslength",
+      "targetTime": 244.0675440991832
+    },
+    {
+      "name": "zoominpage",
+      "targetTime": 246.55128790936956
+    },
+    {
+      "name": "byevideo",
+      "targetTime": 249.82852924363047
+    },
+    {
+      "name": "pipeback",
+      "targetTime": 254.06090648649962
+    },
+    {
+      "name": "end",
+      "targetTime": 258.640129474203
+    }
+  ],
+  "seed": 2579518591
+}
