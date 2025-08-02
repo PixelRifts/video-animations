@@ -726,6 +726,10 @@ export default makeScene2D(function* (view) {
         </Rect>
     </>)
 
+    const looper = yield loopFor(Infinity, function*() {
+        yield* backsquare().rotation(backsquare().rotation() + 360, 20, linear);
+    });
+    
     const instruction_mask = createRef<Layout>();
     const instruction_tri_fill = createRef<Line>();
 

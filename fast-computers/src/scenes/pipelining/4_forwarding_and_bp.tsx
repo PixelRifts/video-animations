@@ -1015,6 +1015,10 @@ export default makeScene2D(function* (view) {
         </Rect>
     </>)
 
+    const looper = yield loopFor(Infinity, function*() {
+        yield* backsquare().rotation(backsquare().rotation() + 360, 20, linear);
+    });
+
     const instruction_mask = createRef<Layout>();
     const instruction_tri_fill = createRef<Line>();
 
@@ -1921,7 +1925,6 @@ export default makeScene2D(function* (view) {
     const select_pc_data_wire = createRef<Line>();
     const guess_select_control_wire = createRef<Line>();
     
-    // @HERE
     const pcselectblock = createRef<Rect>(); const pcselectblock_label = createRef<Txt>();
     const pcincrementblock = createRef<Rect>(); const pcincrementblock_label = createRef<Txt>();
     const guessblock = createRef<Rect>(); const guessblock_label = createRef<Txt>();
@@ -2413,8 +2416,6 @@ export default makeScene2D(function* (view) {
 
     // yield* diagram_stuff().x(diagram_stuff().x() + 200, 0.5);
 
-
-    /// 
     yield* waitUntil("add_branchpredblock");
     yield* all(
         computer_stuff().x(0, 1.2),
@@ -2472,7 +2473,6 @@ export default makeScene2D(function* (view) {
         central_block_txts[20].y(central_block_txts[20].y() + 15, 0.5),
         central_block_txts[20].fontSize(central_block_txts[20].fontSize() + 15, 0.5),
     )
-
 
     yield* waitUntil("end");
 })

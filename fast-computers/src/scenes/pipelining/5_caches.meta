@@ -2,8 +2,116 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "bringbackdiagram",
+      "targetTime": 4.144732515589613
+    },
+    {
+      "name": "smalltweak",
+      "targetTime": 6.544732515589613
+    },
+    {
+      "name": "lookingatcurrentcomp",
+      "targetTime": 12.023318964084504
+    },
+    {
+      "name": "instructionsanddata",
+      "targetTime": 16.501234027776235
+    },
+    {
+      "name": "eitheraninstruction",
+      "targetTime": 25.28145271301456
+    },
+    {
+      "name": "orsomedata",
+      "targetTime": 30.786257981511767
+    },
+    {
+      "name": "topipeline",
+      "targetTime": 36.101489689384586
+    },
+    {
+      "name": "memoryaccess_coincides",
+      "targetTime": 39.385261787550206
+    },
+    {
+      "name": "fetchingI4",
+      "targetTime": 47.364245358830416
+    },
+    {
+      "name": "unhighlightts",
+      "targetTime": 52.0181742199545
+    },
+    {
+      "name": "stallinganoption",
+      "targetTime": 54.89419884089012
+    },
+    {
+      "name": "usingcaches",
+      "targetTime": 58.623362194375844
+    },
+    {
+      "name": "separatecaches",
+      "targetTime": 62.92336219437585
+    },
+    {
+      "name": "removememarker_in",
+      "targetTime": 71.07620561152159
+    },
+    {
+      "name": "removememarker_out",
+      "targetTime": 83.07169196829211
+    },
+    {
+      "name": "workatthesametime",
+      "targetTime": 83.9503351602523
+    },
+    {
+      "name": "reachouttoram",
+      "targetTime": 89.88364612999263
+    },
+    {
+      "name": "severallevels",
+      "targetTime": 94.68364612999261
+    },
+    {
+      "name": "doneseverallevels",
+      "targetTime": 102.48319292355467
+    },
+    {
+      "name": "cachesuseful",
+      "targetTime": 104.4999922530964
+    },
+    {
+      "name": "decoupleiandd",
+      "targetTime": 106.99738126344695
+    },
+    {
+      "name": "forexample",
+      "targetTime": 114.44292500881797
+    },
+    {
+      "name": "branchpred",
+      "targetTime": 127.11480099043007
+    },
+    {
+      "name": "diagramhighlights",
+      "targetTime": 133.71582863593613
+    },
+    {
+      "name": "opforward",
+      "targetTime": 139.4469009676812
+    },
+    {
+      "name": "stallsandflushes",
+      "targetTime": 141.04690096768115
+    },
+    {
+      "name": "bpandcaches",
+      "targetTime": 142.34690096768114
+    },
+    {
       "name": "end",
-      "targetTime": 179.799836247855
+      "targetTime": 147.1034951008514
     }
   ],
   "seed": 2727839452
