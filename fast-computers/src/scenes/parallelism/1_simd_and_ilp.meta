@@ -2,8 +2,136 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "theoperation",
+      "targetTime": 9.703423219321543
+    },
+    {
+      "name": "awholesetinput",
+      "targetTime": 11.72838217238549
+    },
+    {
+      "name": "awholesetoutput",
+      "targetTime": 12.92838217238549
+    },
+    {
+      "name": "loopoverdata",
+      "targetTime": 14.172380634252958
+    },
+    {
+      "name": "asmform",
+      "targetTime": 24.857674556409577
+    },
+    {
+      "name": "ihavenelems",
+      "targetTime": 31.89319681941883
+    },
+    {
+      "name": "onetypeofparallelism",
+      "targetTime": 40.40544206128314
+    },
+    {
+      "name": "wholesetop",
+      "targetTime": 43.25544206128312
+    },
+    {
+      "name": "simdtitledrop",
+      "targetTime": 49.521223101501114
+    },
+    {
+      "name": "newsetofregisters",
+      "targetTime": 53.77122310150109
+    },
+    {
+      "name": "newinstructions",
+      "targetTime": 60.27021957488262
+    },
+    {
+      "name": "interpretation",
+      "targetTime": 66.64484325240069
+    },
+    {
+      "name": "addtomicroarch",
+      "targetTime": 72.51215150038298
+    },
+    {
+      "name": "add_simd_regs",
+      "targetTime": 73.91215150038298
+    },
+    {
+      "name": "add_vecexec_unit",
+      "targetTime": 76.72222219150973
+    },
+    {
+      "name": "widenmdr",
+      "targetTime": 79.00464860666354
+    },
+    {
+      "name": "withsimd",
+      "targetTime": 83.34648933540092
+    },
+    {
+      "name": "usingxmm",
+      "targetTime": 91.37786838577745
+    },
+    {
+      "name": "numberoftimes",
+      "targetTime": 99.8648936304217
+    },
+    {
+      "name": "gobackyouknow",
+      "targetTime": 105.98822285750191
+    },
+    {
+      "name": "yapping",
+      "targetTime": 111.04662875267753
+    },
+    {
+      "name": "however",
+      "targetTime": 118.18692674699871
+    },
+    {
+      "name": "thereasons",
+      "targetTime": 126.74353094671525
+    },
+    {
+      "name": "reason1",
+      "targetTime": 133.51607073564838
+    },
+    {
+      "name": "reason2",
+      "targetTime": 144.4300369940829
+    },
+    {
+      "name": "waitamin",
+      "targetTime": 154.79841672370284
+    },
+    {
+      "name": "exampleprogram",
+      "targetTime": 161.1981680824363
+    },
+    {
+      "name": "foisttwoinstructions",
+      "targetTime": 165.09585252813534
+    },
+    {
+      "name": "equivalence",
+      "targetTime": 167.6099783505875
+    },
+    {
+      "name": "turnsout",
+      "targetTime": 176.19103088331198
+    },
+    {
+      "name": "instructionlevelparallel",
+      "targetTime": 185.21910008596245
+    },
+    {
+      "name": "achievethis",
+      "targetTime": 193.21386541587086
+    },
+    {
       "name": "end",
-      "targetTime": 197.6929283065091
+      "targetTime": 197.76504618141803
     }
   ],
   "seed": 3682062692

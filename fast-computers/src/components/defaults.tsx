@@ -1,4 +1,4 @@
-import { Txt, withDefaults } from "@motion-canvas/2d";
+import { Code, Txt, withDefaults } from "@motion-canvas/2d";
 import { debug, PossibleVector2, Random, Vector2, waitFor } from "@motion-canvas/core";
 
 export function* write(t: Txt, s: string, time: number = 1) {
@@ -6,6 +6,14 @@ export function* write(t: Txt, s: string, time: number = 1) {
     const piece = time / s.length;
     for (const c of s) {
         t.text(t.text() + c);
+        yield* waitFor(piece);
+    }
+}
+export function* write_code(t: Code, s: string, time: number = 1) {
+    t.code("");
+    const piece = time / s.length;
+    for (const c of s) {
+        t.code.append(c);
         yield* waitFor(piece);
     }
 }
