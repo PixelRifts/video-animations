@@ -1,0 +1,114 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "computer_is_back",
+      "targetTime": 0
+    },
+    {
+      "name": "dupe_everything",
+      "targetTime": 2.3975555126903885
+    },
+    {
+      "name": "justmostofit",
+      "targetTime": 6.458099015368057
+    },
+    {
+      "name": "thefetchpullsinmore",
+      "targetTime": 10.04862768112919
+    },
+    {
+      "name": "widedecode",
+      "targetTime": 13.67642380618495
+    },
+    {
+      "name": "forwardtocontrol",
+      "targetTime": 23.98852330352392
+    },
+    {
+      "name": "thedatapathisskipped",
+      "targetTime": 31.65546138861128
+    },
+    {
+      "name": "donedatapath",
+      "targetTime": 39.81791130732225
+    },
+    {
+      "name": "themoreimportantpoint",
+      "targetTime": 50.97238589420476
+    },
+    {
+      "name": "idealcase",
+      "targetTime": 58.03136075552471
+    },
+    {
+      "name": "twoindieinstructions",
+      "targetTime": 60.6046536853921
+    },
+    {
+      "name": "dependents",
+      "targetTime": 71.929777805522
+    },
+    {
+      "name": "widernet",
+      "targetTime": 86.66300137410359
+    },
+    {
+      "name": "letsdoit",
+      "targetTime": 94.31664574035248
+    },
+    {
+      "name": "uop_queue",
+      "targetTime": 106.22274649480751
+    },
+    {
+      "name": "cleareverythingafter",
+      "targetTime": 108.62274649480752
+    },
+    {
+      "name": "cleanslate",
+      "targetTime": 112.6769646139322
+    },
+    {
+      "name": "bringbackthethings",
+      "targetTime": 121.6947200654516
+    },
+    {
+      "name": "dupealu",
+      "targetTime": 129.7059883676792
+    },
+    {
+      "name": "funcunits",
+      "targetTime": 139.10020795989277
+    },
+    {
+      "name": "removememarker_in",
+      "targetTime": 146.46345181716532
+    },
+    {
+      "name": "removememarker_out",
+      "targetTime": 159.46822360808406
+    },
+    {
+      "name": "clockcyclediff",
+      "targetTime": 167.12076883006077
+    },
+    {
+      "name": "thefunpart",
+      "targetTime": 174.7370836613004
+    },
+    {
+      "name": "runthroughmicroops",
+      "targetTime": 179.73502740563623
+    },
+    {
+      "name": "runthroughfuncunits",
+      "targetTime": 182.71609785812203
+    },
+    {
+      "name": "end",
+      "targetTime": 193.45347503152817
+    }
+  ],
+  "seed": 2711977265
+}

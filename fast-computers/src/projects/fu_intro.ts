@@ -2,9 +2,9 @@ import {makeProject} from '@motion-canvas/core';
 
 import "./style.css"
 
-import simd_and_ilp_audio from "../audio/CM1 - 09 - SIMD and ILP.mp4";
+import fu_intro_audio from "../audio/CM1 - 10 - FU Intro.mp4";
 
-import simd_and_ilp_1 from "../scenes/parallelism/1_simd_and_ilp.tsx?scene";
+import fu_intro_1 from "../scenes/parallelism/2_fu_intro.tsx?scene";
 
 import { Code, LezerHighlighter } from '@motion-canvas/2d';
 import { parser } from '@lezer/cpp';
@@ -14,6 +14,6 @@ Code.defaultHighlighter = new LezerHighlighter(
 );
 
 export default makeProject({
-  scenes: [simd_and_ilp_1],
-  audio: simd_and_ilp_audio,
+  scenes: [fu_intro_1],
+  audio: fu_intro_audio,
 });
