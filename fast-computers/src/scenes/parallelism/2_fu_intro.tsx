@@ -2058,7 +2058,7 @@ imul r2, 2h`, 1.2);
     view.add(<Rect ref={ooo_stuff} x={2000}>
         <Rect
             ref={ooo}
-            fill={"#2c1e43"}
+            fill={cosmic_grad_ramps[1][0] + "22"}
             lineWidth={10}
             stroke={cosmic_grad_ramps[1][0]}
             size={"90%"}
@@ -2071,7 +2071,7 @@ imul r2, 2h`, 1.2);
             />
             <Rect ref={ooo_backsquare}
                 size={1700}
-                fill={cosmic_analogues[1][1] + "08"}
+                fill={cosmic_analogues[1][1] + "01"}
                 zIndex={-3}
             />
             <Node ref={ooo_internals} y={-35}>
@@ -2161,19 +2161,22 @@ imul r2, 2h`, 1.2);
     const functional_unit_lengths    = createSignal([ 300, 300, 300, 300, 300, 300, 300, 300 ]);
     const functional_unit_label_strs = [ "Integer Mul/Div", "Integer Add/Sub", "Integer Add/Sub", "Vector Ops",
                                          "Logical Ops", "Load/Store", "Branch" ];
+    const fu_strokes = [ "#c55656", "#c59156", "#c59156", "#b6c556", "#81c556", "#56c59c", "#568ac5" ];
+    const fu_fills   = [ "#4e2b2b", "#4e3a2b", "#4e3a2b", "#4e4b2b", "#3a4e2b", "#2b4e41", "#2b344e" ];
+
     ooo_blocks().add(<>
         <Node ref={functional_units_parent}>
             {...functional_unit_label_strs.map((s, i) => <Rect ref={functional_units}
-                fill={"#492b61"}
+                fill={fu_fills[i]}
                 position={[0, -300 + i * 100]}
                 offset={[-1, 0]} scale={0} rotation={90}
                 size={() => [functional_unit_lengths()[i], 65]}
                 lineWidth={4} clip
-                stroke={"#ae56c5"}
+                stroke={fu_strokes[i]}
             >
                 <RoboticText
                     ref={functional_unit_labels} y={4}
-                    fill={cosmic_analogues[1][0]}
+                    fill={fu_strokes[i]}
                     fontSize={40} fontStyle={""}
                     text={functional_unit_label_strs[i]}
                 />

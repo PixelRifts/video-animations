@@ -2,6 +2,142 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "minify_and_enqueue",
+      "targetTime": 0
+    },
+    {
+      "name": "add_uops",
+      "targetTime": 1.5800000000000003
+    },
+    {
+      "name": "firstuop",
+      "targetTime": 4.116591399705486
+    },
+    {
+      "name": "issue_the_microop",
+      "targetTime": 14.22918580699535
+    },
+    {
+      "name": "goondoingthis",
+      "targetTime": 16.78918580699535
+    },
+    {
+      "name": "anotheruopallocated",
+      "targetTime": 22.67251350822632
+    },
+    {
+      "name": "fus_ready",
+      "targetTime": 33.25573481827402
+    },
+    {
+      "name": "implement_in_arch",
+      "targetTime": 40.567342002543796
+    },
+    {
+      "name": "uop_statuses",
+      "targetTime": 44.99654246721981
+    },
+    {
+      "name": "FU_statuses",
+      "targetTime": 50.850517263207095
+    },
+    {
+      "name": "Regfile_statuses",
+      "targetTime": 56.27656562281601
+    },
+    {
+      "name": "issueuopcomb",
+      "targetTime": 62.096442707510285
+    },
+    {
+      "name": "issueuop?",
+      "targetTime": 69.16421619753888
+    },
+    {
+      "name": "senduopthrough",
+      "targetTime": 82.41496335664348
+    },
+    {
+      "name": "exampletime",
+      "targetTime": 89.12617218135485
+    },
+    {
+      "name": "init_statuses",
+      "targetTime": 100.75885179481672
+    },
+    {
+      "name": "first_uop",
+      "targetTime": 104.29243798304715
+    },
+    {
+      "name": "tick0_statuscheck",
+      "targetTime": 107.48609691262314
+    },
+    {
+      "name": "tick0_issueandmark",
+      "targetTime": 112.48609691262314
+    },
+    {
+      "name": "tick0_statusupdate",
+      "targetTime": 114.58609691262315
+    },
+    {
+      "name": "second_uop",
+      "targetTime": 114.58609691262315
+    },
+    {
+      "name": "tick1_statuscheck",
+      "targetTime": 125.3291495419779
+    },
+    {
+      "name": "tick1_issueandmark",
+      "targetTime": 131.3291495419779
+    },
+    {
+      "name": "third_uop",
+      "targetTime": 137.92914954197786
+    },
+    {
+      "name": "tick2_statuscheck",
+      "targetTime": 140.71768353915647
+    },
+    {
+      "name": "tick2_finishedblocks",
+      "targetTime": 150.3110795815144
+    },
+    {
+      "name": "tick2_issueandmark",
+      "targetTime": 156.51107958151445
+    },
+    {
+      "name": "tick3",
+      "targetTime": 161.510035580238
+    },
+    {
+      "name": "tick4",
+      "targetTime": 165.11003558023796
+    },
+    {
+      "name": "tick4_r1done",
+      "targetTime": 168.5233326896683
+    },
+    {
+      "name": "tick5",
+      "targetTime": 173.0233326896683
+    },
+    {
+      "name": "completeone",
+      "targetTime": 177.8974602095182
+    },
+    {
+      "name": "completetwo",
+      "targetTime": 181.11599208948067
+    },
+    {
+      "name": "whathavewedone",
+      "targetTime": 185.14838170623588
+    },
+    {
       "name": "end",
       "targetTime": 468.6755311386718
     }
