@@ -1,5 +1,5 @@
-import { Layout, Line, makeScene2D, Node, Rect, Txt } from "@motion-canvas/2d";
-import { all, cancel, chain, Color, createRef, createRefArray, createSignal, easeInCirc, easeInSine, easeOutCirc, easeOutSine, linear, loopFor, PossibleColor, range, run, sequence, Vector2, waitFor, waitUntil } from "@motion-canvas/core";
+import { Circle, Icon, Layout, Line, makeScene2D, Node, Rect, Txt } from "@motion-canvas/2d";
+import { all, cancel, chain, Color, createRef, createRefArray, createSignal, easeInCirc, easeInSine, easeOutCirc, easeOutSine, linear, loop, loopFor, noop, PossibleColor, range, run, sequence, Vector2, waitFor, waitUntil } from "@motion-canvas/core";
 import { RoboticText, ThinRoboticText } from "../../components/defaults";
 import { cosmic_grad_ramps, cosmic_analogues } from "../../components/palette";
 import { wiggle } from "../../components/misc";
@@ -36,7 +36,7 @@ const finished_computer_block = function* (obj: Rect, half_time: number = 0.5, s
     )
 }
 
-const DEBUG = true;
+const DEBUG = false;
 const show_mask = function (obj: Rect) { if (DEBUG) obj.lineWidth(5).stroke("red"); }
 const hide_mask = function (obj: Rect) { if (DEBUG) obj.lineWidth(0); }
 
@@ -1986,9 +1986,9 @@ export default makeScene2D(function* (view) {
     yield* wave_computer_block(functional_units[0], 0.8);
 
     yield* waitUntil("issue_the_microop");
-    const ooo_uop_queue_fu_lines = createRefArray<Line>();
+    const ooo_uop_queue_fu_wires = createRefArray<Line>();
     ooo_wires().add(<>
-        {...range(7).map(i => <Line ref={ooo_uop_queue_fu_lines}
+        {...range(7).map(i => <Line ref={ooo_uop_queue_fu_wires}
             points={[[-147, functional_units[i].left().y], functional_units[i].left()]}
             lineWidth={10} stroke={"#ff6f91"}
             endArrow arrowSize={15} end={0}
@@ -1997,7 +1997,7 @@ export default makeScene2D(function* (view) {
     </>);
 
     yield* sequence(0.01,
-        ...ooo_uop_queue_fu_lines.map(t => t.end(1, 0.5)),
+        ...ooo_uop_queue_fu_wires.map(t => t.end(1, 0.5)),
     )
 
 
@@ -2008,7 +2008,7 @@ export default makeScene2D(function* (view) {
         ...ooo_uop_entries.slice(1).map(t => t.y(t.y() + 55, 0.5)),
     )
     
-    ooo_uop_entry_masks[0].position(ooo_uop_queue_fu_lines[0].getPointAtPercentage(0.5).position).size(140)
+    ooo_uop_entry_masks[0].position(ooo_uop_queue_fu_wires[0].getPointAtPercentage(0.5).position).size(140)
     ooo_uop_entries[0].x(-150).y(0).scale(2);
     yield* ooo_uop_entries[0].x(150, 1.2);
 
@@ -2029,7 +2029,7 @@ export default makeScene2D(function* (view) {
     yield sequence(0.05,
         ...ooo_uop_entries.slice(2).map(t => t.y(t.y() + 55, 0.3)),
     )
-    ooo_uop_entry_masks[1].position(ooo_uop_queue_fu_lines[1].getPointAtPercentage(0.5).position).size(140)
+    ooo_uop_entry_masks[1].position(ooo_uop_queue_fu_wires[1].getPointAtPercentage(0.5).position).size(140)
     ooo_uop_entries[1].x(-150).y(0).scale(2);
     yield* ooo_uop_entries[1].x(150, 0.8);
     let fu_two_loop = yield loopFor(Infinity, function* () {
@@ -2046,7 +2046,7 @@ export default makeScene2D(function* (view) {
     yield sequence(0.05,
         ...ooo_uop_entries.slice(3).map(t => t.y(t.y() + 55, 0.3)),
     )
-    ooo_uop_entry_masks[2].position(ooo_uop_queue_fu_lines[2].getPointAtPercentage(0.5).position).size(140)
+    ooo_uop_entry_masks[2].position(ooo_uop_queue_fu_wires[2].getPointAtPercentage(0.5).position).size(140)
     ooo_uop_entries[2].x(-150).y(0).scale(2);
     yield* ooo_uop_entries[2].x(150, 0.8);
     const fu_three_loop = yield loopFor(Infinity, function* () {
@@ -2109,7 +2109,7 @@ export default makeScene2D(function* (view) {
     yield* sequence(0.05,
         ...ooo_uop_entries.slice(3).map(t => t.y(t.y() + 55, 0.3)),
     )
-    ooo_uop_entry_masks[3].position(ooo_uop_queue_fu_lines[0].getPointAtPercentage(0.5).position).size(140)
+    ooo_uop_entry_masks[3].position(ooo_uop_queue_fu_wires[0].getPointAtPercentage(0.5).position).size(140)
     ooo_uop_entries[3].position([-150,0]).scale(2);
     yield* ooo_uop_entries[3].x(150, 0.8);
     fu_one_loop = yield loopFor(Infinity, function* () {
@@ -2192,7 +2192,7 @@ export default makeScene2D(function* (view) {
     yield* sequence(0.05,
         ...ooo_uop_entries.slice(3).map(t => t.y(t.y() + 55, 0.3)),
     )
-    ooo_uop_entry_masks[4].position(ooo_uop_queue_fu_lines[0].getPointAtPercentage(0.5).position).size(140)
+    ooo_uop_entry_masks[4].position(ooo_uop_queue_fu_wires[0].getPointAtPercentage(0.5).position).size(140)
     ooo_uop_entries[4].position([-150,0]).scale(2);
     yield* ooo_uop_entries[4].x(150, 0.8);
     yield functional_unit_statuses[0].fill(STATUS_GREEN, 0.5);
@@ -2225,7 +2225,7 @@ export default makeScene2D(function* (view) {
             ooo_uop_queue.size([650, 130+150], 0.5),
             ooo_uop_queue.childAs<Txt>(0).y(115, 0.5)
         ),
-        ...ooo_uop_queue_fu_lines.map((t, i) => t.points([[-147+150, functional_units[i].left().y], functional_units[i].left().addX(150)], 0.5)),
+        ...ooo_uop_queue_fu_wires.map((t, i) => t.points([[-147+150, functional_units[i].left().y], functional_units[i].left().addX(150)], 0.5)),
         ...queue_slots.map(t => t.size([55, 200], 0.5)),
         ...queue_slot_statuses.map(t => t.position([-28, 100], 0.5)),
         queue_slot_parent().y(-20, 0.5),
@@ -2235,7 +2235,7 @@ export default makeScene2D(function* (view) {
     yield* sequence(0.1,
         ...ooo_regfile_additional_regs.childrenAs<Rect>().map((t, i) => t.childAs<Txt>(0).text("R" + (4 + i), 0.5))
     );
-
+    
     const example_instruction_parent = createRef<Node>();
     const example_instruction_masks = createRefArray<Rect>();
     const example_instructions = createRefArray<Rect>();
@@ -2383,7 +2383,7 @@ export default makeScene2D(function* (view) {
             example_instructions[0].x(example_instructions[0].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[0].position(ooo_uop_queue_fu_lines[5].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[0].position(ooo_uop_queue_fu_wires[5].getPointAtPercentage(0.5).position).size(142)
     example_instructions[0].x(-250).y(0);
     yield* example_instructions[0].x(250, 1.2);
     let fu_six_loop = yield loopFor(Infinity, function* () {
@@ -2444,7 +2444,7 @@ export default makeScene2D(function* (view) {
             example_instructions[1].x(example_instructions[1].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[1].position(ooo_uop_queue_fu_lines[1].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[1].position(ooo_uop_queue_fu_wires[1].getPointAtPercentage(0.5).position).size(142)
     example_instructions[1].x(-250).y(0);
     yield* example_instructions[1].x(250, 1.2);
     fu_two_loop = yield loopFor(Infinity, function* () {
@@ -2507,7 +2507,7 @@ export default makeScene2D(function* (view) {
             example_instructions[2].x(example_instructions[2].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[2].position(ooo_uop_queue_fu_lines[1].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[2].position(ooo_uop_queue_fu_wires[1].getPointAtPercentage(0.5).position).size(142)
     example_instructions[2].x(-250).y(0);
     yield* example_instructions[2].x(250, 1.2);
     fu_two_loop = yield loopFor(Infinity, function* () {
@@ -2543,7 +2543,7 @@ export default makeScene2D(function* (view) {
             example_instructions[3].x(example_instructions[3].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[3].position(ooo_uop_queue_fu_lines[0].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[3].position(ooo_uop_queue_fu_wires[0].getPointAtPercentage(0.5).position).size(142)
     example_instructions[3].x(-250).y(0);
     yield* example_instructions[3].x(250, 1.2);
     fu_one_loop = yield loopFor(Infinity, function* () {
@@ -2584,7 +2584,7 @@ export default makeScene2D(function* (view) {
             example_instructions[4].x(example_instructions[4].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[4].position(ooo_uop_queue_fu_lines[1].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[4].position(ooo_uop_queue_fu_wires[1].getPointAtPercentage(0.5).position).size(142)
     example_instructions[4].x(-250).y(0);
     yield* example_instructions[4].x(250, 1.2);
     fu_two_loop = yield loopFor(Infinity, function* () {
@@ -2618,7 +2618,7 @@ export default makeScene2D(function* (view) {
             example_instructions[5].x(example_instructions[5].x() + 250, 0.5),
         )
     );
-    example_instruction_masks[5].position(ooo_uop_queue_fu_lines[5].getPointAtPercentage(0.5).position).size(142)
+    example_instruction_masks[5].position(ooo_uop_queue_fu_wires[5].getPointAtPercentage(0.5).position).size(142)
     example_instructions[5].x(-250).y(0);
     yield* example_instructions[5].x(250, 1.2);
     fu_six_loop = yield loopFor(Infinity, function* () {
@@ -2641,6 +2641,1093 @@ export default makeScene2D(function* (view) {
 
     yield* waitUntil("whathavewedone");
     yield* ooo_stuff().x(2000, 1.2);
+
+    yield* waitUntil("inorderissue");
+    const issuing_ops_parent = createRef<Node>();
+    const issuing_ops = createRef<Layout>();
+    const issuing_op_txts = createRefArray<Txt>();
+    const issuing_op_time = createRef<Layout>();
+    const issuing_op_backing = createRefArray<Rect>();
+    const issuing_op_circles = createRefArray<Circle>();
+    const issuing_op_timelines = createRefArray<Line>();
+    view.add(<Node ref={issuing_ops_parent} scale={1.4}>
+        <Layout ref={issuing_ops}
+            position={[-500, 0]}
+            // layout direction={"column-reverse"}
+        >
+            {range(5).map(i => <RoboticText ref={issuing_op_txts}
+                // text={"µop " + i}
+                y={192 - 96 * i}
+                fontSize={80}
+                fill={fu_strokes[i+2]}
+            />)}
+        </Layout>
+    </Node>);
+    yield* sequence(0.1,
+        ...issuing_op_txts.map((t, i) => t.text("µop " + i, 0.5)),
+    )
+    const timeline_starts = [0, 100, 200, 400, 500];
+    const timeline_widths = [700, 300, 200, 400, 200];
+    const timeline_wiper = createRef<Line>();
+    issuing_ops_parent().add(<>
+        <Layout ref={issuing_op_time}
+            zIndex={-1}
+        >
+            {range(5).map(i => <Rect ref={issuing_op_backing}
+                position={[0, issuing_op_txts[i].position().y]}
+                // size={[1300, 80]}
+                radius={20}
+                fill={fu_lighter_fills[i+2] + "88"}
+            />)}
+            {range(5).map(i => <Circle ref={issuing_op_circles}
+                position={[-200 + timeline_starts[i], issuing_op_txts[i].position().y]}
+                // size={80}
+                lineWidth={10} lineCap={"round"}
+                stroke={fu_strokes[i+2]} opacity={0}
+            />)}
+            {range(5).map(i => <Line ref={issuing_op_timelines}
+                points={[[-200 + timeline_starts[i], 0], [-200 + timeline_starts[i] + timeline_widths[i], 0]]}
+                position={[0, issuing_op_txts[i].position().y]}
+                lineWidth={30} lineCap={"round"} lineDash={[70, 30]}
+                stroke={fu_strokes[i+2]} end={0} opacity={0}
+            />)}
+        </Layout>
+        <Line ref={timeline_wiper}
+            position={[-200 + timeline_starts[0], 0]}
+            points={[[0, -300], [0, 300]]} end={0} opacity={0}
+            lineWidth={10} lineCap={"round"}
+            stroke={cosmic_grad_ramps[1][4] + "77"}
+        >
+        </Line>
+    </>);
+    yield all(timeline_wiper().opacity(1, 0.1), timeline_wiper().end(1, 0.5));
+    yield* sequence(0.1,
+        ...issuing_op_backing.map(t => t.size([1300, 80], 0.8)),
+    );
+
+    yield timeline_wiper().x(timeline_wiper().x() + 800, 0.5 * 8, linear)
+    yield* sequence(0.5,
+        all(
+            issuing_op_circles[0].opacity(1, 0.05),
+            issuing_op_circles[0].size(80, 0.3),
+            issuing_op_timelines[0].opacity(1, 0.1, linear),
+            issuing_op_timelines[0].end(1, 7 * 0.5, linear),
+        ),
+        all(
+            issuing_op_circles[1].opacity(1, 0.05),
+            issuing_op_circles[1].size(80, 0.3),
+            issuing_op_timelines[1].opacity(1, 0.1, linear),
+            issuing_op_timelines[1].end(1, 3 * 0.5, linear),
+        ),
+        all(
+            issuing_op_circles[2].opacity(1, 0.05),
+            issuing_op_circles[2].size(80, 0.3),
+            issuing_op_timelines[2].opacity(1, 0.1, linear),
+            issuing_op_timelines[2].end(1, 2 * 0.5, linear),
+        ),
+        noop(),
+        all(
+            issuing_op_circles[3].opacity(1, 0.05),
+            issuing_op_circles[3].size(80, 0.3),
+            issuing_op_timelines[3].opacity(1, 0.1, linear),
+            issuing_op_timelines[3].end(1, 4 * 0.5, linear),
+        ),
+        all(
+            issuing_op_circles[4].opacity(1, 0.05),
+            issuing_op_circles[4].size(80, 0.3),
+            issuing_op_timelines[4].opacity(1, 0.1, linear),
+            issuing_op_timelines[4].end(1, 2 * 0.5, linear),
+        ),
+    );
+    yield all(timeline_wiper().opacity(1, 0).wait(0.4).to(0, 0.1), timeline_wiper().start(1, 0.5));
+
+    yield* waitUntil("stillnotoptimal");
+    yield* sequence(0.1,
+        ...range(5).map(i => all(
+            issuing_op_backing[i].x(2000, 1.2),
+            issuing_op_circles[i].x(2000, 1.2),
+            issuing_op_timelines[i].x(2000, 1.2),
+            issuing_op_txts[i].x(2000, 1.2),
+        )),
+    );
+
+    yield* waitUntil("whereouralgstalls");
+    const example_instructions_again_parent = createRef<Node>();
+    const example_instructions_again = createRefArray<Rect>();
+    const example_instructions_again_labels = createRefArray<Txt>();
+    const example_instruction_stalls = createRefArray<Rect>();
+    const example_instruction_stall_locations = createRefArray<Icon>();
+    const example_instruction_stall_locations_ys = [ 2, 4, 5 ];
+    view.add(<>
+        <Node ref={example_instructions_again_parent} zIndex={10}>
+            {...example_instruction_strs.map((a, i) => <Rect ref={example_instructions_again}
+                position={[0, -200 + i * 100 + 40]}
+                opacity={0} size={[175, 50]}
+                radius={5} lineWidth={5}
+                // stroke={"red"} lineWidth={10}
+                alignItems={"end"}
+                justifyContent={"center"}
+                layout gap={30}
+            >
+                {...a.map(s => <RoboticText ref={example_instructions_again_labels}
+                    text={s} fontStyle={""}
+                    fontSize={80}
+                    fill={fu_strokes[example_instruction_fills[i]]}
+                >
+                </RoboticText>)}
+            </Rect>)}
+            {...example_instruction_stall_locations_ys.map((t, i) => <Rect ref={example_instruction_stalls}
+                y={-200 + t * 100 - 30}
+                fill={"#c5565622"}
+                size={[0, 90]}
+                radius={20}
+            >
+                <Icon ref={example_instruction_stall_locations}
+                    icon={"solar:danger-triangle-bold"}
+                    x={-300} 
+                    rotation={90} scale={0}
+                    color={"#c55656"}
+                    size={100}
+                >
+                </Icon>
+            </Rect>)}
+        </Node>
+    </>);
+    yield* sequence(0.1,
+        ...example_instructions_again.map((t, i) => all(
+            t.opacity(1, 0.5),
+            t.y(t.y() - 40, 0.5),
+        ))
+    );
+    yield* waitFor(1);
+    yield* sequence(0.1,
+        ...example_instruction_stall_locations.map((l, i) => all(
+            example_instruction_stalls[i].size([500, 90], 0.5),
+            l.rotation(0, 0.5),
+            l.scale(1, 0.5),
+        ))
+    );
+
+    yield* waitUntil("highlight_deps_highlevel");
+    yield* sequence(0.5,
+        all(
+            example_instructions_again_labels[4].fill("red", 0.5),
+            example_instructions_again_labels[9].fill("red", 0.5),
+            example_instructions_again_labels[4].scale(1.5, 0.5),
+            example_instructions_again_labels[9].scale(1.5, 0.5),
+        ),
+        all(
+            example_instructions_again_labels[12].fill("yellow", 0.5),
+            example_instructions_again_labels[13].fill("yellow", 0.5),
+            example_instructions_again_labels[16].fill("yellow", 0.5),
+            example_instructions_again_labels[12].scale(1.5, 0.5),
+            example_instructions_again_labels[13].scale(1.5, 0.5),
+            example_instructions_again_labels[16].scale(1.5, 0.5),
+        ),
+        all(
+            example_instructions_again_labels[17].fill("red", 0.5),
+            example_instructions_again_labels[20].fill("red", 0.5),
+            example_instructions_again_labels[17].scale(1.5, 0.5),
+            example_instructions_again_labels[20].scale(1.5, 0.5),
+        ),
+    );
+
+    yield* waitUntil("removethesestalls");
+    yield* sequence(0.1,
+        ...example_instruction_stall_locations.map(t => all(
+            t.scale(1.6, 0.4).wait(0.4).back(0.4),
+            wiggle(t.rotation, -10, 10, 1.2),
+        )),
+    )
+
+    yield* waitUntil("WAWdependencies");
+    yield* all(
+        ...example_instructions_again.map(t => t.x(-500, 0.8)),
+        ...example_instruction_stalls.map(t => t.x(-500, 0.8)),
+    )
+    yield* sequence(0.4,
+        all(
+            all(
+                ...example_instructions_again.slice(0, 3).map(t => all(
+                    t.y(t.y() - 300, 0.8),
+                    t.opacity(0.2, 0.8),
+                )),
+                ...example_instruction_stalls.slice(0, 1).map(t => all(
+                    t.y(t.y() - 300, 0.8),
+                    t.opacity(0.2, 0.8),
+                ))
+            ),
+            all(
+                ...example_instructions_again.slice(5).map(t => all(
+                    t.y(t.y() + 100, 0.8),
+                    t.opacity(0.2, 0.8),
+                )),
+                ...example_instruction_stalls.slice(2).map(t => all(
+                    t.y(t.y() + 100, 0.8),
+                    t.opacity(0.2, 0.8),
+                ))
+            ),
+        ),
+        
+        all(
+            ...example_instructions_again.slice(3, 5).map(t => sequence(0.1,
+                t.y(t.y() - 100, 0.5),
+                t.scale(1.1, 0.5),
+            )),
+            ...example_instruction_stalls.slice(1, 2).map(t => sequence(0.1,
+                t.y(t.y() - 100, 0.5),
+                t.scale(1.1, 0.5),
+            ))
+        ),
+    );
+
+    const dep_title = createRef<Txt>();
+    const dep_subtitle_0 = createRef<Txt>();
+    const dep_subtitle_1 = createRef<Txt>();
+    view.add(<>
+        <RoboticText ref={dep_title}
+            text={"WAW"}
+            position={[1500, -300,]}
+            fontSize={300}
+            fill={cosmic_grad_ramps[1][0] + "88"}
+        />
+        <ThinRoboticText ref={dep_subtitle_0}
+            text={"R1 <- add output"}
+            position={[1500, -25,]}
+            fontSize={100}
+            fill={cosmic_grad_ramps[1][1] + "CC"}
+        />
+        <ThinRoboticText ref={dep_subtitle_1}
+            text={"R1 </- imul output"}
+            position={[1500, 75,]}
+            fontSize={100}
+            fill={cosmic_grad_ramps[1][1] + "CC"}
+        />
+    </>);
+
+    yield* dep_title().x(300, 1.2);
+    yield* waitFor(6);
+    yield* dep_subtitle_0().x(300, 1.2);
+    yield* waitFor(1);
+    yield* dep_subtitle_1().x(300, 1.2);
+
+    yield* waitUntil("naivenostall");
+    yield* sequence(0.1,
+        dep_subtitle_0().text("", 0.5),
+        dep_subtitle_1().text("", 0.5),
+    );
+    // yield* 
+    
+    issuing_op_backing.splice(0);
+    issuing_op_circles.splice(0);
+    issuing_op_timelines.splice(0);
+    view.add(<>
+        <Layout ref={issuing_op_time}
+            x={25}
+            zIndex={-1}
+        >
+            {range(2).map(i => <Rect ref={issuing_op_backing}
+                position={[300, example_instructions_again[i+3].position().y - 30]}
+                // size={[500, 80]}
+                radius={20}
+                fill={fu_lighter_fills[i] + "88"}
+            />)}
+            {range(2).map(i => <Circle ref={issuing_op_circles}
+                position={[-200 - 75 + timeline_starts[i+3], example_instructions_again[i+3].position().y - 30]}
+                lineWidth={10} lineCap={"round"}
+                stroke={fu_strokes[i]} opacity={0}
+            />)}
+            {range(2).map(i => <Line ref={issuing_op_timelines}
+                points={[[-200 + timeline_starts[i+3], 0], [-200 + timeline_starts[i+3] + timeline_widths[i+3], 0]]}
+                position={[0 - 75, example_instructions_again[i+3].position().y - 30]}
+                lineWidth={30} lineCap={"round"} lineDash={[70, 30]}
+                stroke={fu_strokes[i]} end={0} opacity={0}
+            />)}
+        </Layout>
+    </>)
+    yield* sequence(0.1,
+        ...issuing_op_backing.map(t => t.size([500, 80], 0.5)),
+    )
+    yield* sequence(0.5,
+        all(
+            issuing_op_circles[0].opacity(1, 0.05),
+            issuing_op_circles[0].size(80, 0.5),
+            issuing_op_timelines[0].opacity(1, 0.1, linear),
+            issuing_op_timelines[0].end(0.5, 2 * 0.5, linear),
+        ),
+        all(
+            issuing_op_circles[1].opacity(1, 0.05),
+            issuing_op_circles[1].size(80, 0.5),
+            issuing_op_timelines[1].opacity(1, 0.1, linear),
+            issuing_op_timelines[1].end(0.5, 1 * 0.5, linear),
+        ),
+    );
+    yield* waitFor(2);
+    yield* all(
+        all(
+            issuing_op_timelines[0].opacity(1, 0.1, linear),
+            issuing_op_timelines[0].end(1, 2 * 0.5, linear),
+        ),
+        all(
+            issuing_op_timelines[1].opacity(1, 0.1, linear),
+            issuing_op_timelines[1].end(1, 1 * 0.5, linear),
+        ),
+    );
+
+    yield* waitUntil("WARdependencies");
+    yield* all(
+        dep_title().x(1500, 1.2).back(1.2),
+        dep_title().text(dep_title().text(), 0).wait(1.2).to("WAR", 0),
+        issuing_op_time().x(1500, 1.2),
+        sequence(0.4,
+            all(
+                all(
+                    ...example_instructions_again.slice(0, 3).map(t => all(
+                        t.y(t.y() - 200, 0.8),
+                        t.opacity(0.2, 0.8),
+                    )),
+                    ...example_instruction_stalls.slice(0, 1).map(t => all(
+                        t.y(t.y() - 200, 0.8),
+                        t.opacity(0.2, 0.8),
+                    ))
+                ),
+                all(
+                    ...example_instructions_again.slice(3, 4).map(t => all(
+                        t.y(t.y() - 400, 0.8),
+                        t.opacity(0.2, 0.8),
+                        t.scale(1, 0.8),
+                    )),
+                    ...example_instruction_stalls.slice(1, 1).map(t => all(
+                        t.y(t.y() - 400, 0.8),
+                        t.opacity(0.2, 0.8),
+                        t.scale(1, 0.8),
+                    ))
+                ),
+            ),
+            
+            all(
+                ...example_instructions_again.slice(4,5).map(t => sequence(0.1,
+                    t.y(t.y() - 150, 0.5),
+                    t.scale(1.1, 0.5),
+                    t.opacity(1, 0.8),
+                )),
+                ...example_instruction_stalls.slice(1,2).map(t => sequence(0.1,
+                    t.y(t.y() - 150, 0.5),
+                    t.scale(1.1, 0.5),
+                    t.opacity(1, 0.8),
+                )),
+                ...example_instructions_again.slice(5).map(t => sequence(0.1,
+                    t.y(t.y() - 350, 0.5),
+                    t.scale(1.1, 0.5),
+                    t.opacity(1, 0.8),
+                )),
+                ...example_instruction_stalls.slice(2).map(t => sequence(0.1,
+                    t.y(t.y() - 350, 0.5),
+                    t.scale(1.1, 0.5),
+                    t.opacity(1, 0.8),
+                ))
+            ),
+        )
+    );
+    dep_subtitle_0().remove();
+    dep_subtitle_0().dispose();
+    view.add(
+        <ThinRoboticText ref={dep_subtitle_0}
+            text={"Note: This doesn't actually\nalways cause a stall\nfor our example system"}
+            position={[1700, 25,]}
+            fontSize={80}
+            fill={"#c55656CC"}
+        />
+    );
+    yield* dep_subtitle_0().x(300, 1.2);
+
+    yield* waitUntil("RAWdependencies");
+    yield* all(
+        dep_title().x(1500, 1.2).back(1.2),
+        dep_title().text(dep_title().text(), 0).wait(1.2).to("RAW", 0),
+        dep_subtitle_0().x(1500, 1.2),
+        sequence(0.2,
+            all(
+                all(
+                    ...example_instructions_again.slice(3, 4).map(t => all(
+                        t.y(t.y() + 750, 0.8),
+                        t.opacity(0.2, 0.8),
+                        t.scale(1, 0.8),
+                    )),
+                    ...example_instructions_again.slice(4).map(t => all(
+                        t.y(t.y() + 500, 0.8),
+                        t.opacity(0.2, 0.8),
+                        t.scale(1, 0.8),
+                    )),
+                    ...example_instruction_stalls.slice(1).map(t => all(
+                        t.y(t.y() + 500, 0.8),
+                        t.opacity(0.2, 0.8),
+                        t.scale(1, 0.8),
+                    ))
+                ),
+            ),
+            
+            all(
+                all(
+                    ...example_instructions_again.slice(0, 1).map(t => all(
+                        t.y(t.y() + 400, 0.8),
+                        t.opacity(0.2, 0.8),
+                    )),
+                ),
+                all(
+                    ...example_instructions_again.slice(1, 3).map(t => all(
+                        t.y(t.y() + 600, 0.8),
+                        t.opacity(1, 0.8),
+                        t.scale(1.1, 0.8),
+                    )),
+                    ...example_instruction_stalls.slice(0, 1).map(t => all(
+                        t.y(t.y() + 600, 0.8),
+                        t.opacity(1, 0.8),
+                        t.scale(1.1, 0.8),
+                    ))
+                ),
+            ),
+        )
+    );
+
+    yield* waitUntil("futuredependsonpresent");
+    yield* sequence(2,
+        wiggle(example_instructions_again[2].rotation, -10, 10, 1.2),
+        wiggle(example_instructions_again[1].rotation, -10, 10, 1.2),
+    );
+
+    yield* waitUntil("wecandoonething");
+    yield* all(
+        all(
+            ...example_instructions_again.slice(0, 1).map(t => all(
+                t.y(t.y() + 350, 0.8),
+                t.opacity(0.2, 0.8),
+            )),
+            ...example_instructions_again.slice(1, 3).map(t => all(
+                t.y(t.y() + 150, 0.8),
+                t.opacity(0.2, 0.8),
+                t.scale(1, 0.8),
+            )),
+            ...example_instruction_stalls.slice(0, 1).map(t => all(
+                t.y(t.y() + 150, 0.8),
+                t.opacity(0.2, 0.8),
+                t.scale(1, 0.8),
+            ))
+        ),
+        example_instructions_again_parent().y(800, 1.2),
+        dep_title().x(1500, 1.2),
+    );
+    yield* ooo_stuff().x(0, 1.2);
+
+    yield* waitUntil("reservation_station");
+    yield* all(
+        ooo_internals().scale(0.95, 0.8),
+        ...ooo_register_file.childAs<Layout>(1).childrenAs<Rect>().map(t => chain(
+            all(
+                t.childAs<Txt>(1).text("", 0.5),
+                t.childAs<Txt>(0).x(-100, 0.5),
+            ),
+            all(
+                t.childAs<Txt>(0).x(100, 0),
+                t.childAs<Txt>(0).y(4, 0),
+                t.childAs<Txt>(0).fontSize(48, 0),
+            ),
+            t.childAs<Txt>(0).x(0, 0.5),
+        )),
+        ...ooo_register_file.childAs<Layout>(4).childrenAs<Rect>().map(t => all(
+            t.rotation(90, 0.5),
+            t.scale(0, 0.5),
+        )),
+        ...functional_unit_statuses.map(t => all(
+            t.scale(0, 0.5),
+            t.rotation(t.rotation() + 90, 0.5)
+        )),
+        ...queue_slot_statuses.map(t => all(
+            t.scale(0, 0.5),
+            t.rotation(t.rotation() + 90, 0.5)
+        )),
+    );
+    yield* waitFor(1);
+    yield* all(
+        chain(
+            stage1_presenter().x(-550, 0.5),
+            all(ooo_title().text("CPU Backend 2", 0.2), ooo_title().left(ooo_title().left(), 0.2)),
+            stage1_presenter().x(-1200, 0.5),
+        ),
+        ooo_register_file.x(ooo_register_file.x() - 100, 0.5),
+        ooo_uop_queue.x(ooo_uop_queue.x() - 100, 0.5),
+        ...functional_units.map(t => t.x(t.x() + 100, 0.5)),
+        ooo_dcache.x(ooo_dcache.x() + 100, 0.5),
+        ooo_decoder_to_uop_queue_wire().points([[-500-100, -275], [-277-100, -275]], 0.5),
+        ooo_decoder_to_uop_queue_wire_label().x(ooo_decoder_to_uop_queue_wire_label().x() - 100, 0.5),
+        ooo_cdb().points([[550+250, functional_units[0].right().y-5], [550+250, 375], [ooo_register_file.bottom().x - 100, 375], ooo_register_file.bottom().addX(-100)], 0.5),
+        ...ooo_uop_queue_fu_wires.map((t, i) => t.points([[-147+50, functional_units[i].left().y], functional_units[i].left().addX(-100)], 0.5)),
+        ...ooo_fu_cdb_wires.map((t, i) => t.points([functional_units[i].right().addX(100), [550+250, functional_units[i].right().y]], 0.5)),
+        ooo_regfile_uop_queue_wire().points([ooo_register_file.right().addX(-100), [ooo_uop_queue.bottom().x-100, ooo_register_file.right().y]], 0.5)
+    );
+    
+    const ooo_reservation_stations = createRefArray<Rect>();
+    const ooo_reservation_station_labels = createRefArray<Rect>();
+    const ooo_resv_fu_wires = createRefArray<Line>();
+    ooo_blocks().add(<>
+        {range(7).map(i => <Rect ref={ooo_reservation_stations}
+            fill={"#492b61"}
+            position={[100, -300 + i * 100]}
+            scale={0} rotation={90}
+            size={[100, 65]}
+            lineWidth={4}
+            stroke={"#bf5dd6"}
+        >
+            <RoboticText
+                ref={ooo_reservation_station_labels} y={4}
+                fill={"#bf5dd6"}
+                fontSize={40} fontStyle={""}
+                text={"RESV"}
+            />
+        </Rect>)}
+    </>);
+    ooo_wires().add(<>
+        {...range(7).map(i => <Line ref={ooo_resv_fu_wires}
+            points={[ooo_reservation_stations[i].right().addX(50), functional_units[i].left(),]}
+            lineWidth={10} stroke={"#bf5dd6"}
+            end={0}
+            endArrow arrowSize={15}
+        ></Line>)}
+    </>)
+    yield* waitFor(4.5);
+    yield* sequence(0.1,
+        ...ooo_reservation_stations.map(t => all(
+            t.scale(1, 0.5),
+            t.rotation(0, 0.5),
+        )),
+        ...ooo_resv_fu_wires.map(t => t.end(1, 0.5)),
+    );
+
+    yield* waitUntil("holdwithtags");
+    ooo_stuff().save();
+    yield* all(
+        ooo_stuff().scale(10, 1.8),
+        ooo_stuff().position([-1200, 450+950*2], 1.8)
+    );
+
+    const whatisstored = createRef<Txt>();
+    ooo_reservation_stations[1].add(<>
+        <ThinRoboticText ref={whatisstored}
+            fontSize={18} y={5}
+            // text={"µOP + tags"}
+            fill={"#bf5dd6"}
+        />
+    </>)
+
+    yield* all(
+        ooo_reservation_station_labels[1].fontSize(20, 0.5),
+        ooo_reservation_station_labels[1].y(-20, 0.5),
+        whatisstored().text("µOP + tags", 0.8),
+    );
+
+    yield* waitFor(2);
+    yield* all(
+        ooo_reservation_station_labels[1].fontSize(40, 0.5),
+        ooo_reservation_station_labels[1].y(4, 0.5),
+        whatisstored().opacity(0, 0.8),
+        ooo_stuff().restore(1.8)
+    );
+
+    yield* waitUntil("loopback");
+    const ooo_cdb_resv_main_wire = createRef<Line>();
+    const ooo_cdb_resv_wires = createRefArray<Line>();
+    ooo_wires().add(<>
+        <Line ref={ooo_cdb_resv_main_wire}
+            points={[[-50, 375], [-50, -290]]}
+            lineWidth={10} stroke={"#bf5dd6"}
+            end={0}
+        ></Line>
+        {...range(7).map(i => <Line ref={ooo_cdb_resv_wires}
+            points={[[-50, ooo_reservation_stations[i].left().y+15], ooo_reservation_stations[i].left().addY(15),]}
+            lineWidth={10} stroke={"#bf5dd6"}
+            end={0}
+            endArrow arrowSize={15}
+        ></Line>)}
+    </>);
+    yield* sequence(0.05,
+        ooo_cdb_resv_main_wire().end(1, 0.5),
+        ...range(7).map(i => all(
+            ooo_cdb_resv_wires[7-i-1].end(1, 0.5),
+            ooo_uop_queue_fu_wires[7-i-1].points([[-147+50, ooo_reservation_stations[7-i-1].left().y-15], ooo_reservation_stations[7-i-1].left().addY(-15)], 0.5),
+        )),
+    );
+
+    yield* waitUntil("fu_complete_uop");
+    yield* sequence(0.1,
+        ...functional_units.map(t => wave_computer_block(t, 0.8)),
+    );
+    yield* waitFor(1);
+    yield* sequence(0.4,
+        all(
+            ...ooo_fu_cdb_wires.map(t => all(
+                t.stroke("yellow", 0.8).wait(1.5).back(0.8),
+                t.lineWidth(18, 0.8).wait(1.5).back(0.8),
+            )),
+        ),
+        all(
+            ooo_cdb().stroke("yellow", 0.8).wait(1.5).back(0.8),
+            ooo_cdb().lineWidth(18, 0.8).wait(1.5).back(0.8),
+        ),
+        all(
+            ooo_cdb_resv_main_wire().stroke("yellow", 0.8).wait(1.5).back(0.8),
+            ooo_cdb_resv_main_wire().lineWidth(18, 0.8).wait(1.5).back(0.8),
+        ),
+        all(
+            ...ooo_cdb_resv_wires.map(t => all(
+                t.stroke("yellow", 0.8).wait(1.5).back(0.8),
+                t.lineWidth(18, 0.8).wait(1.5).back(0.8),
+            )),
+        ),
+    );
+    yield* sequence(0.1,
+        ...ooo_reservation_stations.map((t, i) => wave_computer_block(t, i == 1 ? 1.4 : 0.8))
+    );
+    yield* waitFor(2);
+    yield* all(
+        ooo_resv_fu_wires[1].stroke("yellow", 0.8).wait(1.5).back(0.8),
+        ooo_resv_fu_wires[1].lineWidth(18, 0.8).wait(1.5).back(0.8),
+    );
+
+    yield* waitUntil("whatarethesetagsyouspeakofsohighly");
+    ooo_stuff().save();
+    yield* all(
+        ooo_stuff().scale(10, 1.8),
+        ooo_stuff().position([-1200, 450+950+950], 1.8)
+    );
+    yield* all(
+        ooo_reservation_station_labels[1].fontSize(20, 0.5),
+        ooo_reservation_station_labels[1].y(-20, 0.5),
+        whatisstored().opacity(1, 0.8),
+    );
+    yield* whatisstored().text("tags?", 0.5).wait(1).to("regnames??", 0.8);
+
+    yield* waitUntil("showexampleuop");
+    const example_regname_uop = createRef<Txt>();
+    ooo_reservation_stations[1].add(<>
+        <RoboticText ref={example_regname_uop}
+            fontSize={15} y={2} fontStyle={""}
+            // text={"add r1 r3 r5"}
+            fill={"#ff6f91"}
+        />
+    </>);
+    yield* all(whatisstored().y(whatisstored().y() + 15, 0.5), example_regname_uop().text("add r1 r3 r5", 0.8));
+    yield* waitFor(1);
+    yield* whatisstored().text("T0 = 3 -- T1 = 5", 0.8);
+    yield* waitFor(5);
+    yield* whatisstored().text("T_out = 1", 0.8);
+
+    yield* waitUntil("heresanexample");
+    yield* all(
+        ooo_reservation_station_labels[1].fontSize(40, 0.5),
+        ooo_reservation_station_labels[1].y(4, 0.5),
+        whatisstored().opacity(0, 0.8),
+        example_regname_uop().opacity(0, 0.8),
+        ooo_stuff().restore(1.8),
+    );
+
+
+    const new_example_instructions_parent = createRef<Node>();
+    const new_example_instructions = createRefArray<Rect>();
+    const new_example_instruction_labels = createRefArray<Txt>();
+    const new_example_metastuff = createRefArray<Rect>();
+    const new_example_metastuff_labels = createRefArray<Txt>();
+
+    const new_example_instruction_strs = [
+        ["add",  "r1", "r2", "r3" ],
+        ["idiv", "r1", "r2", "r3" ],
+        ["sub",  "r0", "r1", "r2" ],
+    ];
+    const new_example_metastuff_strs = [
+        ["issued to", "FU 1" ],
+        ["issued to", "FU 0" ],
+        ["in RESV of", "FU 2" ],
+    ];
+    const new_example_metastuff_strs_flat = [ "issued to", "FU 1", "issued to", "FU 0", "in RESV of", "FU 2", ];
+    yield* ooo_stuff().x(2000, 1.2);
+    const new_example_instruction_fills = [ 1, 0, 2 ];
+    view.add(<>
+        <Node ref={new_example_instructions_parent} zIndex={10}>
+            {...new_example_instruction_strs.map((a, i) => <Rect ref={new_example_instructions}
+                position={[-300, -100 + i * 100 + 40]}
+                opacity={0} size={[500, 80]}
+                radius={5} lineWidth={5}
+                // fill={fu_lighter_fills[new_example_instruction_fills[i]]}
+                alignItems={"baseline"}
+                justifyContent={"center"}
+                layout gap={30}
+            >
+                {...a.map(s => <RoboticText ref={new_example_instruction_labels}
+                    text={s} fontStyle={""}
+                    fontSize={80}
+                    fill={fu_strokes[new_example_instruction_fills[i]]}
+                >
+                </RoboticText>)}
+            </Rect>)}
+
+            {...new_example_metastuff_strs.map((a, i) => <Rect ref={new_example_metastuff}
+                position={[300, -100 + i * 100]}
+                size={[500, 80]}
+                radius={5} lineWidth={5}
+                // fill={fu_lighter_fills[new_example_instruction_fills[i]]}
+                alignItems={"baseline"}
+                justifyContent={"start"}
+                layout gap={30}
+            >
+                {...a.map((s, j) => <RoboticText ref={new_example_metastuff_labels}
+                    fontStyle={""}
+                    fontSize={80}
+                    fill={fu_strokes[new_example_instruction_fills[i]] + (j == 0 ? "77" : "")}
+                >
+                </RoboticText>)}
+            </Rect>)}
+        </Node>
+    </>);
+    yield* sequence(0.1,
+        ...new_example_instructions.map((t, i) => all(
+            t.opacity(1, 0.5),
+            t.y(t.y() - 40, 0.5),
+        ))
+    );
+
+    yield* waitUntil("add_and_idiv");
+    yield* sequence(0.5,
+        ...new_example_instructions.slice(0, 2).map((t, i) => t.fill(fu_lighter_fills[new_example_instruction_fills[i]], 0.5)),
+    )
+    yield* sequence(0.2,
+        ...new_example_metastuff_strs_flat.slice(0, 4).map((s, i) => new_example_metastuff_labels[i].text(s, 0.5)),
+    )
+    yield* waitFor(2);
+    yield* sequence(0.2,
+        ...new_example_metastuff_strs_flat.slice(4).map((s, i) => new_example_metastuff_labels[4+i].text(s, 0.5)),
+    )
+
+    yield* waitUntil("highlightr1");
+    yield* sequence(0.1,
+        all(
+            new_example_instruction_labels[1].scale(1.3, 0.5).wait(1).back(0.5),
+            new_example_instruction_labels[1].fill("yellow", 0.5).wait(1).back(0.5),
+        ),
+        all(
+            new_example_instruction_labels[5].scale(1.3, 0.5).wait(1).back(0.5),
+            new_example_instruction_labels[5].fill("yellow", 0.5).wait(1).back(0.5),
+        ),
+        all(
+            new_example_instruction_labels[10].scale(1.3, 0.5).wait(1).back(0.5),
+            new_example_instruction_labels[10].fill("yellow", 0.5).wait(1).back(0.5),
+        )
+    );
+
+    yield* waitUntil("exampletimelinesagain");
+    yield* new_example_instructions_parent().x(-300, 0.8);
+    issuing_op_backing.splice(0);
+    issuing_op_circles.splice(0);
+    issuing_op_timelines.splice(0);
+
+    const new_timeline_starts = [ 400, 500 ];
+    const new_timeline_widths = [ 200, 300 ];
+    view.add(<>
+        <Layout ref={issuing_op_time}
+            x={200}
+            zIndex={-1}
+        >
+            {range(2).map(i => <Rect ref={issuing_op_backing}
+                position={[300, -100 + i * 100]}
+                // size={[500, 80]}
+                radius={20}
+                fill={fu_lighter_fills[1-i] + "88"}
+            />)}
+            {range(2).map(i => <Circle ref={issuing_op_circles}
+                position={[-200 - 75 + new_timeline_starts[i], -100 + i * 100]}
+                lineWidth={10} lineCap={"round"}
+                stroke={fu_strokes[1-i]} opacity={0}
+            />)}
+            {range(2).map(i => <Line ref={issuing_op_timelines}
+                points={[[-200 + new_timeline_starts[i], 0], [-200 + new_timeline_starts[i] + new_timeline_widths[i], 0]]}
+                position={[0 - 75, -100 + i * 100]}
+                lineWidth={30} lineCap={"round"} lineDash={[70, 30]}
+                stroke={fu_strokes[1-i]} end={0} opacity={0}
+            />)}
+        </Layout>
+    </>)
+    yield* sequence(0.1,
+        ...issuing_op_backing.map(t => t.size([500, 80], 0.5)),
+    )
+    yield* sequence(0.5,
+        all(
+            issuing_op_circles[0].opacity(1, 0.05),
+            issuing_op_circles[0].size(80, 0.5),
+            issuing_op_timelines[0].opacity(1, 0.1, linear),
+            issuing_op_timelines[0].end(1, 2 * 0.5, linear),
+        ),
+        all(
+            issuing_op_circles[1].opacity(1, 0.05),
+            issuing_op_circles[1].size(80, 0.5),
+            issuing_op_timelines[1].opacity(1, 0.1, linear),
+            issuing_op_timelines[1].end(0.3333, 1 * 0.5, linear),
+        ),
+    );
+    yield* waitFor(1);
+    const broadcast_lines = createRefArray<Line>();
+    view.add(<>
+        {range(3).map(i => <Line ref={broadcast_lines}
+            position={[-376, -124]}
+            lineWidth={10} stroke={"#c59156"}
+            lineCap={"round"} end={0} opacity={0}
+            points={[
+                new Vector2(40, 0).rotate(-i*30),
+                new Vector2(80, 0).rotate(-i*30),
+            ]}
+        />)}
+    </>)
+
+    yield* wiggle(new_example_instructions[0].rotation, -10, 10, 0.8);
+    yield* loop(3, function*() {
+        yield* all(
+            ...broadcast_lines.map(t => chain(
+                all(
+                    t.opacity(1, 0.1).wait(0.5).back(0.1),
+                    t.end(1, 0.5),
+                    t.start(0, 0).wait(0.2).to(1, 0.5),
+                ),
+                all(
+                    t.end(0, 0),
+                    t.start(0, 0)
+                )
+            ))
+        );
+    })
+
+    yield* waitUntil("subwillmatchthat");
+    yield* all(
+        wiggle(new_example_instructions[2].rotation, -10, 10, 0.8),
+        new_example_metastuff_labels[4].text("got a new", 0.8),
+        new_example_metastuff_labels[5].text("R1!!", 0.8),
+    );
+
+    yield* waitUntil("tagsreflecttimeandreg");
+    yield* sequence(0.4,
+        ...[1, 5].map(i => all(
+            new_example_instruction_labels[i].scale(1.8, 0.8).back(0.8),
+            new_example_instruction_labels[i].fill("yellow", 0.8).back(0.8),
+            wiggle(new_example_instruction_labels[i].rotation, -5, 5, 1.6),
+        )),
+        noop(),
+        noop(),
+        noop(),
+        noop(),
+        noop(),
+        ...[10].map(i => all(
+            new_example_instruction_labels[i].scale(1.8, 0.8).back(0.8),
+            new_example_instruction_labels[i].fill("yellow", 0.8).back(0.8),
+            wiggle(new_example_instruction_labels[i].rotation, -5, 5, 1.6),
+        )),
+    );
+
+    yield* waitUntil("simplesoln");
+    yield* sequence(0.1,
+        ...new_example_metastuff_labels.map(t => t.text("", 0.8)),
+        all(
+            ...issuing_op_backing.map(t => t.size([0, 0], 0.8)),
+            ...issuing_op_circles.map(t => all(t.end(0, 0.8), t.opacity(0, 0.8))),
+            ...issuing_op_timelines.map(t => all(t.end(0, 0.8), t.opacity(0, 0.8))),
+        ),
+    );
+
+    yield* waitUntil("addissue");
+    yield* sequence(0.1,
+        new_example_metastuff_labels[0].text("issued to", 0.8),
+        new_example_metastuff_labels[1].text("RESV_1", 0.8),
+    )
+    const mappings = createRef<Txt>();
+    view.add(<>
+        <RoboticText ref={mappings}
+            // text={"R1 -> RESV_1"}
+            y={-400} fontStyle={""}
+            fill={cosmic_grad_ramps[1][1]}
+            fontSize={80}
+        />
+    </>)
+    yield* waitFor(1);
+    yield* mappings().text("R1 -> RESV_1", 0.8);
+
+    yield* waitUntil("idivissue");
+    yield* sequence(0.1,
+        new_example_metastuff_labels[2].text("issued to", 0.8),
+        new_example_metastuff_labels[3].text("RESV_0", 0.8),
+    );
+    yield* all(
+        all(
+            mappings().fill("yellow", 0.8).wait(0.8).back(0.8),
+            mappings().scale(1.4, 0.8).wait(0.8).back(0.8),
+        ),
+        mappings().text("R1 -> RESV_0", 0.8),
+    );
+
+    yield* waitUntil("uselatest");
+    yield* sequence(0.1,
+        new_example_metastuff_labels[4].text("waiting on", 0.8),
+        new_example_metastuff_labels[5].text("RESV_0", 0.8),
+    );
+
+    yield* waitUntil("registerrename");
+    yield* all(
+        mappings().x(-1600, 1.2),
+        issuing_op_time().x(-1600, 1.2),
+        new_example_instructions_parent().x(-2000, 1.2),
+    );
+
+    const regrename_title = createRef<Txt>();
+
+    const back_node = createRef<Node>();
+    const back_rect = createRef<Rect>();
+    const back_rect_out_highlight = createRef<Rect>();
+    const spotlight_parent = createRef<Node>();
+    const extension_backing = createRefArray<Line>();
+    view.add(<>
+        <Node ref={back_node}
+            position={[0, -400]}
+            zIndex={0}
+        >
+            <Rect ref={back_rect}
+                // size={180}
+                zIndex={-1}
+                fill={"#085066"}
+                rotation={45}
+            />
+            <Rect ref={back_rect_out_highlight}
+                // size={200}
+                stroke={"#007f93"}
+                fill={"#101c34"}
+                zIndex={-2}
+                lineWidth={2}
+                rotation={45}
+            />
+            <RoboticText ref={regrename_title}
+                fontSize={100} x={-20}
+                y={800+400}
+                fill={cosmic_grad_ramps[1][4]}
+                text={"REGISTER RENAMING"}
+            />
+        </Node>
+        <Node ref={spotlight_parent}
+            position={[0, -400]}
+            zIndex={-10}
+        >
+            {...range(4).map(i => <>
+                <Line ref={extension_backing}
+                    points={[[0, 0], [-900, 1400], [900, 1400], [0, 0]]} closed
+                    fill={"#0b3c6c22"} start={0.5} end={0.5} zIndex={10}
+                    rotation={() => (i * 90) + time() * 10}
+                />
+            </>)}
+        </Node>
+    </>);
+    const booploop = yield loopFor(Infinity, function* () {
+        yield* all(
+            back_rect().rotation(back_rect().rotation() + 360, 4),
+            back_rect_out_highlight().rotation(back_rect_out_highlight().rotation() - 360, 4),
+        )
+    });
+
+    yield* sequence(0.2,
+        regrename_title().y(400, 0.8),
+        regrename_title().fontSize(200, 0.8),
+    );
+    yield* waitFor(1);
+    yield* sequence(0.2,
+        regrename_title().fontSize(100, 0.8),
+        regrename_title().y(6, 0.8),
+    );
+    yield* all(
+        regrename_title().text("REG RENAME", 0.8),
+        back_rect().size(180, 0.4),
+        back_rect_out_highlight().size(200, 0.4),
+        sequence(0.05,
+            ...extension_backing.map((t, i) => all(
+                t.start(0, 0.4),
+                t.end(1, 0.4),
+            )),
+        ),
+    );
+
+    yield* waitUntil("isaregisters");
+    const isa_title_big = createRef<Txt>();
+    const isa_regs = createRefArray<Txt>();
+    const internal_title_big = createRef<Txt>();
+    const internal_regs = createRefArray<Txt>();
+    view.add(<>
+        <RoboticText ref={isa_title_big}
+            position={[-700, 120]}
+            // text={"ISA"}
+            fill={cosmic_grad_ramps[1][3] + "77"}
+            fontSize={350}
+        />
+        <RoboticText ref={internal_title_big}
+            position={[730, 120]}
+            // text={"CPU"}
+            fill={cosmic_grad_ramps[1][4] + "77"}
+            fontSize={350}
+        />
+        {range(8).map(i => <RoboticText ref={isa_regs}
+            position={[-400, 120 - (7 * 40) + i * 80]}
+            // text={"R" + i}
+            fill={cosmic_grad_ramps[1][3] + "DD"}
+            fontSize={100}
+        />)}
+        {range(8).map(i => <RoboticText ref={internal_regs}
+            position={[300, 120 - (7 * 40) + i * 80]}
+            // text={"RESV_" + i}
+            fill={cosmic_grad_ramps[1][4] + "DD"}
+            fontSize={100}
+        />)}
+    </>);
+    yield* sequence(0.1,
+        ...isa_regs.map((t, i) => t.text("R" + i, 0.8)),
+        isa_title_big().text("ISA", 0.8),
+    );
+
+    yield* waitUntil("conversion");
+    yield* sequence(0.1,
+        ...internal_regs.map((t, i) => t.text("RESV_" + i, 0.8)),
+        internal_title_big().text("CPU", 0.8),
+    );
+
+    yield* waitUntil("outwarwaw");
+    yield* all(
+        sequence(0.05,
+            ...extension_backing.map((t, i) => all(
+                t.start(0.5, 0.4),
+                t.end(0.5, 0.4),
+            )),
+            back_node().y(-1000, 1.2),
+        ),
+        isa_title_big().x(-2000, 1.2),
+        ...isa_regs.map((t, i) => t.x(-1600, 1.2)),
+        internal_title_big().x(2000, 1.2),
+        ...internal_regs.map((t, i) => t.x(1600, 1.2)),
+    );
+
+
+
+    yield* waitUntil("removememarker_in");
+    const redremoveme = createRef<Txt>();
+    view.add(<>
+        <RoboticText ref={redremoveme}
+            fontSize={250}
+            fill={"red"}
+            fontStyle={""}
+            text={"REMOVE THIS PART"}
+        />
+    </>)
+    yield* waitUntil("removememarker_out");
+    redremoveme().remove();
+    
+
 
     yield* waitUntil("end");
 });

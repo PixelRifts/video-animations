@@ -7,7 +7,7 @@
     },
     {
       "name": "add_uops",
-      "targetTime": 1.5800000000000003
+      "targetTime": 1.7900000000000003
     },
     {
       "name": "firstuop",
@@ -83,7 +83,7 @@
     },
     {
       "name": "second_uop",
-      "targetTime": 114.58609691262315
+      "targetTime": 121.68609691262311
     },
     {
       "name": "tick1_statuscheck",
@@ -99,7 +99,7 @@
     },
     {
       "name": "tick2_statuscheck",
-      "targetTime": 140.71768353915647
+      "targetTime": 141.0291495419779
     },
     {
       "name": "tick2_finishedblocks",
@@ -115,7 +115,7 @@
     },
     {
       "name": "tick4",
-      "targetTime": 165.11003558023796
+      "targetTime": 167.71003558023799
     },
     {
       "name": "tick4_r1done",
@@ -138,8 +138,140 @@
       "targetTime": 185.14838170623588
     },
     {
+      "name": "inorderissue",
+      "targetTime": 195.79204791273816
+    },
+    {
+      "name": "stillnotoptimal",
+      "targetTime": 206.12281037325116
+    },
+    {
+      "name": "whereouralgstalls",
+      "targetTime": 210.00728178450376
+    },
+    {
+      "name": "highlight_deps_highlevel",
+      "targetTime": 213.15292858687948
+    },
+    {
+      "name": "removethesestalls",
+      "targetTime": 225.5126375079307
+    },
+    {
+      "name": "WAWdependencies",
+      "targetTime": 233.27627390721355
+    },
+    {
+      "name": "naivenostall",
+      "targetTime": 249.2270924008584
+    },
+    {
+      "name": "WARdependencies",
+      "targetTime": 260.65372282125406
+    },
+    {
+      "name": "RAWdependencies",
+      "targetTime": 273.76085046466403
+    },
+    {
+      "name": "futuredependsonpresent",
+      "targetTime": 279.90885270870064
+    },
+    {
+      "name": "wecandoonething",
+      "targetTime": 290.49071030798444
+    },
+    {
+      "name": "reservation_station",
+      "targetTime": 296.0759701040424
+    },
+    {
+      "name": "holdwithtags",
+      "targetTime": 311.84291909501104
+    },
+    {
+      "name": "loopback",
+      "targetTime": 323.460658714744
+    },
+    {
+      "name": "fu_complete_uop",
+      "targetTime": 327.50034899604987
+    },
+    {
+      "name": "whatarethesetagsyouspeakofsohighly",
+      "targetTime": 347.3349903452514
+    },
+    {
+      "name": "showexampleuop",
+      "targetTime": 354.07054861967623
+    },
+    {
+      "name": "heresanexample",
+      "targetTime": 370.4449583732238
+    },
+    {
+      "name": "add_and_idiv",
+      "targetTime": 374.14495837322386
+    },
+    {
+      "name": "highlightr1",
+      "targetTime": 382.4057135324738
+    },
+    {
+      "name": "exampletimelinesagain",
+      "targetTime": 387.0508122862918
+    },
+    {
+      "name": "subwillmatchthat",
+      "targetTime": 394.3242858826285
+    },
+    {
+      "name": "tagsreflecttimeandreg",
+      "targetTime": 398.8925707716735
+    },
+    {
+      "name": "simplesoln",
+      "targetTime": 405.2259306658946
+    },
+    {
+      "name": "addissue",
+      "targetTime": 417.32438692365145
+    },
+    {
+      "name": "idivissue",
+      "targetTime": 425.8858699020229
+    },
+    {
+      "name": "uselatest",
+      "targetTime": 433.7894090448534
+    },
+    {
+      "name": "registerrename",
+      "targetTime": 436.64323670431054
+    },
+    {
+      "name": "isaregisters",
+      "targetTime": 441.64323670431054
+    },
+    {
+      "name": "conversion",
+      "targetTime": 447.85384031613563
+    },
+    {
+      "name": "outwarwaw",
+      "targetTime": 456.0519178848073
+    },
+    {
+      "name": "removememarker_in",
+      "targetTime": 457.45191788480736
+    },
+    {
+      "name": "removememarker_out",
+      "targetTime": 468.9418995700146
+    },
+    {
       "name": "end",
-      "targetTime": 468.6755311386718
+      "targetTime": 760.3250687745431
     }
   ],
   "seed": 3544040552
