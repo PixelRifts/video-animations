@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "transition_section3",
+      "targetTime": 0
+    },
+    {
+      "name": "showagnerfog",
+      "targetTime": 23.279420436573837
+    },
+    {
+      "name": "byevideo",
+      "targetTime": 31.27997094225527
+    },
+    {
+      "name": "end",
+      "targetTime": 37.925797301655464
+    }
+  ],
+  "seed": 2627851930
+}

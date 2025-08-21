@@ -198,10 +198,6 @@
       "targetTime": 327.50034899604987
     },
     {
-      "name": "whatarethesetagsyouspeakofsohighly",
-      "targetTime": 347.3349903452514
-    },
-    {
       "name": "showexampleuop",
       "targetTime": 354.07054861967623
     },
@@ -270,8 +266,144 @@
       "targetTime": 468.9418995700146
     },
     {
+      "name": "preciseexceptions",
+      "targetTime": 473.4283220840188
+    },
+    {
+      "name": "idivdivd0",
+      "targetTime": 479.9686070802634
+    },
+    {
+      "name": "biggerissue",
+      "targetTime": 492.7434834529303
+    },
+    {
+      "name": "jump_mispredict?",
+      "targetTime": 500.7975730285612
+    },
+    {
+      "name": "fortunately",
+      "targetTime": 518.9067689094978
+    },
+    {
+      "name": "commenceupgrade",
+      "targetTime": 523.2730099134943
+    },
+    {
+      "name": "pushinguopsagain",
+      "targetTime": 532.9131684722138
+    },
+    {
+      "name": "issueduopsfromrob",
+      "targetTime": 537.1350962036307
+    },
+    {
+      "name": "issuedtoRESVs",
+      "targetTime": 538.7350962036309
+    },
+    {
+      "name": "issuedtofus",
+      "targetTime": 540.335096203631
+    },
+    {
+      "name": "execfinished",
+      "targetTime": 546.5098146060557
+    },
+    {
+      "name": "finalhighlightregfiles",
+      "targetTime": 549.4119939731877
+    },
+    {
+      "name": "rewirecdb",
+      "targetTime": 551.0119939731876
+    },
+    {
+      "name": "retirementstepping",
+      "targetTime": 555.5119939731876
+    },
+    {
+      "name": "uopretirementreveal",
+      "targetTime": 569.8119939731869
+    },
+    {
+      "name": "whathappenedhere",
+      "targetTime": 574.711993973187
+    },
+    {
+      "name": "ooocompletionwastheproblem",
+      "targetTime": 585.0151166134386
+    },
+    {
+      "name": "in_order_completion",
+      "targetTime": 592.4599060216121
+    },
+    {
+      "name": "bringemin",
+      "targetTime": 600.2599060216123
+    },
+    {
+      "name": "illeffects",
+      "targetTime": 601.4599060216124
+    },
+    {
+      "name": "retirementstepping_AGAIN",
+      "targetTime": 612.559906021613
+    },
+    {
+      "name": "OKTHATSDONE",
+      "targetTime": 624.569211333916
+    },
+    {
+      "name": "memory_refs",
+      "targetTime": 625.4609952346597
+    },
+    {
+      "name": "highlight_dcache_loadstore",
+      "targetTime": 633.8488887041805
+    },
+    {
+      "name": "add_loadstorequeues",
+      "targetTime": 643.6126314736797
+    },
+    {
+      "name": "zoomingbackout",
+      "targetTime": 657.462884570588
+    },
+    {
+      "name": "reservationstationshighlight",
+      "targetTime": 673.8441823466597
+    },
+    {
+      "name": "responsibility",
+      "targetTime": 680.2140225225171
+    },
+    {
+      "name": "addphysicalregfile",
+      "targetTime": 691.582445921773
+    },
+    {
+      "name": "rename_step",
+      "targetTime": 709.4797528796738
+    },
+    {
+      "name": "regfileindexes",
+      "targetTime": 718.069581784718
+    },
+    {
+      "name": "simplifyresv",
+      "targetTime": 725.2041417402233
+    },
+    {
+      "name": "indicesagain",
+      "targetTime": 730.6465867798307
+    },
+    {
+      "name": "derived",
+      "targetTime": 736.3232983316461
+    },
+    {
       "name": "end",
-      "targetTime": 760.3250687745431
+      "targetTime": 755.0932261824626
     }
   ],
   "seed": 3544040552
