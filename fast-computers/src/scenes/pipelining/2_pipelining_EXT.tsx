@@ -199,7 +199,7 @@ export default makeScene2D(function* (view) {
         >
             <RoboticText ref={comp_title}
                 fontSize={100}  
-                offset={[0, 0.5]} position={[-710, 460]}
+                offset={[0, 0.5]} position={[-690, 460]}
                 text={"Stage 3"} fill={cosmic_grad_ramps[1][0]}
             />
             <Rect ref={backsquare}
@@ -1423,4 +1423,9 @@ export default makeScene2D(function* (view) {
     yield* finalbuffer_regfile_data_wire().end(1, 0.5);
 
     yield* waitUntil("end");
+    yield* all(
+        computer().x(-2000, 0.8),
+        computer_panel_highlight_in().x(-2000, 0.8),
+        computer_panel_highlight_out().x(-2000, 0.8),
+    )
 })

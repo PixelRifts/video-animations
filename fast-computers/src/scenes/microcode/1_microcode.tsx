@@ -37,7 +37,7 @@ export default makeScene2D(function* (view) {
     const back_rect_out_highlight = createRef<Rect>();
     view.add(<>
         <Node ref={back_node}
-            position={[0,0]}
+            position={[0,-800]}
             zIndex={-5}
         >
             <Rect ref={back_rect}
@@ -60,6 +60,7 @@ export default makeScene2D(function* (view) {
             />
         </Node>)
     </>);
+    yield* back_node().y(0, 1.2);
     
     const isaback_loop = yield loopFor(Infinity, function* () {
         yield* all(

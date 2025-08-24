@@ -787,7 +787,7 @@ export default makeScene2D(function* (view) {
         )),
     );
     yield* waitFor(2);
-    const x_locs = [-50, 0, 108]
+    const x_locs = [-44, 0, 99]
     yield* sequence(0.1,
         register_file_clone().x(-2000, 0.8),
         ...inner_texts.map((IT, i) => sequence(0.03,
@@ -1013,13 +1013,9 @@ export default makeScene2D(function* (view) {
     yield* sequence(0.1,
         ...new_txt_parts.map(r => r.text("", 0.4)),
         all(
-            isa_lay().rotation(90, 0.5),
-            isa_lay().scale(0, 0.5),
+            isa_lay().y(isa_lay().y() - 800, 0.5),
+            back_nodes().y(back_nodes().y() - 800, 0.5),
         ),
-        all(
-            back_nodes().rotation(90, 0.5),
-            back_nodes().scale(0, 0.5),
-        )
     );
     
     yield* waitUntil("end");

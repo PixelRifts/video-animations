@@ -143,7 +143,7 @@ export default makeScene2D(function* (view) {
             <RoboticText ref={comp_title}
                 fontSize={100}  
                 offset={[0, 0.5]} position={[-700, 465]}
-                text={"Stage 4"} fill={cosmic_grad_ramps[1][0]}
+                text={"Stage 6"} fill={cosmic_grad_ramps[1][0]}
             />
             <Rect ref={backsquare}
                 size={1700}
@@ -4767,7 +4767,7 @@ export default makeScene2D(function* (view) {
     yield* all(
         ir_ctrl_data_wire().points([ir().top(), control_unit().bottom()], 0.5),
         control_unit_buffer_data_wire().end(0, 0.5),
-        prefetch_ir_data_wire().points([[-386-30, -281], [-306+10, -281]], 0),
+        prefetch_ir_data_wire().points([[-386-30, -281], [-306+10, -281]], 0.5),
     );
     yield* all(
         internals().x(internals().x(), 0.5),
@@ -4777,19 +4777,6 @@ export default makeScene2D(function* (view) {
     
 
     
-    const stage5_presenter = createRef<Line>();
-    computer().add(<Line ref={stage5_presenter}
-        position={[-1200, 432]}
-        points={[[-600, 50], [160, 50], [200, -50], [-560, -50]]}
-        closed fill={"#d65db1"}
-    >
-    </Line>)
-    yield chain(
-        stage5_presenter().x(-550, 0.5),
-        all(comp_title().text("STAGE 5", 0.2), comp_title().left(comp_title().left(), 0.2)),
-        stage5_presenter().x(-1200, 0.5),
-    );
-
     ooo_register_file.x(ooo_register_file.x() + 100);
     ooo_rob_regfile_wire().x(ooo_rob_regfile_wire().x() + 100)
     physical_reg_file.x(physical_reg_file.x() + 100);
@@ -4810,7 +4797,7 @@ export default makeScene2D(function* (view) {
 
     yield* waitUntil("end");
     yield* all(
-        computer().x(-2000, 1.2),
+        computer_stuff().x(-2000, 1.2),
         THEBIGONE.x(THEBIGONE.x()-2000, 1.2),
     )
 });

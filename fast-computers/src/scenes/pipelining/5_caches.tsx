@@ -25,7 +25,7 @@ export default makeScene2D(function* (view) {
 
     // #region Pipeline Diagram Stuff
     const diagram_stuff = createRef<Rect>();
-    view.add(<Rect ref={diagram_stuff} position={[2000, 0]}></Rect>);
+    view.add(<Rect ref={diagram_stuff} position={[0, 0]}></Rect>);
     const pipeline_diagram = createRef<Rect>();
     const pipeline_diagram_panel_highlight_in = createRef<Rect>();
     const pipeline_diagram_panel_highlight_out = createRef<Rect>();
@@ -224,7 +224,6 @@ export default makeScene2D(function* (view) {
     // #endregion Pipeline Digram Stuff
 
     yield* waitUntil("bringbackdiagram");
-    yield* diagram_stuff().x(0, 1.2);
     diagram_stuff().save();
     yield* all(
         diagram_stuff().scale(1.9, 1.2),

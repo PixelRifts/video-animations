@@ -1,8 +1,10 @@
-import { Circle, Gradient, Icon, Line, makeScene2D, Node, Rect, Txt } from "@motion-canvas/2d";
+import { Circle, Gradient, Icon, Line, makeScene2D, Node, Rect, Txt, Video } from "@motion-canvas/2d";
 import { all, cancel, chain, createEaseOutBack, createRef, createRefArray, easeInBack, easeInBounce, easeOutBack, easeOutBounce, easeOutSine, linear, loop, loopFor, range, sequence, useRandom, Vector2, waitFor, waitUntil } from "@motion-canvas/core";
 import { random_rect_point_and_dir, RoboticText, star_coords } from "../../components/defaults";
 import { cosmic_grad, cosmic_grad_ramps } from "../../components/palette";
 
+import stage1 from "../../video/Smol_Stage1.mp4";
+import stage5 from "../../video/Smol_Stage5.mp4";
 
 export default makeScene2D(function* (view) {
     const comps_are_fast_refs = createRefArray<Txt>();
@@ -226,30 +228,62 @@ export default makeScene2D(function* (view) {
     // cancel(moving);
 
     // TODO INSERT THE LATER ANIMATIONS
-
     const view_splitter = createRef<Node>();
     const splitter_mid_line = createRef<Line>();
     const splitter_left_line = createRef<Line>();
     const splitter_right_line = createRef<Line>();
+    const splitter_region_left = createRef<Line>();
+    const splitter_region_right = createRef<Line>();
+    const initial_stage_vid = createRef<Video>();
+    const final_stage_vid = createRef<Video>();
     view.add(<>
-        <Node ref={view_splitter} scaleX={-1}>
+        <Node ref={view_splitter} scaleX={1}>
             <Line
                 ref={splitter_mid_line}
-                points={[[80, -800], [-200, 40], [200, -40], [-80, 800]]}
+                points={[[80, -800], [-10, 10], [10, -10], [-80, 800]]}
                 lineWidth={12} stroke={"white"} end={0}
             />
             <Line
                 ref={splitter_left_line}
                 x={-18} y={16}
-                points={[[80, -800], [-200, 40], [200, -40], [-80, 800]]}
+                points={[[80, -800], [-10, 10], [10, -10], [-80, 800]]}
                 lineWidth={4} stroke={"white"} end={0}
             />
             <Line
                 ref={splitter_right_line}
                 x={18} y={-16}
-                points={[[80, -800], [-200, 40], [200, -40], [-80, 800]]}
+                points={[[80, -800], [-10, 10], [10, -10], [-80, 800]]}
                 lineWidth={4} stroke={"white"} end={0}
             />
+            
+            <Line
+                ref={splitter_region_right}
+                x={-18} y={16}
+                points={[[-1200, -800], [80, -800], [-10, 10], [10, -10], [-80, 800], [-1200, 800]]}
+                lineWidth={4}
+                clip closed
+            >
+                <Video ref={initial_stage_vid}
+                    src={stage1}
+                    scale={0.7} rotation={-10}
+                    x={+18-2000} y={-16+50}
+                    playbackRate={0.5}
+                />
+            </Line>
+            <Line
+                ref={splitter_region_left}
+                x={18} y={-16}
+                points={[[1200, -800], [80, -800], [-10, 10], [10, -10], [-80, 800], [1200, 800]]}
+                lineWidth={4}
+                clip closed
+            >
+                <Video ref={final_stage_vid}
+                    src={stage5}
+                    scale={0.7} rotation={-10}
+                    x={-18+2000} y={16-50}
+                    playbackRate={0.5}
+                />
+            </Line>
         </Node>
     </>);
     
@@ -260,11 +294,19 @@ export default makeScene2D(function* (view) {
             splitter_right_line().end(1, 0.8),
         )
     );
+    initial_stage_vid().play();
+    final_stage_vid().play();
+    yield* all(
+        initial_stage_vid().x(-400, 0.8),
+        final_stage_vid().x(500, 0.8),
+    )
 
     // TODO INSERT THE LATER ANIMATIONS
 
     yield* waitUntil("peepotalk");
     yield* sequence(0.1,
+        initial_stage_vid().x(-2000, 0.8),
+        final_stage_vid().x(2000, 0.8),
         splitter_mid_line().start(1, 0.8),
         all(
             splitter_left_line().start(1, 0.8),
