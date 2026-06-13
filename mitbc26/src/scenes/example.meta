@@ -1,0 +1,10 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "size_change_test",
+      "targetTime": 1.2
+    }
+  ],
+  "seed": 3160410777
+}

@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_map_a",
+      "targetTime": 25.882735674273395
+    },
+    {
+      "name": "oh_power_of_kings",
+      "targetTime": 28.882735674273395
+    },
+    {
+      "name": "kitty",
+      "targetTime": 31.527595884354717
+    },
+    {
+      "name": "end",
+      "targetTime": 107.13537766453172
+    }
+  ],
+  "seed": 761541328
+}
