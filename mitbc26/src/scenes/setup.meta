@@ -14,8 +14,44 @@
       "targetTime": 31.527595884354717
     },
     {
+      "name": "begin_infiltration",
+      "targetTime": 35.03596981760675
+    },
+    {
+      "name": "backstab",
+      "targetTime": 40.67065480780599
+    },
+    {
+      "name": "resume_backstab",
+      "targetTime": 42.67065480780599
+    },
+    {
+      "name": "ATTACKKKKK",
+      "targetTime": 44.23732147447261
+    },
+    {
+      "name": "grunt_work",
+      "targetTime": 48.27031700671721
+    },
+    {
+      "name": "highlighteverything",
+      "targetTime": 56.05674768786873
+    },
+    {
+      "name": "removeall",
+      "targetTime": 60.276834928686796
+    },
+    {
+      "name": "botscript",
+      "targetTime": 81.27175827448308
+    },
+    {
+      "name": "constraint",
+      "targetTime": 88.66822646175575
+    },
+    {
       "name": "end",
-      "targetTime": 107.13537766453172
+      "targetTime": 108.64475415928285
     }
   ],
   "seed": 761541328

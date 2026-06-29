@@ -1,0 +1,14 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "cheese_mines",
+      "targetTime": 30.552693058038958
+    },
+    {
+      "name": "end",
+      "targetTime": 188.4128180666814
+    }
+  ],
+  "seed": 1994067177
+}

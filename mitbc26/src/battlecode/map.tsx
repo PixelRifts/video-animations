@@ -1,5 +1,5 @@
-import { Gradient, Rect, RectProps, computed, initial, signal, vector2Signal } from "@motion-canvas/2d";
-import { Computed, PossibleVector2, SignalValue, SimpleSignal, Vector2, Vector2Signal, createComputed, createEaseOutBack, debug, easeOutBack, linear } from "@motion-canvas/core";
+import { ComponentChildren, Gradient, Layout, Node, Rect, RectProps, computed, initial, signal, vector2Signal } from "@motion-canvas/2d";
+import { Computed, PossibleVector2, Reference, SignalValue, SimpleSignal, ThreadGenerator, Vector2, Vector2Signal, createComputed, createEaseOutBack, createRef, createSignal, debug, easeOutBack, linear, waitFor, waitUntil } from "@motion-canvas/core";
 
 export interface BattlecodeMapProps extends RectProps {
     map_bounds?:   SignalValue<PossibleVector2>;
@@ -36,7 +36,7 @@ export class BattlecodeMap extends Rect {
     @signal()
     public declare readonly base_colors: SimpleSignal<string[], this>;
 
-    private tile_ease = createEaseOutBack(1);
+    private additional_items = createRef<Node>();
 
     @computed()
     public real_map_bounds() {
@@ -90,6 +90,8 @@ export class BattlecodeMap extends Rect {
 
     constructor(props: BattlecodeMapProps) {
         super(props);
+
+        this.add(<Node ref={this.additional_items}></Node>);
     }
     
     private get_tile_style(x: number, y: number, tile_size: number, stride: number, context: CanvasRenderingContext2D, bounds: Vector2, base: string): (string | CanvasGradient) {
@@ -185,6 +187,14 @@ export class BattlecodeMap extends Rect {
         const pct = this.show_pct();
         const max_index = (bounds.x - 1) + (bounds.y - 1);
 
+        context.save();
+        context.fillStyle = "#100a0b";
+        context.beginPath();
+        context.roundRect(-20, -20, total_width+40, total_height+40, radius);
+        context.fill();
+        context.closePath();
+        context.restore();
+
         for (let y = 0; y < bounds.y; y++) {
             for (let x = 0; x < bounds.x; x++) {
                 const index = x + y;
@@ -213,5 +223,32 @@ export class BattlecodeMap extends Rect {
 
     public* fade_in(duration = 1.2) {
         yield* this.show_pct(1, duration, linear);
+    }
+    
+    public tick = 0;
+    public tick_timer = createSignal(0);
+
+    public* run_ticks(tick_time: number, wait_time: number) {
+        while (true) {
+            yield* waitFor(wait_time);
+        
+            this.tick++;
+            yield* this.tick_timer(this.tick, tick_time);
+        }
+    }
+
+    public* wait_for_next_tick(): ThreadGenerator {
+        const current = this.tick;
+        
+        while (this.tick <= current) {
+            yield;
+        }
+    }
+
+    public add_item(x: number, y: number, _node: Node) {
+        const node = _node as Layout;
+        node.position(this.get_tile_anchor(x, y));
+        node.size(this.tile_size() - 4);
+        this.additional_items().add(node);
     }
 }

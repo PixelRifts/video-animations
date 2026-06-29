@@ -1,4 +1,4 @@
-import { Img, withDefaults } from "@motion-canvas/2d";
+import { Img, Rect, withDefaults } from "@motion-canvas/2d";
 import { BattlecodeBot } from "../bot";
 import { Origin, Vector2 } from "@motion-canvas/core";
 
@@ -31,6 +31,11 @@ import cat_topleft     from "./img/robots/cat/cat_8.png"; import cat_nom_topleft
 
 import cheddar_ratking from "./img/robots/cheddar/rat_king_64x64.png";
 import plum_ratking    from "./img/robots/plum/rat_king_64x64.png";
+
+import cheese_mine from "./img/icons/cheese_mine.png";
+import cheese      from "./img/icons/cheese_64x64.png";
+import cat_trap    from "./img/icons/cat_trap.png";
+import rat_trap    from "./img/icons/rat_trap.png";
 
 const origins = Object.values(Origin) as Origin[];
 
@@ -96,6 +101,12 @@ export const Cat = withDefaults(BattlecodeBot, {
     },
     tiles_occupied: 2,
 });
+
+export const Dirt       = withDefaults(Rect, { fill: "#3B2931" });
+export const CheeseMine = withDefaults(Img,  { src: cheese_mine });
+export const Cheese     = withDefaults(Img,  { src: cheese });
+export const CatTrap    = withDefaults(Img,  { src: cat_trap });
+export const RatTrap    = withDefaults(Img,  { src: rat_trap });
 
 export enum TileType {
     Empty = 0,
