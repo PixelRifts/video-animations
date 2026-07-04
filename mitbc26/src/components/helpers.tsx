@@ -1,4 +1,5 @@
 import { Code, Txt, withDefaults } from "@motion-canvas/2d";
+import { Signal, easeInCirc, easeOutCirc } from "@motion-canvas/core";
 
 export const RoboticTxt = withDefaults(Txt, {
     fontFamily: "Audiowide",
@@ -16,4 +17,14 @@ export function* append_to_code(str: Code, word: string, duration: number) {
     for (const letter of word) {
         yield* str.code(str.code().fragments + letter, for_one);
     }
+}
+
+
+export function* wiggle(item: Signal<any, any, any, any>, dA: any, dB: any, duration: number) {
+    const oldsize = item();
+    yield* item(dA, duration/4, easeOutCirc);
+    yield* item(oldsize, duration/4, easeInCirc);
+    
+    yield* item(dB, duration/4, easeOutCirc);
+    yield* item(oldsize, duration/4, easeInCirc);
 }

@@ -103,6 +103,7 @@ export const Cat = withDefaults(BattlecodeBot, {
 });
 
 export const Dirt       = withDefaults(Rect, { fill: "#3B2931" });
+export const Wall       = withDefaults(Rect, { fill: "#52485A" });
 export const CheeseMine = withDefaults(Img,  { src: cheese_mine });
 export const Cheese     = withDefaults(Img,  { src: cheese });
 export const CatTrap    = withDefaults(Img,  { src: cat_trap });

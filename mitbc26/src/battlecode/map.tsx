@@ -231,9 +231,8 @@ export class BattlecodeMap extends Rect {
     public* run_ticks(tick_time: number, wait_time: number) {
         while (true) {
             yield* waitFor(wait_time);
-        
-            this.tick++;
             yield* this.tick_timer(this.tick, tick_time);
+            this.tick++;
         }
     }
 

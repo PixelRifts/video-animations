@@ -6,8 +6,72 @@
       "targetTime": 30.552693058038958
     },
     {
+      "name": "cheese_spawn_loop",
+      "targetTime": 32.45269305803896
+    },
+    {
+      "name": "the_gathering",
+      "targetTime": 36.45269305803896
+    },
+    {
+      "name": "wrong_moment",
+      "targetTime": 44.662575224008044
+    },
+    {
+      "name": "goaway",
+      "targetTime": 49.99808692690898
+    },
+    {
+      "name": "why_no_beeline",
+      "targetTime": 95.818413938416
+    },
+    {
+      "name": "removing_dirt",
+      "targetTime": 106.95845194174129
+    },
+    {
+      "name": "impassible",
+      "targetTime": 110.21036365636108
+    },
+    {
+      "name": "dev_team",
+      "targetTime": 116.40987232141711
+    },
+    {
+      "name": "pflecture",
+      "targetTime": 123.84397590826612
+    },
+    {
+      "name": "dobug",
+      "targetTime": 129.24397590826612
+    },
+    {
+      "name": "wallfollow",
+      "targetTime": 133.011747893674
+    },
+    {
+      "name": "backtogreed",
+      "targetTime": 136.56653440499556
+    },
+    {
+      "name": "kindofworks",
+      "targetTime": 140.91425665556645
+    },
+    {
+      "name": "strategy",
+      "targetTime": 149.84665690871918
+    },
+    {
+      "name": "bugme",
+      "targetTime": 166.0466569087189
+    },
+    {
+      "name": "returnofkings",
+      "targetTime": 171.48802940704664
+    },
+    {
       "name": "end",
-      "targetTime": 188.4128180666814
+      "targetTime": 189.20052939309988
     }
   ],
   "seed": 1994067177

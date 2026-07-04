@@ -1,5 +1,5 @@
 import { CanvasStyleSignal, Img, ImgProps, Layout, Node, PossibleCanvasStyle, Rect, colorSignal, drawImage, initial, signal } from "@motion-canvas/2d";
-import { BBox, Origin, Reference, SignalValue, SimpleSignal, Spacing, ThreadGenerator, Vector2, all, createRef, createSignal, easeInExpo, easeInOutExpo, easeInOutSine, easeInSine, easeOutExpo, easeOutSine, linear, originToOffset } from "@motion-canvas/core";
+import { BBox, Origin, Reference, SignalValue, SimpleSignal, Spacing, ThreadGenerator, Vector2, all, createRef, createSignal, debug, easeInExpo, easeInOutExpo, easeInOutSine, easeInSine, easeOutExpo, easeOutSine, linear, originToOffset, useLogger } from "@motion-canvas/core";
 import { BattlecodeMap } from "./map";
 import { add_dir } from "./helpers";
 
@@ -39,6 +39,7 @@ export class BattlecodeBot extends Layout {
 
         this.map = props.map;
         this.pos = props.pos;
+        this.dir = props.dir;
         this.tiles_occupied = "tiles_occupied" in props ? props.tiles_occupied : 1;
         this.directional_base_sprites = props.directional_base_sprites;
 
@@ -96,6 +97,11 @@ export class BattlecodeBot extends Layout {
         yield* this.move_to_pos(new_pos, duration);
     }
 
+    public* move_forward(duration: number) {
+        const new_pos = add_dir(this.pos, this.dir);
+        yield* this.move_to_pos(new_pos, duration);
+    }
+
     public* execute_moves(duration: number, ...dirs: Origin[]) {
         for (const dir of dirs) {
             yield* this.look_and_move(dir, duration);
@@ -134,7 +140,6 @@ export class BattlecodeBot extends Layout {
     }
 
     public* place_item(dir: Origin, n: Node) {
-
         const norm_offset = originToOffset(dir);
         const offset = norm_offset.scale(10);
         this.look_in_dir(dir);
