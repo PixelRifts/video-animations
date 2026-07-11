@@ -1,0 +1,70 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "cheese_mines",
+      "targetTime": 14.114478467077022
+    },
+    {
+      "name": "communication_title",
+      "targetTime": 17.49722208241628
+    },
+    {
+      "name": "nosharedvars",
+      "targetTime": 21.80855766004767
+    },
+    {
+      "name": "instead",
+      "targetTime": 30.046102700906246
+    },
+    {
+      "name": "showsqueaking",
+      "targetTime": 35.66769090204862
+    },
+    {
+      "name": "otherrats",
+      "targetTime": 38.90102423538191
+    },
+    {
+      "name": "squeak_content",
+      "targetTime": 44.01127685889281
+    },
+    {
+      "name": "danger",
+      "targetTime": 51.176114317099085
+    },
+    {
+      "name": "second_option",
+      "targetTime": 58.692407856595686
+    },
+    {
+      "name": "allaccess",
+      "targetTime": 62.83016948827839
+    },
+    {
+      "name": "scroll_down",
+      "targetTime": 64.0301694882784
+    },
+    {
+      "name": "tenbit",
+      "targetTime": 67.01320137148726
+    },
+    {
+      "name": "kingswrite",
+      "targetTime": 71.27595223814015
+    },
+    {
+      "name": "babiesread",
+      "targetTime": 74.06051369980058
+    },
+    {
+      "name": "clearall",
+      "targetTime": 76.03006959825889
+    },
+    {
+      "name": "end",
+      "targetTime": 77.04889188166565
+    }
+  ],
+  "seed": 250363215
+}

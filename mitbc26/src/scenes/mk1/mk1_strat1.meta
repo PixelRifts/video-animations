@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_map_a",
+      "targetTime": 3.3629127695532977
+    },
+    {
+      "name": "recordloc0",
+      "targetTime": 10.712912769553286
+    },
+    {
+      "name": "return_of_kings",
+      "targetTime": 14.137772122849695
+    },
+    {
+      "name": "bitwiseme",
+      "targetTime": 20.94790159740793
+    },
+    {
+      "name": "dothethingbart",
+      "targetTime": 28.347901597407933
+    },
+    {
+      "name": "otherguys",
+      "targetTime": 32.54790159740793
+    },
+    {
+      "name": "do_pathfind",
+      "targetTime": 36.38519127271346
+    },
+    {
+      "name": "goaway",
+      "targetTime": 42.14572847445024
+    },
+    {
+      "name": "end",
+      "targetTime": 43.34572847445024
+    }
+  ],
+  "seed": 276574611
+}

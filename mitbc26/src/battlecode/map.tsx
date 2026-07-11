@@ -188,9 +188,11 @@ export class BattlecodeMap extends Rect {
         const max_index = (bounds.x - 1) + (bounds.y - 1);
 
         context.save();
-        context.fillStyle = "#100a0b";
+        const back_alpha = Math.floor(this.show_pct() * 255);
+        context.fillStyle = `#100a0b${back_alpha.toString(16).padStart(2, '0')}`;
         context.beginPath();
-        context.roundRect(-20, -20, total_width+40, total_height+40, radius);
+        const half_extent = 40
+        context.roundRect(-half_extent, -half_extent, total_width+half_extent*2, total_height+half_extent*2, radius);
         context.fill();
         context.closePath();
         context.restore();

@@ -99,6 +99,30 @@ export const Cat = withDefaults(BattlecodeBot, {
         [Origin.Top]:         cat_top,
         [Origin.TopLeft]:     cat_topleft,
     },
+    directional_action_sprites: {
+        eat: {
+            [Origin.Middle]:      cat_nom_left,
+            [Origin.Left]:        cat_nom_left,
+            [Origin.BottomLeft]:  cat_nom_bottomleft,
+            [Origin.Bottom]:      cat_nom_bottom,
+            [Origin.BottomRight]: cat_nom_bottomright,
+            [Origin.Right]:       cat_nom_right,
+            [Origin.TopRight]:    cat_nom_topright,
+            [Origin.Top]:         cat_nom_top,
+            [Origin.TopLeft]:     cat_nom_topleft,
+        },
+        attack: {
+            [Origin.Middle]:      cat_owie_left,
+            [Origin.Left]:        cat_owie_left,
+            [Origin.BottomLeft]:  cat_owie_bottomleft,
+            [Origin.Bottom]:      cat_owie_bottom,
+            [Origin.BottomRight]: cat_owie_bottomright,
+            [Origin.Right]:       cat_owie_right,
+            [Origin.TopRight]:    cat_owie_topright,
+            [Origin.Top]:         cat_owie_top,
+            [Origin.TopLeft]:     cat_owie_topleft,
+        },
+    },
     tiles_occupied: 2,
 });
 

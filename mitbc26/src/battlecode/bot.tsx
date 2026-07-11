@@ -1,5 +1,5 @@
 import { CanvasStyleSignal, Img, ImgProps, Layout, Node, PossibleCanvasStyle, Rect, colorSignal, drawImage, initial, signal } from "@motion-canvas/2d";
-import { BBox, Origin, Reference, SignalValue, SimpleSignal, Spacing, ThreadGenerator, Vector2, all, createRef, createSignal, debug, easeInExpo, easeInOutExpo, easeInOutSine, easeInSine, easeOutExpo, easeOutSine, linear, originToOffset, useLogger } from "@motion-canvas/core";
+import { BBox, Origin, Reference, SignalValue, SimpleSignal, Spacing, ThreadGenerator, Vector2, all, createRef, createSignal, debug, easeInExpo, easeInOutExpo, easeInOutSine, easeInSine, easeOutExpo, easeOutSine, linear, originToOffset, useLogger, waitFor } from "@motion-canvas/core";
 import { BattlecodeMap } from "./map";
 import { add_dir } from "./helpers";
 
@@ -12,6 +12,7 @@ export interface BattlecodeBotProps extends ImgProps {
 
     tiles_occupied?: number;
     directional_base_sprites?: Record<Origin, string>;
+    directional_action_sprites?: Record<string, Record<Origin, string>>;
 }
 
 export class BattlecodeBot extends Layout {
@@ -20,6 +21,7 @@ export class BattlecodeBot extends Layout {
     public dir: Origin;
     public tiles_occupied: number;
     public directional_base_sprites: Record<Origin, string>;
+    public directional_action_sprites: Record<string, Record<Origin, string>>;
     
     private pct = createSignal(0);
     
@@ -42,7 +44,9 @@ export class BattlecodeBot extends Layout {
         this.dir = props.dir;
         this.tiles_occupied = "tiles_occupied" in props ? props.tiles_occupied : 1;
         this.directional_base_sprites = props.directional_base_sprites;
-
+        this.directional_action_sprites = props.directional_action_sprites ?? {};
+        
+        this.opacity(this.map.is_not_visible(this.pos.x, this.pos.y) ? 0 : 1);
         this.size(() => (this.tiles_occupied * this.map.tile_size() + (this.tiles_occupied - 1) * this.map.tile_gap()
                          - this.map.radius().top * 2 - BOT_PADDING * 2));
 
@@ -91,6 +95,13 @@ export class BattlecodeBot extends Layout {
         this.img_ref().src(this.directional_base_sprites[this.dir]);
     }
 
+    // idk how to do this properly and im too lazy
+    public* look_in_dir_gen(new_dir: Origin) {
+        this.dir = new_dir;
+        this.img_ref().src(this.directional_base_sprites[this.dir]);
+    }
+
+
     public* look_and_move(dir: Origin, duration: number) {
         const new_pos = add_dir(this.pos, dir);
         this.look_in_dir(dir);
@@ -130,13 +141,41 @@ export class BattlecodeBot extends Layout {
 
     public* damage_and_sync(dmg: number, duration: number) {
         this.health -= dmg;
-        yield* this.health_pct(this.health, duration);
+        
+        yield* this.health_sync(duration);
     }
-    
-    public* do_action(dir: Origin) {
+
+    public* do_action(dir: Origin, action?: string, time=0.2) {
         const offset = originToOffset(dir).scale(10);
         this.look_in_dir(dir);
-        yield* this.off_ref().position(this.off_ref().position().add(offset), 0.1, easeOutExpo).back(0.1, easeInExpo);
+
+        const action_sprite = action ? this.directional_action_sprites[action]?.[dir] : undefined;
+
+        if (action_sprite) {
+            this.img_ref().src(action_sprite);
+            yield* this.off_ref().position(this.off_ref().position().add(offset), time*0.5, easeOutExpo).back(time*0.5, easeInExpo);
+            this.img_ref().src(this.directional_base_sprites[this.dir]);
+        } else {
+            yield* this.off_ref().position(this.off_ref().position().add(offset), time*0.5, easeOutExpo).back(time*0.5, easeInExpo);
+        }
+    }
+
+    public* sprite(action: string, dir: Origin, time: number) {
+        const action_sprite = action ? this.directional_action_sprites[action]?.[dir] : undefined;
+
+        if (action_sprite) {
+            this.img_ref().src(action_sprite);
+            yield* waitFor(time);
+            this.img_ref().src(this.directional_base_sprites[this.dir]);
+        }
+    }
+
+    public* jump_up(scale: number) {
+        const offset = originToOffset(Origin.Top).scale(20);
+        yield* all(
+            this.off_ref().position(this.off_ref().position().add(offset), 0.1, easeOutExpo).back(0.1, easeInExpo),
+            this.off_ref().scale(scale, 0.1, easeOutExpo).back(0.1, easeInExpo),
+        );
     }
 
     public* place_item(dir: Origin, n: Node) {
