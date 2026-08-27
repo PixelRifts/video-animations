@@ -227,6 +227,10 @@ export class BattlecodeMap extends Rect {
         yield* this.show_pct(1, duration, linear);
     }
     
+    public* fade_out(duration = 1.2) {
+        yield* this.show_pct(0, duration, linear);
+    }
+    
     public tick = 0;
     public tick_timer = createSignal(0);
 

@@ -3,16 +3,84 @@
   "timeEvents": [
     {
       "name": "catstart",
-      "targetTime": 24.770524199504163
+      "targetTime": 2.7349920789978435
     },
     {
       "name": "brokenspec",
-      "targetTime": 40.276876850268714
+      "targetTime": 13.887158056290762
+    },
+    {
+      "name": "firstofall",
+      "targetTime": 17.505025618216262
+    },
+    {
+      "name": "showvisions",
+      "targetTime": 19.605025618216263
+    },
+    {
+      "name": "highhp",
+      "targetTime": 21.96434415434126
+    },
+    {
+      "name": "scratchattack",
+      "targetTime": 26.821304012295283
+    },
+    {
+      "name": "justmoveonto",
+      "targetTime": 33.330632780706416
+    },
+    {
+      "name": "pounceishard",
+      "targetTime": 39.21244172525135
+    },
+    {
+      "name": "bad",
+      "targetTime": 45.386725532981124
+    },
+    {
+      "name": "line",
+      "targetTime": 46.58672553298113
+    },
+    {
+      "name": "catattack1",
+      "targetTime": 51.857268038116075
+    },
+    {
+      "name": "catattack2",
+      "targetTime": 53.34773129046364
+    },
+    {
+      "name": "catattack3",
+      "targetTime": 55.30506784435833
+    },
+    {
+      "name": "catattack4",
+      "targetTime": 56.80506784435833
+    },
+    {
+      "name": "tiemtodip",
+      "targetTime": 57.49702626878246
+    },
+    {
+      "name": "catstratbad",
+      "targetTime": 79.59897165560083
+    },
+    {
+      "name": "syncedmove",
+      "targetTime": 87.56992406830057
+    },
+    {
+      "name": "dothetrapthing",
+      "targetTime": 94.05152415398297
+    },
+    {
+      "name": "backtooverview",
+      "targetTime": 98.38843929013444
     },
     {
       "name": "end",
-      "targetTime": 140.33019564930888
+      "targetTime": 113.43016952515038
     }
   ],
-  "seed": 2507608130
+  "seed": 3998513523
 }

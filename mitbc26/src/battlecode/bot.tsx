@@ -102,6 +102,11 @@ export class BattlecodeBot extends Layout {
     }
 
 
+    public* just_move(dir: Origin, duration: number) {
+        const new_pos = add_dir(this.pos, dir);
+        yield* this.move_to_pos(new_pos, duration);
+    }
+
     public* look_and_move(dir: Origin, duration: number) {
         const new_pos = add_dir(this.pos, dir);
         this.look_in_dir(dir);
