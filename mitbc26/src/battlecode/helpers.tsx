@@ -28,6 +28,17 @@ const dy_offset_lookup: Record<Origin, number> = {
     [Origin.Right]: 0,
 }
 
+export const directions: Origin[] = [
+    Origin.TopLeft,
+    Origin.Top,
+    Origin.TopRight,
+    Origin.Right,
+    Origin.BottomRight,
+    Origin.Bottom,
+    Origin.BottomLeft,
+    Origin.Left
+];
+
 export function random_dir(r: Random): Origin {
     // 1. Get all values, keep only numbers, and exclude Middle (3)
     const validValues = Object.values(Origin).filter(

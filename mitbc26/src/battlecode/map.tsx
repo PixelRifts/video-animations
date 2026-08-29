@@ -66,6 +66,18 @@ export class BattlecodeMap extends Rect {
         })
     }
 
+    public get_vector_tile_anchor(xy: Vector2): Computed<PossibleVector2> {
+        return createComputed(() => {
+            const [total_width, total_height] = this.side_lengths();
+            const real_x = this.faded_bounds() ? xy.x + 1 : xy.x;
+            const real_y = this.faded_bounds() ? xy.y + 1 : xy.y;
+            const tile_size = this.tile_size();
+            const stride = this.tile_size() + this.tile_gap();
+            
+            return [-total_width/2 + tile_size/2 + real_x*stride, -total_height/2 + tile_size/2 + real_y*stride];
+        })
+    }
+
     public get_intersect_anchor(x: number, y: number): Computed<PossibleVector2> {
         return createComputed(() => {
             const [total_width, total_height] = this.side_lengths();

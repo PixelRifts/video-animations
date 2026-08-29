@@ -3,7 +3,7 @@ import { Origin, Vector2, all, chain, createRef, createRefArray, createSignal, e
 import { MonoTxt, RoboticTxt } from "../../components/helpers";
 import { Cat, CatTrap, CheddarBabyRat, TileType, TileTypeInfo } from "../../battlecode/mit26/prefabs";
 import { BattlecodeMap } from "../../battlecode/map";
-
+import { BattlecodeBot } from "../../battlecode/bot";
 
 import simplerat from "../../battlecode/mit26/img/robots/cheddar/rat_7_64x64.png";
 import simpleratdown from "../../battlecode/mit26/img/robots/cheddar/rat_3_64x64.png";
@@ -20,7 +20,6 @@ import simplecatnomright from "../../battlecode/mit26/img/robots/cat/cat_feed_5.
 import simplecatnomtopright from "../../battlecode/mit26/img/robots/cat/cat_feed_6.png";
 import simpleratkingleft from "../../battlecode/mit26/img/robots/plum/rat_king_64x64.png";
 import cats_were_dumb from "../../video/CatSpec.png";
-import { BattlecodeBot } from "../../battlecode/bot";
 
 const TURN_TIME = 0.5
 const TURN_MOVE_TIME = 0.2

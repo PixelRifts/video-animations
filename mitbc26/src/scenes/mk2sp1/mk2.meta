@@ -2,8 +2,24 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "getkingaway",
+      "targetTime": 15.871800187077103
+    },
+    {
+      "name": "undodeath",
+      "targetTime": 25.358980205784814
+    },
+    {
+      "name": "rememberthatshit",
+      "targetTime": 32.98488621029585
+    },
+    {
+      "name": "removeall",
+      "targetTime": 50.31308101065109
+    },
+    {
       "name": "end",
-      "targetTime": 192.114188943329
+      "targetTime": 57.784891697531584
     }
   ],
   "seed": 2720087899

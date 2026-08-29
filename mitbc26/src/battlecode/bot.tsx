@@ -120,7 +120,8 @@ export class BattlecodeBot extends Layout {
 
     public* execute_moves(duration: number, ...dirs: Origin[]) {
         for (const dir of dirs) {
-            yield* this.look_and_move(dir, duration);
+            if (dir !== Origin.Middle)
+                yield* this.look_and_move(dir, duration);
             yield* this.map.wait_for_next_tick();
         }
     }

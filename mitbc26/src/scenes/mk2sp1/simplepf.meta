@@ -1,0 +1,34 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "bugisbad",
+      "targetTime": 16.986152410020253
+    },
+    {
+      "name": "starttwirl",
+      "targetTime": 21.837333686216837
+    },
+    {
+      "name": "heuristicmode",
+      "targetTime": 27.487376903006286
+    },
+    {
+      "name": "zoominin",
+      "targetTime": 31.643961298372012
+    },
+    {
+      "name": "dancing",
+      "targetTime": 46.660627965038664
+    },
+    {
+      "name": "thetries",
+      "targetTime": 53.89393998619219
+    },
+    {
+      "name": "end",
+      "targetTime": 61.66245071656055
+    }
+  ],
+  "seed": 3889133264
+}
