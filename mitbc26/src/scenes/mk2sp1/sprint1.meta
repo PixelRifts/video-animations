@@ -2,6 +2,30 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "showcalendar",
+      "targetTime": 1.20995475767302
+    },
+    {
+      "name": "highlightduration",
+      "targetTime": 3.4875496104832617
+    },
+    {
+      "name": "highlighttourneys",
+      "targetTime": 6.103793727507622
+    },
+    {
+      "name": "eligibility",
+      "targetTime": 9.62595899956075
+    },
+    {
+      "name": "labeltourneys",
+      "targetTime": 11.537627584848142
+    },
+    {
+      "name": "uploadbot",
+      "targetTime": 16.127147259092762
+    },
+    {
       "name": "end",
       "targetTime": 73.06532181862924
     }
