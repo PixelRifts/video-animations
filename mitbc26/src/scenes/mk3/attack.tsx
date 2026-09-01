@@ -248,19 +248,19 @@ export default makeScene2D(function* (view) {
     const prioritytxts = createRefArray<Txt>();
     const prioritytxtrect = createRef<Rect>();
     const priorityelementstxtrect = createRef<Rect>();
-    const conditioncolors2 = [ "#a35937", "#a35937", "#a35937", "#a35937" ];
+    const conditioncolors2 = [ "#d44a58", "#d44a58", "#d44a58", "#d44a58" ];
     const conditiontexts2 = [ "1. Throw", "2. Ratnap", "3. Trap", "4. Scratch" ];
     view.add(<>
         <Rect ref={prioritytxtrect}
             layout direction={"column"}
-            padding={10} width={400} height={400}
+            padding={10} width={400} height={425}
             fill={"#250c26"} lineWidth={4} stroke={"#9e37a3"}
             scale={1.4} y={-1200}
             clip
         >
             <RoboticTxt ref={prioritytxts}
-                text={"The Plan"} fill={"#a33768"}
-                alignSelf={"center"}
+                text={"The Plan"} fill={"#d94c8c"}
+                alignSelf={"center"} marginTop={10} fontSize={66}
             />
             <Line
                 lineWidth={4} stroke={"#9e37a3"}
@@ -279,8 +279,8 @@ export default makeScene2D(function* (view) {
     </>);
     yield* prioritytxtrect().y(0, 1.2);
     yield* waitUntil("thefour");
-    yield* sequence(2, ...range(4).map(i => prioritytxts[i+1].text(conditiontexts2[i], 0.5)));
+    yield* sequence(2, ...range(4).map(i => prioritytxts[i+1].text(conditiontexts2[i], 1.6)));
 
     yield* waitUntil("end");
-    yield* prioritytxtrect().x(1600, 1.2);
+    yield* prioritytxtrect().y(1200, 1.2);
 });

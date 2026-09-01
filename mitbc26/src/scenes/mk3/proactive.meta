@@ -1,0 +1,58 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "mainsym",
+      "targetTime": 20.10025793624565
+    },
+    {
+      "name": "vertical",
+      "targetTime": 21.419257249752157
+    },
+    {
+      "name": "horizontal",
+      "targetTime": 22.42061229795367
+    },
+    {
+      "name": "rotational",
+      "targetTime": 23.574457409986152
+    },
+    {
+      "name": "wherewestart",
+      "targetTime": 24.883617282544122
+    },
+    {
+      "name": "thethree",
+      "targetTime": 27.665174719698413
+    },
+    {
+      "name": "sendscouts",
+      "targetTime": 31.613882622981645
+    },
+    {
+      "name": "yeeeet",
+      "targetTime": 41.35090648480932
+    },
+    {
+      "name": "crippling",
+      "targetTime": 55.26149867511876
+    },
+    {
+      "name": "babiesrgood",
+      "targetTime": 68.2812182091829
+    },
+    {
+      "name": "simple",
+      "targetTime": 74.2812182091829
+    },
+    {
+      "name": "change",
+      "targetTime": 80.48025882123342
+    },
+    {
+      "name": "end",
+      "targetTime": 89.51983561383958
+    }
+  ],
+  "seed": 696773300
+}
