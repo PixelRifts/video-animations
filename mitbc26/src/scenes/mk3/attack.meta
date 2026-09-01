@@ -2,8 +2,52 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "simpleattack",
+      "targetTime": 2.903855994886523
+    },
+    {
+      "name": "usecheese",
+      "targetTime": 10.386252423843569
+    },
+    {
+      "name": "buff",
+      "targetTime": 21.063695067816433
+    },
+    {
+      "name": "fadeeverything",
+      "targetTime": 24.911955081718954
+    },
+    {
+      "name": "rattrapping",
+      "targetTime": 26.111955081718953
+    },
+    {
+      "name": "withinradius",
+      "targetTime": 37.34274466834002
+    },
+    {
+      "name": "almostalwaysbetter",
+      "targetTime": 45.52282759176197
+    },
+    {
+      "name": "mostcool",
+      "targetTime": 49.73913415060301
+    },
+    {
+      "name": "threeconditions",
+      "targetTime": 54.2967553414637
+    },
+    {
+      "name": "nuanceskipped",
+      "targetTime": 66.64231771050018
+    },
+    {
+      "name": "thefour",
+      "targetTime": 72.55431977201755
+    },
+    {
       "name": "end",
-      "targetTime": 176.39435062053198
+      "targetTime": 84.2891771099356
     }
   ],
   "seed": 2737240976

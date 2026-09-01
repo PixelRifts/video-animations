@@ -72,6 +72,10 @@ export class BattlecodeBot extends Layout {
         </Node>);
     }
 
+    public* position_resume(duration: number) {
+        yield* this.position(this.tiles_occupied % 2 == 0 ? this.map.get_intersect_anchor(this.pos.x, this.pos.y) : this.map.get_tile_anchor(this.pos.x, this.pos.y), duration);
+    }
+
     public anchor(x: number, y: number) {
         return this.tiles_occupied % 2 == 0 ? this.map.get_intersect_anchor(x, y) : this.map.get_tile_anchor(x, y);
     }
