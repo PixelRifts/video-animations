@@ -10,6 +10,8 @@ export interface BattlecodeBotProps extends ImgProps {
     pos?: Vector2;
     dir?: Origin;
 
+    base_opacity?: number;
+
     tiles_occupied?: number;
     directional_base_sprites?: Record<Origin, string>;
     directional_action_sprites?: Record<string, Record<Origin, string>>;
@@ -27,6 +29,7 @@ export class BattlecodeBot extends Layout {
     
     private health_pct = createSignal(1);
     private health: number = 1;
+    private base_opacity: number = 1;
 
     private max_health_bar: Reference<Rect> = createRef<Rect>();
     private health_bar: Reference<Rect> = createRef<Rect>();
@@ -42,6 +45,7 @@ export class BattlecodeBot extends Layout {
         this.map = props.map;
         this.pos = props.pos;
         this.dir = props.dir;
+        this.base_opacity = "base_opacity" in props ? props.base_opacity : 1;
         this.tiles_occupied = "tiles_occupied" in props ? props.tiles_occupied : 1;
         this.directional_base_sprites = props.directional_base_sprites;
         this.directional_action_sprites = props.directional_action_sprites ?? {};
@@ -87,7 +91,7 @@ export class BattlecodeBot extends Layout {
         this.pos = new_pos;
         const new_anchor = this.anchor(this.pos.x, this.pos.y);
 
-        const opacity_tgt = this.map.is_not_visible(this.pos.x, this.pos.y) ? 0 : 1;
+        const opacity_tgt = this.map.is_not_visible(this.pos.x, this.pos.y) ? 0 : this.base_opacity;
         
         this.position(() => Vector2.lerp(new Vector2(old_anchor()), new Vector2(new_anchor()), this.pct()));
         yield* all(this.pct(1, duration), this.opacity(opacity_tgt, duration));

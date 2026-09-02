@@ -1,4 +1,4 @@
-import { Origin, Random, Vector2 } from "@motion-canvas/core";
+import { Origin, Random, Vector2, originToOffset } from "@motion-canvas/core";
 
 const dx_offset_lookup: Record<Origin, number> = {
     [Origin.TopLeft]: -1,
@@ -40,17 +40,21 @@ export const directions: Origin[] = [
 ];
 
 export function random_dir(r: Random): Origin {
-    // 1. Get all values, keep only numbers, and exclude Middle (3)
     const validValues = Object.values(Origin).filter(
         (v) => typeof v === 'number' && v !== Origin.Middle
     ) as Origin[];
 
-    // 2. Pick a random item using your random instance
     const randomIndex = r.nextInt(0, validValues.length);
     return validValues[randomIndex];
 }
 
-
 export function add_dir(p: Vector2, d: Origin) {
     return p.addX(dx_offset_lookup[d]).addY(dy_offset_lookup[d]);
+}
+
+export function dot_dir(d1: Origin, d2: Origin) {
+    return originToOffset(d1).dot(originToOffset(d2));
+}
+export function dot_dir_vec(d1: Origin, d2: Vector2): number {
+    return originToOffset(d1).normalized.dot(d2);
 }
