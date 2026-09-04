@@ -1,5 +1,5 @@
-import { Code, Txt, withDefaults } from "@motion-canvas/2d";
-import { Signal, easeInCirc, easeOutCirc } from "@motion-canvas/core";
+import { Code, Rect, Txt, withDefaults } from "@motion-canvas/2d";
+import { Origin, Signal, Vector2, easeInCirc, easeOutCirc } from "@motion-canvas/core";
 
 export const RoboticTxt = withDefaults(Txt, {
     fontFamily: "Audiowide",
@@ -32,4 +32,13 @@ export function* wiggle(item: Signal<any, any, any, any>, dA: any, dB: any, dura
     
     yield* item(dB, duration/4, easeOutCirc);
     yield* item(oldsize, duration/4, easeInCirc);
+}
+
+export function get_rect_tournament_line(a: Rect, b: Rect) {
+    return () => [
+        a.position().add(a.getOriginDelta(Origin.Right)),
+        new Vector2(Vector2.lerp(a.position().add(a.getOriginDelta(Origin.Right)), b.position().add(b.getOriginDelta(Origin.Left)), 0.5).x, a.position().y),
+        new Vector2(Vector2.lerp(a.position().add(a.getOriginDelta(Origin.Right)), b.position().add(b.getOriginDelta(Origin.Left)), 0.5).x, b.position().y),
+        b.position().add(b.getOriginDelta(Origin.Left)),
+    ];
 }

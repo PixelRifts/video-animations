@@ -2,8 +2,84 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "takecatdirintoacc",
+      "targetTime": 20.220044690789443
+    },
+    {
+      "name": "toomuchgrouping",
+      "targetTime": 34.722601470658844
+    },
+    {
+      "name": "unexploredspace",
+      "targetTime": 44.1127237657618
+    },
+    {
+      "name": "toomuchgrouping_away",
+      "targetTime": 48.62086417890681
+    },
+    {
+      "name": "sprint2docket",
+      "targetTime": 65.70965479577747
+    },
+    {
+      "name": "notdoingsowell",
+      "targetTime": 72.02287420678145
+    },
+    {
+      "name": "notdoingsowell_away",
+      "targetTime": 79.72010648337435
+    },
+    {
+      "name": "purerush",
+      "targetTime": 85.3022506087517
+    },
+    {
+      "name": "purerush_away",
+      "targetTime": 92.96586822249208
+    },
+    {
+      "name": "yikes",
+      "targetTime": 103.17465752480973
+    },
+    {
+      "name": "yikes_away",
+      "targetTime": 115.88937731915823
+    },
+    {
+      "name": "lastshot",
+      "targetTime": 120.45126217234521
+    },
+    {
+      "name": "kingexplanation",
+      "targetTime": 134.88518409138175
+    },
+    {
+      "name": "whydothis",
+      "targetTime": 143.1794903989893
+    },
+    {
+      "name": "nomoreimg",
+      "targetTime": 148.7567496981655
+    },
+    {
+      "name": "squeaktohit",
+      "targetTime": 153.41837657343942
+    },
+    {
+      "name": "reusestate",
+      "targetTime": 163.74614226755176
+    },
+    {
+      "name": "outpostforming",
+      "targetTime": 169.99849043660876
+    },
+    {
+      "name": "trypromoconditions",
+      "targetTime": 185.36928177785074
+    },
+    {
       "name": "end",
-      "targetTime": 227.7219299778621
+      "targetTime": 227.4614723102033
     }
   ],
   "seed": 4028176076
