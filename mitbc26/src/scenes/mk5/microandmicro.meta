@@ -2,6 +2,38 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "microstrat",
+      "targetTime": 8.370329247817246
+    },
+    {
+      "name": "backtomicro",
+      "targetTime": 17.32394429717927
+    },
+    {
+      "name": "xsquaremicro",
+      "targetTime": 27.889155584200797
+    },
+    {
+      "name": "heuristicbased",
+      "targetTime": 31.76880200635214
+    },
+    {
+      "name": "individualopts",
+      "targetTime": 37.965901458238555
+    },
+    {
+      "name": "compose",
+      "targetTime": 43.747077559824284
+    },
+    {
+      "name": "localminima",
+      "targetTime": 51.60894101477428
+    },
+    {
+      "name": "goodbyeminimae",
+      "targetTime": 58.56725992316225
+    },
+    {
       "name": "end",
       "targetTime": 92.55945430451585
     }
