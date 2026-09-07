@@ -1,15 +1,39 @@
-import { Code, Img, Node, Rect, SVG, Txt, makeScene2D } from "@motion-canvas/2d";
-import { Color, Origin, Vector2, all, chain, createRef, createRefArray, createSignal, easeInBack, easeInCirc, easeInExpo, easeOutCirc, easeOutExpo, linear, loop, loopFor, originToOffset, range, sequence, useTime, waitFor, waitUntil } from "@motion-canvas/core";
+import { Code, Img, Node, Rect, SVG, Txt, Video, makeScene2D } from "@motion-canvas/2d";
+import { Color, Origin, Vector2, all, chain, createRef, createRefArray, createSignal, easeInBack, easeInCirc, easeInExpo, easeOutBack, easeOutCirc, easeOutExpo, linear, loop, loopFor, originToOffset, range, sequence, useTime, waitFor, waitUntil } from "@motion-canvas/core";
 import { BattlecodeBot } from "../battlecode/bot";
 import { BattlecodeMap } from "../battlecode/map";
 import { TileType, TileTypeInfo, PlumBabyRat, CheddarRatKing, PlumRatKing, Cat, CheddarBabyRat } from "../battlecode/mit26/prefabs";
 import { RoboticTxt, append_to_code, palette } from "../components/helpers";
+
+import specdocmp4 from "../video/specdoc.mp4";
+import br_rat from "../battlecode/mit26/img/robots/cheddar/rat_4_64x64.png";
+import bl_rat from "../battlecode/mit26/img/robots/cheddar/rat_2_64x64.png";
+
 
 const TURN_TIME = 0.5
 const TURN_MOVE_TIME = 0.2
 const TURN_WAIT_TIME = TURN_TIME - TURN_MOVE_TIME
 
 export default makeScene2D(function* (view) {
+
+    yield* waitUntil("specdoc")
+    const specdocvideo = createRef<Video>();
+    view.add(<Video ref={specdocvideo}
+        src={specdocmp4}
+        scale={1.2} radius={5}
+        y={2000} lineWidth={8}
+        time={2}
+        stroke={"#4e345a"}
+        // playbackRate={1.5}
+    />);
+    yield* all(specdocvideo().y(0, 1.2));
+    specdocvideo().play();
+
+    yield* waitUntil("specdoc_away");
+    specdocvideo().y(0)
+    yield* all(specdocvideo().y(2000, 1.2));
+
+
     const time = createSignal(0);
     yield loop(Infinity, function* () { yield* time(time() + 10, 10, linear); });
 
@@ -397,12 +421,19 @@ export default makeScene2D(function* (view) {
     yield* map().y(-1100, 1.2);
 
     yield* waitUntil("botscript");
+    const codewindow = createRef<Rect>();
     const script_code = createRef<Code>();
     view.add(<>
-        <Code ref={script_code}
-            fontSize={40}
-            code={``}
-        />
+        <Rect ref={codewindow}
+            layout padding={30}
+            fill={"#1F1F1F"}
+            lineWidth={2} stroke={"#2B2B2B"}
+        >
+            <Code ref={script_code}
+                fontSize={40}
+                code={``}
+            />
+        </Rect>
     </>);
     // yield* 
 
@@ -420,6 +451,53 @@ public class RobotPlayer {
 }`, 2);
 
     yield* waitUntil("constraint");
-    yield* all(script_code().y(script_code().y() - 40, 0.5), script_code().opacity(0, 0.5));
+    yield* all(codewindow().y(codewindow().y() - 40, 0.5), codewindow().opacity(0, 0.5));
+
+    
+    yield* waitUntil("nosharedvars");
+    const no_comms_bots = createRefArray<Img>();
+    const no_comms_vars = createRefArray<Code>();
+    view.add(<Node>
+        <Node>
+            <Img ref={no_comms_bots}
+                src={bl_rat}
+                size={0}
+                // size={500}
+                position={[400, 100]}
+            />
+            <Code ref={no_comms_vars}
+                // code={`public static MapLocation mine;`}
+                position={[0, -300]}
+            />
+        </Node>
+        <Node>
+            <Img ref={no_comms_bots}
+                src={br_rat}
+                size={0}
+                // size={500}
+                position={[-400, 100]}
+            />
+            <Code ref={no_comms_vars}
+                // code={`public static MapLocation mine;`}
+                position={[0, -300]}
+            />
+        </Node>
+    </Node>);
+    yield* sequence(0.1, ...no_comms_bots.map(t => t.size(500, 1.2, easeOutBack)));
+    yield* waitFor(2);
+    yield* all(...no_comms_vars.map(t => append_to_code(t, `public static MapLocation mine;`, 0.3)));
+    yield* waitFor(2);
+    yield* all(
+        sequence(0.1, no_comms_vars[0].x( 400, 0.8), no_comms_vars[0].fontSize(no_comms_vars[0].fontSize() - 4, 0.8), no_comms_vars[0].y(-200, 0.8)),
+        sequence(0.1, no_comms_vars[1].x(-400, 0.8), no_comms_vars[1].fontSize(no_comms_vars[1].fontSize() - 4, 0.8), no_comms_vars[1].y(-200, 0.8)),
+    );
+
+    yield* waitUntil("limitations");
+    yield* sequence(0.1,
+        all(...no_comms_vars.map((t, i) => t.x( ((1-i)*2-1)*2000 , 0.8 ))),
+        all(...no_comms_bots.map((t, i) => t.x( ((1-i)*2-1)*2000 , 0.8 )))
+    );
+
+
     yield* waitUntil("end");
 });

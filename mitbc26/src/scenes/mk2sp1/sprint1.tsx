@@ -1,6 +1,11 @@
-import { Circle, Layout, Line, Node, Rect, Txt, makeScene2D } from "@motion-canvas/2d";
-import { createRef, createRefArray, createSignal, easeOutBack, linear, loop, range, sequence, waitFor, waitUntil } from "@motion-canvas/core";
+import { Circle, Img, Layout, Line, Node, Rect, Txt, Video, makeScene2D } from "@motion-canvas/2d";
+import { all, createRef, createRefArray, createSignal, easeOutBack, linear, loop, range, sequence, waitFor, waitUntil } from "@motion-canvas/core";
 import { RoboticTxt } from "../../components/helpers";
+
+import howdthathappenpng from "../../video/howdthathappen.png";
+import ripperoniesmp4 from "../../video/ripperonies.mp4";
+import sprint1mp4 from "../../video/sprint1.mp4";
+import whydidwewinmp4 from "../../video/whydidwewin.mp4";
 
 export default makeScene2D(function* (view) {
     const time = createSignal(0);
@@ -38,7 +43,7 @@ export default makeScene2D(function* (view) {
             radius={5} scale={0}
             layout direction={"column"}
             padding={5}
-            // justifyContent={"space-evenly"}
+        // justifyContent={"space-evenly"}
         >
             {...range(6).map(i => <Rect ref={calendar_rows}
                 fill={"#100a0b"} zIndex={-i}
@@ -51,7 +56,7 @@ export default makeScene2D(function* (view) {
                     // stroke={i == 0 ? "#533E59" : "#2F2133"} lineWidth={4}
                     width={100} height={"100%"}
                     layout justifyContent={"center"}
-                    textAlign={"center"}  alignItems={"center"}
+                    textAlign={"center"} alignItems={"center"}
                 >
                     <RoboticTxt ref={calendar_labels}
                         fill={calpalette[calpalettevals[i][d]]}
@@ -97,12 +102,12 @@ export default makeScene2D(function* (view) {
     calendarbox().add(<>
         <Circle ref={highlightcircles}
             lineWidth={10} stroke={"#649e26"}
-            position={[-200*1.4, 55]} // size={140}
+            position={[-200 * 1.4, 55]} // size={140}
             lineDash={[199.911485, 20]} lineDashOffset={() => time() * 200}
         />
         <Line ref={highlightlegs}
             lineWidth={10} stroke={"#4a751d"}
-            points={[[(-200-50)*1.4, 20], [(-200-50-50)*1.4, -12], [-400*1.4, -12]]}
+            points={[[(-200 - 50) * 1.4, 20], [(-200 - 50 - 50) * 1.4, -12], [-400 * 1.4, -12]]}
             lineDash={[199.911485, 20]} lineDashOffset={() => -time() * 200}
             end={0}
         />
@@ -113,12 +118,12 @@ export default makeScene2D(function* (view) {
         />
         <Circle ref={highlightcircles}
             lineWidth={10} stroke={"#649e26"}
-            position={[-200*1.4, 195]} // size={140}
+            position={[-200 * 1.4, 195]} // size={140}
             lineDash={[199.911485, 20]} lineDashOffset={() => time() * 200}
         />
         <Line ref={highlightlegs}
             lineWidth={10} stroke={"#4a751d"}
-            points={[[(-200-50)*1.4, 195+35], [(-200-50-50)*1.4, 195+67], [-400*1.4, 195+67]]}
+            points={[[(-200 - 50) * 1.4, 195 + 35], [(-200 - 50 - 50) * 1.4, 195 + 67], [-400 * 1.4, 195 + 67]]}
             lineDash={[199.911485, 20]} lineDashOffset={() => -time() * 200}
             end={0}
         />
@@ -129,12 +134,12 @@ export default makeScene2D(function* (view) {
         />
         <Circle ref={highlightcircles}
             lineWidth={10} stroke={"#649e26"}
-            position={[300*1.4, 195]} // size={140}
+            position={[300 * 1.4, 195]} // size={140}
             lineDash={[199.911485, 20]} lineDashOffset={() => time() * 200}
         />
         <Line ref={highlightlegs}
             lineWidth={10} stroke={"#4a751d"}
-            points={[[(300+50)*1.4, 195+35], [(300+50+50)*1.4, 195+67], [450*1.4, 195+67]]}
+            points={[[(300 + 50) * 1.4, 195 + 35], [(300 + 50 + 50) * 1.4, 195 + 67], [450 * 1.4, 195 + 67]]}
             lineDash={[199.911485, 20]} lineDashOffset={() => -time() * 200}
             end={0}
         />
@@ -152,6 +157,63 @@ export default makeScene2D(function* (view) {
 
     yield* waitUntil("uploadbot");
     yield* calendarbox().x(2000, 1.2);
+
+
+    yield* waitUntil("howdthathappen");
+
+    const howdthathappenimg = createRef<Img>();
+    view.add(<Img ref={howdthathappenimg}
+        src={howdthathappenpng}
+        scale={1.2}
+        x={-300} y={-2000} // lineWidth={8}
+        // stroke={"#4e345a"} 
+        zIndex={2} shadowOffset={[10, 10]}
+        shadowColor={"#000"}
+    />);
+    yield* howdthathappenimg().y(-450, 1.2, easeOutBack);
+    const ripperoniesvideo = createRef<Video>();
+    view.add(<Video ref={ripperoniesvideo}
+        src={ripperoniesmp4}
+        scale={1.2} radius={5}
+        y={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1.2}
+    />);
+    yield* all(ripperoniesvideo().y(0, 1.2));
+    ripperoniesvideo().play();
+
+    yield* waitUntil("nomoresadness");
+    yield* all(howdthathappenimg().y(-1000, 1.2), ripperoniesvideo().y(-2000, 1.2));
+
+    yield* waitUntil("sprint1hell");
+    const sprint1video = createRef<Video>();
+    view.add(<Video ref={sprint1video}
+        src={sprint1mp4}
+        scale={1.2} radius={5}
+        y={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1.2}
+    />);
+    yield* all(sprint1video().y(0, 1.2));
+    sprint1video().play();
+
+    yield* waitUntil("nomorehell");
+    yield* all(sprint1video().y(-2000, 1.2));
+
+    yield* waitUntil("whydidwewinfrtho");
+    const whydidwewinvideo = createRef<Video>();
+    view.add(<Video ref={whydidwewinvideo}
+        src={whydidwewinmp4}
+        scale={1.2} radius={5}
+        y={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1.2}
+    />);
+    yield* all(whydidwewinvideo().y(0, 1.2));
+    whydidwewinvideo().play();
+
+    yield* waitUntil("wellneverknow");
+    yield* all(whydidwewinvideo().y(-2000, 1.2));
 
     yield* waitUntil("end");
 });
