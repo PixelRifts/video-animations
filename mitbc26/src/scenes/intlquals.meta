@@ -11,11 +11,71 @@
     },
     {
       "name": "catploughedthrough",
-      "targetTime": 24.68617481713045
+      "targetTime": 27.439715245523903
+    },
+    {
+      "name": "sucksvideodone",
+      "targetTime": 43.49529633733349
+    },
+    {
+      "name": "thisisntover",
+      "targetTime": 45.028246659998445
+    },
+    {
+      "name": "losersbracket",
+      "targetTime": 55.794021682189836
+    },
+    {
+      "name": "racletteMatch1",
+      "targetTime": 60.69402168218983
+    },
+    {
+      "name": "raclettematch1done",
+      "targetTime": 67.39077319843422
+    },
+    {
+      "name": "racletteMatch2",
+      "targetTime": 68.39077319843422
+    },
+    {
+      "name": "raclettematch2done",
+      "targetTime": 75.04330563352661
+    },
+    {
+      "name": "krykorolMatch1",
+      "targetTime": 84.2879718609365
+    },
+    {
+      "name": "krykorolmatch1done",
+      "targetTime": 96.8539172708957
+    },
+    {
+      "name": "krykorolMatch2",
+      "targetTime": 97.8539172708957
+    },
+    {
+      "name": "HomelessMatch1",
+      "targetTime": 104.29305571182769
+    },
+    {
+      "name": "Homelessmatch1done",
+      "targetTime": 118.96051706998249
+    },
+    {
+      "name": "HomelessMatch2",
+      "targetTime": 119.96051706998249
+    },
+    {
+      "name": "Homelessmatch2done",
+      "targetTime": 137.29187188359649
+    },
+    {
+      "name": "firsttry",
+      "targetTime": 141.80500524826618
     },
     {
       "name": "end",
-      "targetTime": 148.11508273705536
+      "targetTime": 147.11085856048234
     }
   ],
   "seed": 3382562471
