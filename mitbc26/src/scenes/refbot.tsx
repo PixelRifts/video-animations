@@ -1,12 +1,16 @@
 import { Img, Line, Node, Rect, Txt, Video, makeScene2D } from "@motion-canvas/2d";
-import { Origin, Vector2, all, chain, createRef, createRefArray, createSignal, easeInBack, easeInCirc, easeOutBack, easeOutCirc, linear, loop, range, run, sequence, useRandom, waitFor, waitUntil } from "@motion-canvas/core";
+import { Origin, Vector2, all, cancel, chain, createRef, createRefArray, createSignal, easeInBack, easeInCirc, easeOutBack, easeOutCirc, linear, loop, range, run, sequence, useRandom, waitFor, waitUntil } from "@motion-canvas/core";
 import { CheddarBabyRat, CheddarRatKing, Cheese, CheeseMine, Dirt, PlumBabyRat, PlumRatKing, TileType, TileTypeInfo, Wall } from "../battlecode/mit26/prefabs";
 import { BattlecodeMap } from "../battlecode/map";
 import { BattlecodeBot } from "../battlecode/bot";
 import { RoboticTxt, palette, wiggle } from "../components/helpers";
-
-import pathfinding_video from "../video/Pathfinding.mp4";
 import { random_dir } from "../battlecode/helpers";
+
+import betheslothmp4 from "../video/bethesloth.mp4";
+import pathfinding_video from "../video/Pathfinding.mp4";
+import cheesepng from "../battlecode/mit26/img/icons/cheese_64x64.png";
+import rkpng from "../battlecode/mit26/img/robots/cheddar/rat_king_64x64.png";
+import rpng from "../battlecode/mit26/img/robots/cheddar/rat_4_64x64.png";
 
 const TURN_TIME = 0.5
 const TURN_MOVE_TIME = 0.2
@@ -14,10 +18,67 @@ const TURN_WAIT_TIME = TURN_TIME - TURN_MOVE_TIME
 
 export default makeScene2D(function* (view) {
     const rand = useRandom(36);
-
-    yield* waitUntil("cheese_mines");
     const time = createSignal(0);
 
+    yield* waitUntil("cheeseamount");
+    const motherlode = createRef<Img>();
+    const tokenking = createRef<Img>();
+
+    const cheese_capture = createRef<Rect>();
+    const cheese_field = createRef<Rect>();
+    const cheese_pos = createRef<Txt>();
+    view.add(<>
+        <Rect ref={cheese_capture}
+            position={[0, -1000]}
+            size={[400, 100]} scale={1}
+            fill={"#221725"}
+            radius={10}
+            padding={10}
+            layout alignItems={"center"}
+        >
+            <Img ref={motherlode}
+                src={cheesepng}
+                size={100}
+            />
+            <Rect ref={cheese_field}
+                size={[275, 80]}
+                radius={8} alignItems={"center"}
+                justifyContent={"center"}
+                fill={"#100a0b"}
+            >
+                <RoboticTxt ref={cheese_pos}
+                    text={""} layout={false}
+                    fill={"#97BABA"}
+                />
+            </Rect>
+        </Rect>
+        <Img ref={tokenking}
+            position={[2000, 0]}
+            src={rkpng}
+            size={200*2.4}
+        />
+    </>);
+    yield* all(cheese_capture().y(0, 1.2), cheese_capture().scale(2.4, 1.2));
+    yield* waitFor(1);
+    yield* cheese_pos().text("2500", 1);
+    yield* waitFor(0.8);
+    yield* all(cheese_capture().x(-300, 1.2), cheese_capture().scale(1.5, 1.2), tokenking().x(500, 1.2));
+    const eating = yield loop(function*() {
+        yield* all(
+            tokenking().y(tokenking().y() - 10, 0.05).back(0.05),
+            tokenking().scale(1.1, 0.05).back(0.05),
+            cheese_pos().text((parseInt(cheese_pos().text(), 10) - 2).toString(), 0.1),
+            cheese_pos().scale(1.2, 0.05).back(0.05),
+        );
+        yield* waitFor(1);
+    });
+
+    yield* waitUntil("cheese_mines");
+    cancel(eating);
+    yield* all(
+        tokenking().x(2000, 0.8),
+        cheese_capture().x(-2000, 0.8),
+    )
     const map = createRef<BattlecodeMap>();
     const static_map = range(17 * 17).map(t => TileType.Empty);
 
@@ -80,22 +141,22 @@ export default makeScene2D(function* (view) {
         // Gatherers [0]
         chain(
             map().wait_for_next_tick(), map().wait_for_next_tick(),
-            loop(6, function*() { yield* chain(gatherers[0].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
-            loop(1, function*() { yield* chain(gatherers[0].look_and_move(Origin.Top,     TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(6, function* () { yield* chain(gatherers[0].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(1, function* () { yield* chain(gatherers[0].look_and_move(Origin.Top, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
             all(gatherers[0].do_action(Origin.Top), cheeses[2].opacity(0, 0.5), cheeses[2].scale(0, 0.5, easeInBack)),
         ),
         // Gatherers [1]
         chain(
             map().wait_for_next_tick(), map().wait_for_next_tick(), map().wait_for_next_tick(),
-            loop(3, function*() { yield* chain(gatherers[1].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
-            loop(4, function*() { yield* chain(gatherers[1].look_and_move(Origin.Left,    TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(3, function* () { yield* chain(gatherers[1].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(4, function* () { yield* chain(gatherers[1].look_and_move(Origin.Left, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
             all(gatherers[1].do_action(Origin.Left), cheeses[3].opacity(0, 0.5), cheeses[3].scale(0, 0.5, easeInBack)),
         ),
         // Gatherers [2]
         chain(
             map().wait_for_next_tick(), map().wait_for_next_tick(), map().wait_for_next_tick(), map().wait_for_next_tick(),
-            loop(1, function*() { yield* chain(gatherers[2].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
-            loop(6, function*() { yield* chain(gatherers[2].look_and_move(Origin.Top,     TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(1, function* () { yield* chain(gatherers[2].look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
+            loop(6, function* () { yield* chain(gatherers[2].look_and_move(Origin.Top, TURN_MOVE_TIME), map().wait_for_next_tick()); }),
             all(gatherers[2].do_action(Origin.TopRight), cheeses[1].opacity(0, 0.5), cheeses[1].scale(0, 0.5, easeInBack)),
         ),
     );
@@ -107,12 +168,45 @@ export default makeScene2D(function* (view) {
         fontSize={400} lineWidth={20}
         fill={"#700018"} stroke={"#BF021B"}
     />);
-    
+
     yield* waitUntil("goaway");
     yield* all(wrong_label().y(1200, 1.2), map().y(1200, 1.2));
 
+    yield* waitUntil("maxbytecodeamt");
+    const tokenrat = createRef<Img>();
+    view.add(<>
+        <Img ref={tokenrat}
+            position={[-2000, -100]}
+            src={rpng} scale={2}
+            size={120*2.4}
+        >
+            <RoboticTxt
+                text={"17500 MAX"}
+                fill={"#a36c37"} y={180}
+            />
+        </Img>
+    </>);
+    yield* tokenrat().x(-500, 1.2);
+    yield* waitFor(2);
+
+    yield* waitUntil("slothtime")
+    const betheslothvideo = createRef<Video>();
+    yield view.add(<Video ref={betheslothvideo}
+        src={betheslothmp4}
+        scale={1.1} radius={5}
+        x={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1.5}
+    />);
+    yield* all(tokenrat().x(-2000, 1.2), betheslothvideo().x(0, 1.2));
+    betheslothvideo().play();
+    
+    yield* waitUntil("slothtimedone");
+    yield* betheslothvideo().playbackRate(1, 1);
+    betheslothvideo().pause();
+    
     yield* waitUntil("why_no_beeline");
-    yield* map().y(0, 1.2);
+    yield* all(map().y(0, 1.2), betheslothvideo().y(-2000, 1.2));
     yield* sequence(0.1,
         ...gatherers.map(t => all(t.opacity(0, 0.8), t.scale(0, 0.8))),
         ...cheese_mines.slice(1).map(t => all(t.opacity(0, 0.8), t.scale(0, 0.8))),
@@ -141,27 +235,27 @@ export default makeScene2D(function* (view) {
     yield* waitFor(1);
     yield beeline().lineDashOffset(beeline().lineDashOffset() - 900, 10, linear)
     yield* all(beeline().end(1, 0.5), beeline().opacity(1, 0.1));
-    yield* loop(3, function*() { yield* chain(bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); })
+    yield* loop(3, function* () { yield* chain(bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME), map().wait_for_next_tick()); })
     yield* waitFor(0.8);
     yield* all(beeline().start(1, 0.2), beeline().opacity(0, 0.21));
 
     const dirt = createRefArray<Rect>();
     const walls = createRefArray<Rect>();
-    map().add_item(4, 10, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(4, 11, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(4, 12, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(4,  9, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(5,  8, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(6,  7, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    map().add_item(7,  6, <Dirt ref={dirt}  scale={0} opacity={0} />);
-    
-    map().add_item(5,  9, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(6,  8, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(7,  7, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(8,  6, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(8,  5, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(8,  4, <Wall ref={walls} scale={0} opacity={0} />);
-    map().add_item(8,  3, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(4, 10, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(4, 11, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(4, 12, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(4, 9, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(5, 8, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(6, 7, <Dirt ref={dirt} scale={0} opacity={0} />);
+    map().add_item(7, 6, <Dirt ref={dirt} scale={0} opacity={0} />);
+
+    map().add_item(5, 9, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(6, 8, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(7, 7, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(8, 6, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(8, 5, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(8, 4, <Wall ref={walls} scale={0} opacity={0} />);
+    map().add_item(8, 3, <Wall ref={walls} scale={0} opacity={0} />);
 
     yield* sequence(0.05, ...walls.map(t => all(t.opacity(1, 0.1), t.scale(1, 0.5))));
     yield* waitFor(0.5);
@@ -206,24 +300,24 @@ export default makeScene2D(function* (view) {
     yield* waitFor(2.5);
     yield* all(map().y(0, 1.2), map().scale(1.2, 2.0));
     yield* waitUntil("dobug");
-    
+
     bee().zIndex(3);
     beeline().lineWidth(6).lineDash([]);
     const update_line = function* (xoff: number, yoff: number) {
         const anchor = map().get_tile_anchor(bee().pos.x + xoff, bee().pos.y + yoff);
         beeline().points(() => [bee().position(), anchor]).start(0).end(1).opacity(1).zIndex(2);
     }
-    
+
     yield* chain(
         map().wait_for_next_tick(),
-        all(update_line(-4, -4), bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME),   ), map().wait_for_next_tick(),
-        all(update_line( 0,  0), bee().do_action(Origin.TopLeft),                       ), waitUntil("wallfollow"),
-        all(update_line(-1,  0), bee().look_and_move(Origin.Left, TURN_MOVE_TIME),      ), map().wait_for_next_tick(),
-        all(update_line(-1,  1), bee().look_and_move(Origin.BottomLeft, TURN_MOVE_TIME),), map().wait_for_next_tick(),
-        all(update_line( 0,  1), bee().look_and_move(Origin.Bottom, TURN_MOVE_TIME),    ), map().wait_for_next_tick(),
-        all(update_line( 0,  1), bee().look_and_move(Origin.Bottom, TURN_MOVE_TIME),    ), map().wait_for_next_tick(),
-        all(update_line(-1,  1), bee().look_and_move(Origin.BottomLeft, TURN_MOVE_TIME),), map().wait_for_next_tick(),
-        all(update_line(-1, -1), bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME),   ), waitUntil("backtogreed"),
+        all(update_line(-4, -4), bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(0, 0), bee().do_action(Origin.TopLeft),), waitUntil("wallfollow"),
+        all(update_line(-1, 0), bee().look_and_move(Origin.Left, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(-1, 1), bee().look_and_move(Origin.BottomLeft, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(0, 1), bee().look_and_move(Origin.Bottom, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(0, 1), bee().look_and_move(Origin.Bottom, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(-1, 1), bee().look_and_move(Origin.BottomLeft, TURN_MOVE_TIME),), map().wait_for_next_tick(),
+        all(update_line(-1, -1), bee().look_and_move(Origin.TopLeft, TURN_MOVE_TIME),), waitUntil("backtogreed"),
         map().wait_for_next_tick(), update_line(0, -6),
         bee().look_and_move(Origin.Top, TURN_MOVE_TIME), map().wait_for_next_tick(),
         bee().look_and_move(Origin.Top, TURN_MOVE_TIME), map().wait_for_next_tick(),
@@ -278,7 +372,7 @@ export default makeScene2D(function* (view) {
             scale={0} opacity={0}
         />
     </Node>);
-    
+
     yield* all(strat_king().scale(0.85, 0.8, easeOutBack), strat_king().opacity(1, 0.3));
     yield* map().wait_for_next_tick();
     yield* chain(
@@ -300,7 +394,7 @@ export default makeScene2D(function* (view) {
         ), map().wait_for_next_tick(),
     );
 
-    const the_dirs = [ Origin.Left, Origin.Top, Origin.Right, Origin.TopRight ];
+    const the_dirs = [Origin.Left, Origin.Top, Origin.Right, Origin.TopRight];
     strat_gatherers.forEach((t, i) => t.look_in_dir(the_dirs[i]));
     yield* map().wait_for_next_tick();
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME))), map().wait_for_next_tick());
@@ -321,7 +415,7 @@ export default makeScene2D(function* (view) {
     map().save();
     yield all(map().scale(2, 1.2), map().position([400, 200], 1.2));
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME))), map().wait_for_next_tick());
-    map().add_item(2, 5, <Cheese ref={strat_cheese} scale={0} zIndex={1}/>);
+    map().add_item(2, 5, <Cheese ref={strat_cheese} scale={0} zIndex={1} />);
     yield* strat_cheese().scale(1, 0.8, easeOutBack);
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME))), map().wait_for_next_tick());
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME))), map().wait_for_next_tick());
@@ -332,11 +426,11 @@ export default makeScene2D(function* (view) {
         <Line
             ref={bugline}
             lineWidth={5} stroke={'#00AA88'} lineCap={"round"}
-            points={[map().get_tile_anchor(2,5), map().get_tile_anchor(3,5), map().get_tile_anchor(4,5), map().get_tile_anchor(5,4), map().get_tile_anchor(6,3),]}
+            points={[map().get_tile_anchor(2, 5), map().get_tile_anchor(3, 5), map().get_tile_anchor(4, 5), map().get_tile_anchor(5, 4), map().get_tile_anchor(6, 3),]}
             zIndex={-2} start={1}
         />
     </>);
-    yield* loop(4, function*(i) { yield* bugline().start(0.75 - i * 0.25, 0.4); })
+    yield* loop(4, function* (i) { yield* bugline().start(0.75 - i * 0.25, 0.4); })
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME)), bugline().end(0.70, TURN_MOVE_TIME)), map().wait_for_next_tick());
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME)), bugline().end(0.40, TURN_MOVE_TIME)), map().wait_for_next_tick());
     strat_gatherers[2].look_in_dir(Origin.Top);
@@ -351,9 +445,9 @@ export default makeScene2D(function* (view) {
 
     yield* waitUntil('returnofkings')
     bugline().points([
-        map().get_tile_anchor(3,5), map().get_tile_anchor(4,5), map().get_tile_anchor(5,6), map().get_tile_anchor(6,7),
+        map().get_tile_anchor(3, 5), map().get_tile_anchor(4, 5), map().get_tile_anchor(5, 6), map().get_tile_anchor(6, 7),
     ]).start(0).end(0).opacity(1);
-    yield* loop(3, function*(i) { yield* bugline().start(0.33 + i * 0.33, 0.4); });
+    yield* loop(3, function* (i) { yield* bugline().start(0.33 + i * 0.33, 0.4); });
     strat_gatherers[1].look_in_dir(Origin.Right);
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME)), bugline().end(0.30, TURN_MOVE_TIME)), map().wait_for_next_tick());
     strat_gatherers[1].look_in_dir(Origin.BottomRight);
@@ -379,7 +473,7 @@ export default makeScene2D(function* (view) {
     strat_gatherers[1].look_in_dir(Origin.Right);
     yield* chain(all(...strat_gatherers.map(t => t.move_forward(TURN_MOVE_TIME)), bugline().end(0.65, TURN_MOVE_TIME)), map().wait_for_next_tick());
 
-    
+
 
     yield* waitUntil("end");
 });

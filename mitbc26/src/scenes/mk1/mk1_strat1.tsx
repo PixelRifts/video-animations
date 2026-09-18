@@ -1,9 +1,11 @@
-import { Circle, Code, Gradient, Img, Layout, Line, Polygon, Rect, Shape, Txt, makeScene2D } from "@motion-canvas/2d";
+import { Circle, Code, Gradient, Img, Layout, Line, Polygon, Rect, Shape, Txt, Video, makeScene2D } from "@motion-canvas/2d";
 import { Origin, Vector2, all, any, chain, createRef, createRefArray, easeInExpo, easeOutBack, easeOutExpo, loop, noop, range, run, sequence, waitFor, waitUntil } from "@motion-canvas/core";
 import { BattlecodeMap } from "../../battlecode/map";
 import { Cheese, CheeseMine, PlumBabyRat, PlumRatKing, TileType, TileTypeInfo } from "../../battlecode/mit26/prefabs";
 import { BattlecodeBot } from "../../battlecode/bot";
 import { MonoTxt, RoboticTxt, append_to_code } from "../../components/helpers";
+
+import speenmp4 from "../../video/speen.mp4";
 
 const TURN_TIME = 0.5
 const TURN_MOVE_TIME = 0.2
@@ -339,6 +341,25 @@ export default makeScene2D(function* (view) {
         )));
     yield* waitUntil("goaway");
     yield* all(global_arr().y(1200, 0.8), map().x(-2000, 1.2));
+
+    yield* waitUntil("ratscirc");
+
+    
+    const speenvideo = createRef<Video>();
+    yield view.add(<Video ref={speenvideo}
+        src={speenmp4}
+        scale={1.3} radius={5}
+        x={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1}
+        time={8}
+    />);
+    yield* all(speenvideo().x(0, 1.2));
+    speenvideo().play();
+    
+    yield* waitUntil("speenover");
+    yield* speenvideo().x(-2000, 1.2);
+    
 
     yield* waitUntil("end");
 });

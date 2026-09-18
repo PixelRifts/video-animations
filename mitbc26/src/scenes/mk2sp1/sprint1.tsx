@@ -6,6 +6,7 @@ import howdthathappenpng from "../../video/howdthathappen.png";
 import ripperoniesmp4 from "../../video/ripperonies.mp4";
 import sprint1mp4 from "../../video/sprint1.mp4";
 import whydidwewinmp4 from "../../video/whydidwewin.mp4";
+import websitemp4 from "../../video/website.mp4";
 
 export default makeScene2D(function* (view) {
     const time = createSignal(0);
@@ -158,7 +159,22 @@ export default makeScene2D(function* (view) {
     yield* waitUntil("uploadbot");
     yield* calendarbox().x(2000, 1.2);
 
-
+    yield* waitUntil("wbsite");
+    const websitevideo = createRef<Video>();
+    yield view.add(<Video ref={websitevideo}
+        src={websitemp4}
+        scale={1} radius={5}
+        x={2000} lineWidth={8}
+        stroke={"#4e345a"}
+        playbackRate={1}
+        time={4}
+    />);
+    yield* all(websitevideo().x(0, 1.2));
+    websitevideo().play();
+    
+    yield* waitUntil("websiteover");
+    yield* websitevideo().x(-2000, 1.2);
+    
     yield* waitUntil("howdthathappen");
 
     const howdthathappenimg = createRef<Img>();

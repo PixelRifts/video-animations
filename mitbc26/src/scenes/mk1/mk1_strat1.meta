@@ -34,6 +34,14 @@
       "targetTime": 42.14572847445024
     },
     {
+      "name": "ratscirc",
+      "targetTime": 44.31400734918102
+    },
+    {
+      "name": "speenover",
+      "targetTime": 55.351720716445634
+    },
+    {
       "name": "end",
       "targetTime": 68.66798272310268
     }

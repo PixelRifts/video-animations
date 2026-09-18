@@ -2,8 +2,12 @@
   "version": 0,
   "timeEvents": [
     {
+      "name": "cheeseamount",
+      "targetTime": 15.634436836145253
+    },
+    {
       "name": "cheese_mines",
-      "targetTime": 30.552693058038958
+      "targetTime": 29.670326225217817
     },
     {
       "name": "cheese_spawn_loop",
@@ -20,6 +24,18 @@
     {
       "name": "goaway",
       "targetTime": 49.99808692690898
+    },
+    {
+      "name": "maxbytecodeamt",
+      "targetTime": 74.5708836274523
+    },
+    {
+      "name": "slothtime",
+      "targetTime": 81.72241059803017
+    },
+    {
+      "name": "slothtimedone",
+      "targetTime": 94.6433403297546
     },
     {
       "name": "why_no_beeline",

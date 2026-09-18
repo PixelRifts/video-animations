@@ -1,7 +1,7 @@
 {
   "version": 0,
   "shared": {
-    "background": "rgb(11,11,22)",
+    "background": "rgb(0,3,25)",
     "range": [
       0,
       null
